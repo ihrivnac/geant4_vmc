@@ -39,7 +39,7 @@ $ mkdir geant4_vmc_build
 $ ls
 geant4_vmc geant4_vmc_build
 ```
-{:start="3"}
+
 3. To configure the build, change into the build directory and run CMake:
 
 ```bash
