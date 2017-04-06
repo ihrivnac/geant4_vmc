@@ -111,30 +111,30 @@ complementary ways:
 
 a) Via path to the CMake configuration file
 
-        ROOT_DIR              ... path to ROOTConfig.cmake
-        Geant4_DIR            ... path to Geant4Config.cmake
-        VGM_DIR               ... path to VGMConfig.cmake
+      ROOT_DIR              ... path to ROOTConfig.cmake
+      Geant4_DIR            ... path to Geant4Config.cmake
+      VGM_DIR               ... path to VGMConfig.cmake
 
 b) Using their configuration script which is available
    in your PATH (Geant4 and Root):
 
-        geant4-config         ... Geant4 configuration script
-        root-config           ... Root configuration script
+      geant4-config         ... Geant4 configuration script
+      root-config           ... Root configuration script
 
    To make these configuration scripts available in your PATH,
    you should source the relevant script from the packages
    installation:
 
-        bin/geant4.[c]sh      ... Geant4
-        bin/thisroot.[c]sh    ... Root
+      bin/geant4.[c]sh      ... Geant4
+      bin/thisroot.[c]sh    ... Root
 
 c) With the environment variable ROOTSYS (Root only)
 
-        ROOTSYS         ... path to Root
+      ROOTSYS         ... path to Root
 
 The compilation with VGM (optional) can be selected via the CMake option:
 
-        -DGeant4VMC_USE_VGM=ON
+      -DGeant4VMC_USE_VGM=ON
 
 
 ## Examples
