@@ -27,51 +27,59 @@ built with [VGM](http://ivana.home.cern.ch/ivana/VGM.html).
 Since version 3.00, Geant4 VMC is installed with CMake. To install
 geant4_vmc:
 
-1. First get the Geant4 VMC source from the Download page. We will assume
-   that the Geant4 VMC package sits in a subdirectory  
-   /mypath/geant4_vmc
+<ol>
+<li>First get the Geant4 VMC source from the Download page. We will assume
+that the Geant4 VMC package sits in a subdirectory  
+/mypath/geant4_vmc
+</li>
 
-2. Create build directory alongside our source directory
+<li>
+Create build directory alongside our source directory
 ```bash
 $ cd /mypath
 $ mkdir geant4_vmc_build
 $ ls
 geant4_vmc geant4_vmc_build
 ```
+</li>
 
-3. To configure the build, change into the build directory and run CMake:
+<li> To configure the build, change into the build directory and run CMake:
 ```bash
 $ cd /mypath/geant4_vmc_build
 $ cmake -DCMAKE_INSTALL_PREFIX=/mypath/geant4_vmc_install /mypath/geant4_vmc
 ```
 
-     If ROOT and Geant4 environment was defined using thisroot.[c]sh and
-   geant4.[c]sh scripts, there is no need to provide path to their installations.
-   Otherwise, they can be provided using -DROOT_DIR and -DGeant4_DIR cmake
-   options.
+If ROOT and Geant4 environment was defined using thisroot.[c]sh and
+geant4.[c]sh scripts, there is no need to provide path to their installations.
+Otherwise, they can be provided using -DROOT_DIR and -DGeant4_DIR cmake
+options.
+</li>
 
-4. After the configuration has run, CMake will have generated Unix Makefiles
-   for building Geant4 VMC. To run the build, simply execute make in the build
-   directory:
+<li>After the configuration has run, CMake will have generated Unix Makefiles
+for building Geant4 VMC. To run the build, simply execute make in the build
+directory:
 ```bash
 $ make -jN
 ```
 
-     where N is the number of parallel jobs you require (e.g. if your machine has a dual
-   core processor, you could set N to 2).
-   If you need more output to help resolve issues or simply for information, run make as
+  where N is the number of parallel jobs you require (e.g. if your machine has a dual
+  core processor, you could set N to 2).
+  If you need more output to help resolve issues or simply for information, run make as
 ```bash
 $ make -jN VERBOSE=1
 ```
+</li>
 
-5. Once the build has completed, you can install Geant4 VMC to the directory you specified
-   earlier in CMAKE_INSTALL_PREFIX by running
+<li> Once the build has completed, you can install Geant4 VMC to the directory you specified
+  earlier in CMAKE_INSTALL_PREFIX by running
 ```bash
 $ make install
 ```
 
-    This will build geant4_vmc, g4root and mtroot packages. For VMC examples see VMC
-   examples installation page.
+  This will build geant4_vmc, g4root and mtroot packages. For VMC examples see VMC
+  examples installation page.
+</li>
+</ol>
 
 ## Build Options
 
