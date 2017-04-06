@@ -21,62 +21,65 @@ It also includes G4Root and MTRoot packages, which are independent from Geant4 V
 	      
 ## Installation
 
-  Geant4 VMC requires ROOT and Geant4 installed, and optionally, it can be
-  built with [http://ivana.home.cern.ch/ivana/VGM.html](VGM).
-  
-  Since version 3.00, Geant4 VMC is installed with CMake. To install
-  geant4_vmc:
+Geant4 VMC requires ROOT and Geant4 installed, and optionally, it can be
+built with [VGM](http://ivana.home.cern.ch/ivana/VGM.html).
 
-  1. First get the Geant4 VMC source from the Download page. We will assume
-     that the Geant4 VMC package sits in a subdirectory
-     /mypath/geant4_vmc
+Since version 3.00, Geant4 VMC is installed with CMake. To install
+geant4_vmc:
 
-  2. Create build directory alongside our source directory
+1. First get the Geant4 VMC source from the Download page. We will assume
+   that the Geant4 VMC package sits in a subdirectory  
+   /mypath/geant4_vmc
+
+2. Create build directory alongside our source directory
 ```bash
-     $ cd /mypath
-     $ mkdir geant4_vmc_build
-     $ ls
-     geant4_vmc geant4_vmc_build
+$ cd /mypath
+$ mkdir geant4_vmc_build
+$ ls
+geant4_vmc geant4_vmc_build
 ```
 
-  3. To configure the build, change into the build directory and run CMake:
+3. To configure the build, change into the build directory and run CMake:
 ```bash
 $ cd /mypath/geant4_vmc_build
 $ cmake -DCMAKE_INSTALL_PREFIX=/mypath/geant4_vmc_install /mypath/geant4_vmc
 ```
-   If ROOT and Geant4 environment was defined using thisroot.[c]sh and
+
+     If ROOT and Geant4 environment was defined using thisroot.[c]sh and
    geant4.[c]sh scripts, there is no need to provide path to their installations.
    Otherwise, they can be provided using -DROOT_DIR and -DGeant4_DIR cmake
    options.
 
-  4. After the configuration has run, CMake will have generated Unix Makefiles
-     for building Geant4 VMC. To run the build, simply execute make in the build
-     directory:
+4. After the configuration has run, CMake will have generated Unix Makefiles
+   for building Geant4 VMC. To run the build, simply execute make in the build
+   directory:
 ```bash
-     $ make -jN
+$ make -jN
 ```
 
      where N is the number of parallel jobs you require (e.g. if your machine has a dual
-     core processor, you could set N to 2).
-     If you need more output to help resolve issues or simply for information, run make as
+   core processor, you could set N to 2).
+   If you need more output to help resolve issues or simply for information, run make as
 ```bash
-     $ make -jN VERBOSE=1
+$ make -jN VERBOSE=1
 ```
 
-     Once the build has completed, you can install Geant4 VMC to the directory you specified
-     earlier in CMAKE_INSTALL_PREFIX by running
-     $ make install
+5. Once the build has completed, you can install Geant4 VMC to the directory you specified
+   earlier in CMAKE_INSTALL_PREFIX by running
+```bash
+$ make install
+```
 
-     This will build geant4_vmc, g4root and mtroot packages. For VMC examples see VMC
-     examples installation page.
+    This will build geant4_vmc, g4root and mtroot packages. For VMC examples see VMC
+   examples installation page.
 
 ## Build Options
 
-  Geant4 VMC includes G4Root and MTRoot packages, which are independent from Geant4 VMC
-  and can be build and used stand-alone. Use of G4Root, VGM, Geant4 G3toG4, UI and VIS
-  packages in Geant4 VMC library is optional and can be switched on/off during CMake build.
+Geant4 VMC includes G4Root and MTRoot packages, which are independent from Geant4 VMC
+and can be build and used stand-alone. Use of G4Root, VGM, Geant4 G3toG4, UI and VIS
+packages in Geant4 VMC library is optional and can be switched on/off during CMake build.
 
-  Overview of available options and their default values:
+Overview of available options and their default values:
 
       Geant4VMC_BUILD_G4Root       Build G4Root        ON
       Geant4VMC_BUILD_MTRoot       Build MTRoot        ON
@@ -94,37 +97,37 @@ $ cmake -DCMAKE_INSTALL_PREFIX=/mypath/geant4_vmc_install /mypath/geant4_vmc
 
 ## Required and optional packages:
 
-  Geant4 VMC requires the Root and Geant4 installations,
-  and optionally VGM in case you want to run with Geant4
-  native navigation with geometry defined via Root TGeo.
-  
-  The path to required and optional packages installations can be defined in these
-  complementary ways:
+Geant4 VMC requires the Root and Geant4 installations,
+and optionally VGM in case you want to run with Geant4
+native navigation with geometry defined via Root TGeo.
 
-  a) Via path to the CMake configuration file
+The path to required and optional packages installations can be defined in these
+complementary ways:
+
+a) Via path to the CMake configuration file
 
         ROOT_DIR              ... path to ROOTConfig.cmake
         Geant4_DIR            ... path to Geant4Config.cmake
         VGM_DIR               ... path to VGMConfig.cmake
 
-  b) Using their configuration script which is available
-     in your PATH (Geant4 and Root):
+b) Using their configuration script which is available
+   in your PATH (Geant4 and Root):
 
         geant4-config         ... Geant4 configuration script
         root-config           ... Root configuration script
 
-     To make these configuration scripts available in your PATH,
-     you should source the relevant script from the packages
-     installation:
+   To make these configuration scripts available in your PATH,
+   you should source the relevant script from the packages
+   installation:
 
         bin/geant4.[c]sh      ... Geant4
         bin/thisroot.[c]sh    ... Root
 
-  c) With the environment variable ROOTSYS (Root only)
+c) With the environment variable ROOTSYS (Root only)
 
         ROOTSYS         ... path to Root
 
-  The compilation with VGM (optional) can be selected via the CMake option:
+The compilation with VGM (optional) can be selected via the CMake option:
 
         -DGeant4VMC_USE_VGM=ON
   
