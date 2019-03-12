@@ -1,5 +1,5 @@
 
-Geant4 VMC
+Geant4 VMC    {#mainpage}
 ===========
 
 Geant4 VMC implements the Virtual Monte Carlo (VMC) for Geant4, see more: <br/>
