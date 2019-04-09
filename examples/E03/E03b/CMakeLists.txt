@@ -54,13 +54,13 @@ include_directories(
 ROOT_GENERATE_DICTIONARY(
   ${CMAKE_SHARED_LIBRARY_PREFIX}${library_name}
   no_rootmap
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03MCApplication.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03MCStack.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03DetectorConstruction.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03DetectorConstructionOld.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03CalorHit.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03CalorimeterSD.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03PrimaryGenerator.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/MCApplication.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/MCStack.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/DetectorConstruction.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/DetectorConstructionOld.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/CalorHit.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/CalorimeterSD.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/PrimaryGenerator.h
   LINKDEF ${CMAKE_CURRENT_SOURCE_DIR}/include/${program_name}LinkDef.h)
 
 #----------------------------------------------------------------------------

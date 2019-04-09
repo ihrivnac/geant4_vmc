@@ -21,13 +21,13 @@ void Config()
 /// For geometry with a user defined magnetic field equation of motion and integrator.
 
   // Run configuration with user geometry construction via Geant4
-  Ex03RunConfiguration4* runConfiguration
-    = new Ex03RunConfiguration4("geomRoot", "FTFP_BERT");
+  VMC::E03::RunConfiguration4* runConfiguration
+    = new VMC::E03::RunConfiguration4("geomRoot", "FTFP_BERT");
 
   // Run configuration with user geometry construction via Geant4
   // + special cuts activated
-  // Ex03RunConfiguration4* runConfiguration
-  //   = new Ex03RunConfiguration4("geomRootToGeant4", "FTFP_BERT", "specialCuts");
+  // VMC::E03::RunConfiguration4* runConfiguration
+  //   = new VMC::E03::RunConfiguration4("geomRootToGeant4", "FTFP_BERT", "specialCuts");
 
   // TGeant4
   TGeant4* geant4

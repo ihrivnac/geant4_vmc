@@ -45,10 +45,10 @@ include_directories(
 ROOT_GENERATE_DICTIONARY(
   ${CMAKE_SHARED_LIBRARY_PREFIX}${g4library_name}
   no_rootmap
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03RunConfiguration1.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03RunConfiguration2.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03RunConfiguration3.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Ex03RunConfiguration4.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/RunConfiguration1.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/RunConfiguration2.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/RunConfiguration3.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/RunConfiguration4.h
   LINKDEF ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}LinkDef.h)
 
 #----------------------------------------------------------------------------

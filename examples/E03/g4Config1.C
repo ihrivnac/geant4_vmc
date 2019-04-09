@@ -20,13 +20,13 @@ void Config()
 /// For geometry defined with Geant4 in a user run configuration.
 
   // Run configuration with user geometry construction via Geant4
-  Ex03RunConfiguration1* runConfiguration
-    = new Ex03RunConfiguration1("FTFP_BERT");
+  VMC::E03::RunConfiguration1* runConfiguration
+    = new VMC::E03::RunConfiguration1("FTFP_BERT");
 
   // Run configuration with user geometry construction via Geant4
   // + special cuts activated
-  // Ex03RunConfiguration1* runConfiguration
-  //   = new Ex03RunConfiguration1("FTFP_BERT", "specialCuts");
+  // VMC::E03::RunConfiguration1* runConfiguration
+  //   = new VMC::E03::RunConfiguration1("FTFP_BERT", "specialCuts");
 
   // TGeant4
   TGeant4* geant4

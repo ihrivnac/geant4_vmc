@@ -23,8 +23,8 @@ void read()
   gSystem->Load("libexample03");
 
   // MC application
-  Ex03MCApplication* appl
-    =  new Ex03MCApplication("Example03", "The example03 MC application", kRead);
+  VMC::E03::MCApplication* appl
+    =  new VMC::E03::MCApplication("Example03", "The example03 MC application", kRead);
 
   for (Int_t i=0; i<5; i++) {
     cout << "   Event no " << i+1 << ":" << endl;

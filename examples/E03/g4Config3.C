@@ -20,8 +20,8 @@ void Config()
 /// It demonstrates activation of user defined regions.
 
   // Run configuration with user defined regions
-  Ex03RunConfiguration3* runConfiguration
-    = new Ex03RunConfiguration3("geomRootToGeant4", "FTFP_BERT");
+  VMC::E03::RunConfiguration3* runConfiguration
+    = new VMC::E03::RunConfiguration3("geomRootToGeant4", "FTFP_BERT");
 
   // TGeant4
   TGeant4* geant4

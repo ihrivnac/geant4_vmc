@@ -22,12 +22,12 @@ void Config()
 /// and a user defined physics list in a user run configuration
 
   // Run configuration with user physics list
-  Ex03RunConfiguration2* runConfiguration
-    = new Ex03RunConfiguration2("geomRootToGeant4");
+  VMC::E03::RunConfiguration2* runConfiguration
+    = new VMC::E03::RunConfiguration2("geomRootToGeant4");
 
   // Run configuration with user physics list and special cuts activated
-  // Ex03RunConfiguration2* runConfiguration
-  //  = new Ex03RunConfiguration2("geomRootToGeant4", "specialCuts");
+  // VMC::E03::RunConfiguration2* runConfiguration
+  //  = new VMC::E03::RunConfiguration2("geomRootToGeant4", "specialCuts");
 
   // TGeant4
   TGeant4* geant4

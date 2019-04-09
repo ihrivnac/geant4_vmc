@@ -7,7 +7,7 @@
 // Contact: root-vmc@cern.ch
 //-------------------------------------------------
 
-/// \file  exampleE03LinkDef.h
+/// \file E03/E03b/include/ exampleE03LinkDef.h
 /// \brief The CINT link definitions for example E03 classes
 
 #ifdef __CINT__
@@ -16,18 +16,15 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ class  Ex03MCApplication+;
-#pragma link C++ class  Ex03MCStack+;
-#pragma link C++ class  Ex03DetectorConstruction+;
-#pragma link C++ class  Ex03DetectorConstructionOld+;
-#pragma link C++ class  Ex03CalorHit+;
-#pragma link C++ class  Ex03CalorimeterSD+;
-#pragma link C++ class  Ex03PrimaryGenerator+;
+#pragma link C++ class  VMC::E03::MCApplication+;
+#pragma link C++ class  VMC::E03::MCStack+;
+#pragma link C++ class  VMC::E03::DetectorConstruction+;
+#pragma link C++ class  VMC::E03::DetectorConstructionOld+;
+#pragma link C++ class  VMC::E03::CalorHit+;
+#pragma link C++ class  VMC::E03::CalorimeterSD+;
+#pragma link C++ class  VMC::E03::PrimaryGenerator+;
 #pragma link C++ class  std::stack<TParticle*,deque<TParticle*> >+;
 
 #endif
-
-
-
 
 

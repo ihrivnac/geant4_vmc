@@ -22,8 +22,8 @@ void run_g3(const TString& configMacro = "g3tgeoConfig.C")
 /// \param configMacro configuration macro name, default \ref E03/g3Config.C
 
   // MC application
-  Ex03MCApplication* appl
-    =  new Ex03MCApplication("Example03", "The example03 MC application");
+  VMC::E03::MCApplication* appl
+    =  new VMC::E03::MCApplication("Example03", "The example03 MC application");
   appl->GetPrimaryGenerator()->SetNofPrimaries(20);
   appl->SetPrintModulo(1);
 

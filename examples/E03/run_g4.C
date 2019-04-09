@@ -22,8 +22,8 @@ void run_g4(const TString& configMacro = "g4Config.C")
 /// \param configMacro configuration macro name, default \ref E03/g4Config.C
 
   // MC application
-  Ex03MCApplication* appl
-    =  new Ex03MCApplication("Example03", "The example03 MC application");
+  VMC::E03::MCApplication* appl
+    =  new VMC::E03::MCApplication("Example03", "The example03 MC application");
   appl->GetPrimaryGenerator()->SetNofPrimaries(20);
   appl->SetPrintModulo(1);
 

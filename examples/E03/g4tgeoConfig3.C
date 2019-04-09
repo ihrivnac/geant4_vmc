@@ -25,8 +25,8 @@ void Config()
   gSystem->Load("libgeant4e03");
 
   // Run configuration with user defined regions
-  Ex03RunConfiguration3* runConfiguration
-    = new Ex03RunConfiguration3("geomRoot");
+  VMC::E03::RunConfiguration3* runConfiguration
+    = new VMC::E03::RunConfiguration3("geomRoot");
 
   // TGeant4
   TGeant4* geant4

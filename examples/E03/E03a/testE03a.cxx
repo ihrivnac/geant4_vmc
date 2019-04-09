@@ -7,7 +7,7 @@
 // Contact: root-vmc@cern.ch
 //-------------------------------------------------
 
-/// \file testE03.cxx
+/// \file testE03a.cxx
 /// \brief The Geant4 VMC example E03 test application
 ///
 /// The Geant4 VMC test application
@@ -35,15 +35,15 @@
 /// \date 26/02/2014
 /// \author I. Hrivnacova; IPN, Orsay
 
-#include "Ex03MCApplication.h"
+#include "MCApplication.h"
 
 #ifdef USE_GEANT4
 #include "TG4RunConfiguration.h"
 #include "TGeant4.h"
-#include "Ex03RunConfiguration1.h"
-#include "Ex03RunConfiguration2.h"
-#include "Ex03RunConfiguration3.h"
-#include "Ex03RunConfiguration4.h"
+#include "RunConfiguration1.h"
+#include "RunConfiguration2.h"
+#include "RunConfiguration3.h"
+#include "RunConfiguration4.h"
 #endif
 
 #ifdef USE_GEANT3
@@ -212,8 +212,8 @@ int main(int argc, char** argv)
   // end of code to process arguments
 
   // Create MC application (thread local)
-  Ex03MCApplication* appl
-    =  new Ex03MCApplication("ExampleE03",
+  VMC::E03::MCApplication* appl
+    =  new VMC::E03::MCApplication("ExampleE03",
                              "The exampleE03 MC application");
 
 #ifdef USE_GEANT4
@@ -236,19 +236,19 @@ int main(int argc, char** argv)
   }
   else if ( g4UserClass == "geometry" ) {
     runConfiguration
-      = new Ex03RunConfiguration1(g4PhysicsList, g4SpecialPhysics);
+      = new VMC::E03::RunConfiguration1(g4PhysicsList, g4SpecialPhysics);
   }
   else if ( g4UserClass == "physics-list" ) {
     runConfiguration
-      = new Ex03RunConfiguration2(g4Geometry, g4SpecialPhysics);
+      = new VMC::E03::RunConfiguration2(g4Geometry, g4SpecialPhysics);
   }
   else if ( g4UserClass == "regions" ) {
     runConfiguration
-      = new Ex03RunConfiguration3(g4Geometry, g4PhysicsList, g4SpecialPhysics);
+      = new VMC::E03::RunConfiguration3(g4Geometry, g4PhysicsList, g4SpecialPhysics);
   }
   else if ( g4UserClass == "field" ) {
     runConfiguration
-      = new Ex03RunConfiguration4(g4Geometry, g4PhysicsList, g4SpecialPhysics);
+      = new VMC::E03::RunConfiguration4(g4Geometry, g4PhysicsList, g4SpecialPhysics);
   }
   else {
     PrintUsage("testE03");

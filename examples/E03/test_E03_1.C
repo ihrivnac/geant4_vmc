@@ -27,13 +27,13 @@ void test_E03_1(const TString& configMacro, Bool_t oldGeometry)
   // Create application if it does not yet exist
   Bool_t needDelete = kFALSE;
   if ( ! TVirtualMCApplication::Instance() ) {
-    new Ex03MCApplication("Example03", "The example03 MC application");
+    new VMC::E03::MCApplication("Example03", "The example03 MC application");
     needDelete = kTRUE;
   }
 
   // MC application
-  Ex03MCApplication* appl
-    = (Ex03MCApplication*)TVirtualMCApplication::Instance();
+  VMC::E03::MCApplication* appl
+    = (VMC::E03::MCApplication*)TVirtualMCApplication::Instance();
   appl->GetPrimaryGenerator()->SetNofPrimaries(20);
   appl->SetPrintModulo(1);
 
