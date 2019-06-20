@@ -24,8 +24,6 @@
 
 #include <map>
 
-class G4MonopolePhysics;
-
 /// \ingroup physics_list
 /// \brief The physics list with extra physics builders
 ///
