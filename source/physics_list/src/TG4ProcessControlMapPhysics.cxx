@@ -262,8 +262,7 @@ void TG4ProcessControlMapPhysics::ConstructProcess()
           processName != "StepLimiter" && processName != "GammaXTRadiator" &&
           processName != "StrawXTRadiator" &&
           processName != "RegularXTRadiator" &&
-          processName != "G4MaxTimeCuts" &&
-          processName != "biasWrapper(0)" ) {
+          processName != "G4MaxTimeCuts" && processName != "biasWrapper(0)") {
 
         G4String text = "Unknown process control for ";
         text += processName;
