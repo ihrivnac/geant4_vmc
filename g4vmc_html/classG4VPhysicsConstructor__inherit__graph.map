@@ -1,0 +1,15 @@
+<map id="G4VPhysicsConstructor" name="G4VPhysicsConstructor">
+<area shape="rect" id="node2" href="$classG4MonopolePhysics.html" title="G4MonopolePhysics" alt="" coords="230,208,373,235"/>
+<area shape="rect" id="node3" href="$classTG4VPhysicsConstructor.html" title="Abstract base class for physics constructors with verbose. " alt="" coords="216,259,387,285"/>
+<area shape="rect" id="node4" href="$classTG4EmModelPhysics.html" title="Physics builder which activates a selected EM energy loss and/or fluctuations model. " alt="" coords="465,5,614,32"/>
+<area shape="rect" id="node5" href="$classTG4ExtDecayerPhysics.html" title="The builder for external decayer. " alt="" coords="458,56,621,83"/>
+<area shape="rect" id="node6" href="$classTG4FastSimulationPhysics.html" title="Physics builder which activates selected fast simulation models. " alt="" coords="449,107,630,133"/>
+<area shape="rect" id="node7" href="$classTG4OpticalPhysics.html" title="Optical physics builder. " alt="" coords="472,157,607,184"/>
+<area shape="rect" id="node8" href="$classTG4ProcessControlMapPhysics.html" title="Special builder which fills the VMC process control map. " alt="" coords="435,208,644,235"/>
+<area shape="rect" id="node9" href="$classTG4ProcessMCMapPhysics.html" title="The special builder which fills the VMC process maps. " alt="" coords="445,259,633,285"/>
+<area shape="rect" id="node10" href="$classTG4SpecialCutsPhysics.html" title="The builder for special cuts process. " alt="" coords="457,309,622,336"/>
+<area shape="rect" id="node11" href="$classTG4StackPopperPhysics.html" title="The builder for stack popper process. " alt="" coords="455,360,624,387"/>
+<area shape="rect" id="node12" href="$classTG4StepLimiterPhysics.html" title="The builder for step limiter process. " alt="" coords="459,411,619,437"/>
+<area shape="rect" id="node13" href="$classTG4TransitionRadiationPhysics.html" title="The builder for transition radiation processes. " alt="" coords="436,461,643,488"/>
+<area shape="rect" id="node14" href="$classTG4UserParticlesPhysics.html" title="The builder for user defined particles. " alt="" coords="453,512,626,539"/>
+</map>

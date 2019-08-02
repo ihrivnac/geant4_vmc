@@ -1,0 +1,5 @@
+<map id="G4VModularPhysicsList" name="G4VModularPhysicsList">
+<area shape="rect" id="node2" href="$classTG4EmPhysicsList.html" title="The standard EM physics list. " alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node3" href="$classTG4ExtraPhysicsList.html" title="The physics list with extra physics builders. " alt="" coords="165,80,311,107"/>
+<area shape="rect" id="node4" href="$classTG4SpecialPhysicsList.html" title="The Geant4 VMC special physics list helper class. " alt="" coords="336,80,495,107"/>
+</map>

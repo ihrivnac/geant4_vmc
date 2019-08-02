@@ -1,0 +1,4 @@
+<map id="TG4SensitiveDetector" name="TG4SensitiveDetector">
+<area shape="rect" id="node3" href="$classTG4GflashSensitiveDetector.html" title="Sensitive detector with Gflash. " alt="" coords="5,155,195,181"/>
+<area shape="rect" id="node2" href="$classG4VSensitiveDetector.html" title="G4VSensitiveDetector" alt="" coords="24,5,176,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="TG4VSpecialCuts" name="TG4VSpecialCuts">
+<area shape="rect" id="node3" href="$classTG4SpecialCutsForChargedHadron.html" title="Special process that activates kinetic energy cuts for charged hadrons. " alt="" coords="324,5,511,47"/>
+<area shape="rect" id="node4" href="$classTG4SpecialCutsForElectron.html" title="Special process that activates kinetic energy cuts for e&#45;. " alt="" coords="325,71,510,98"/>
+<area shape="rect" id="node5" href="$classTG4SpecialCutsForEplus.html" title="Special process that activates kinetic energy cuts for e+. " alt="" coords="332,122,503,149"/>
+<area shape="rect" id="node6" href="$classTG4SpecialCutsForGamma.html" title="Special process that activates kinetic energy cuts for gamma. " alt="" coords="326,173,509,199"/>
+<area shape="rect" id="node7" href="$classTG4SpecialCutsForMuon.html" title="Special process that activates kinetic energy cuts for muon. " alt="" coords="333,223,502,250"/>
+<area shape="rect" id="node8" href="$classTG4SpecialCutsForNeutralHadron.html" title="Special process that activates kinetic energy cuts for neutral hadrons. " alt="" coords="328,275,507,316"/>
+<area shape="rect" id="node9" href="$classTG4SpecialCutsForOther.html" title="Special process that activates the kinetic energy cuts for other (than specified in TParticleWSP) par..." alt="" coords="333,341,502,367"/>
+<area shape="rect" id="node2" href="$classG4VProcess.html" title="G4VProcess" alt="" coords="5,173,101,199"/>
+</map>

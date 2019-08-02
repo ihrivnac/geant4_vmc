@@ -1,0 +1,31 @@
+<map id="TObject" name="TObject">
+<area shape="rect" id="node2" href="$classA01DriftChamberHit.html" title="The drift chamber hit. " alt="" coords="175,5,315,32"/>
+<area shape="rect" id="node3" href="$classA01EmCalorHit.html" title="The EM calorimeter hit. " alt="" coords="189,56,302,83"/>
+<area shape="rect" id="node4" href="$classA01HadCalorHit.html" title="The hadron calorimeter hit. " alt="" coords="187,107,304,133"/>
+<area shape="rect" id="node5" href="$classA01HodoscopeHit.html" title="The hodoscope hit. " alt="" coords="181,157,309,184"/>
+<area shape="rect" id="node6" href="$classA01PrimaryGenerator.html" title="The primary generator. " alt="" coords="172,208,319,235"/>
+<area shape="rect" id="node7" href="$classA01RootDetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="147,259,344,285"/>
+<area shape="rect" id="node8" href="$classEx01DetectorConstructionOld.html" title="The old (deprecated) detector construction class. " alt="" coords="147,309,343,336"/>
+<area shape="rect" id="node9" href="$classEx01Particle.html" title="Extended TParticle with pointers to mother and daughter particles. " alt="" coords="197,360,293,387"/>
+<area shape="rect" id="node10" href="$classEx02ChamberParameterisation.html" title="The chamber parameterisation. " alt="" coords="144,411,347,437"/>
+<area shape="rect" id="node11" href="$classEx02DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="157,461,333,488"/>
+<area shape="rect" id="node12" href="$classEx02DetectorConstructionOld.html" title="The old detector construction (via VMC functions) " alt="" coords="147,512,343,539"/>
+<area shape="rect" id="node13" href="$classEx02Particle.html" title="Extended TParticle with pointers to mother and daughter particles. " alt="" coords="197,563,293,589"/>
+<area shape="rect" id="node14" href="$classEx02TrackerHit.html" title="The tracker hit. " alt="" coords="189,613,302,640"/>
+<area shape="rect" id="node15" href="$classEx03CalorHit.html" title="The calorimeter hit. " alt="" coords="195,664,295,691"/>
+<area shape="rect" id="node16" href="$classEx03DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="157,715,333,741"/>
+<area shape="rect" id="node17" href="$classEx03DetectorConstructionOld.html" title="The old detector construction (via VMC functions) " alt="" coords="147,765,343,792"/>
+<area shape="rect" id="node18" href="$classEx03PrimaryGenerator.html" title="The primary generator. " alt="" coords="168,816,323,843"/>
+<area shape="rect" id="node19" href="$classEx06DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="157,867,333,893"/>
+<area shape="rect" id="node20" href="$classEx06DetectorConstructionOld.html" title="The detector construction (via TGeo ) " alt="" coords="147,917,343,944"/>
+<area shape="rect" id="node21" href="$classEx06PrimaryGenerator.html" title="The primary generator. " alt="" coords="168,968,323,995"/>
+<area shape="rect" id="node22" href="$classVMC_1_1ExGarfield_1_1DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="156,1019,335,1061"/>
+<area shape="rect" id="node23" href="$classVMC_1_1ExGarfield_1_1Hit.html" title="The calorimeter hit. " alt="" coords="172,1085,319,1112"/>
+<area shape="rect" id="node24" href="$classVMC_1_1ExGarfield_1_1PrimaryGenerator.html" title="The primary generator. " alt="" coords="158,1137,333,1178"/>
+<area shape="rect" id="node25" href="$classVMC_1_1Gflash_1_1DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="130,1203,361,1229"/>
+<area shape="rect" id="node26" href="$classVMC_1_1Gflash_1_1Hit.html" title="The calorimeter hit. " alt="" coords="184,1253,307,1280"/>
+<area shape="rect" id="node27" href="$classVMC_1_1Gflash_1_1PrimaryGenerator.html" title="The primary generator. " alt="" coords="141,1304,349,1331"/>
+<area shape="rect" id="node28" href="$classVMC_1_1Monopole_1_1DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="121,1355,369,1381"/>
+<area shape="rect" id="node29" href="$classVMC_1_1TR_1_1DetectorConstruction.html" title="The detector construction (via TGeo ) " alt="" coords="140,1405,351,1432"/>
+<area shape="rect" id="node30" href="$classVMC_1_1TR_1_1PrimaryGenerator.html" title="The primary generator. " alt="" coords="151,1456,339,1483"/>
+</map>

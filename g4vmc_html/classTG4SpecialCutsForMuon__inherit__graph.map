@@ -1,0 +1,4 @@
+<map id="TG4SpecialCutsForMuon" name="TG4SpecialCutsForMuon">
+<area shape="rect" id="node2" href="$classTG4VSpecialCuts.html" title="Abstract base class for a special process that activates kinetic energy cuts. " alt="" coords="27,80,153,107"/>
+<area shape="rect" id="node3" href="$classG4VProcess.html" title="G4VProcess" alt="" coords="42,5,138,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="TG4MagneticField" name="TG4MagneticField">
+<area shape="rect" id="node3" href="$classTG4CachedMagneticField.html" title="The cached magnetic field defined by the TVirtualMCApplication field map. " alt="" coords="5,155,179,181"/>
+<area shape="rect" id="node2" href="$classG4MagneticField.html" title="G4MagneticField" alt="" coords="32,5,152,32"/>
+</map>

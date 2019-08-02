@@ -1,0 +1,23 @@
+<map id="G4UImessenger" name="G4UImessenger">
+<area shape="rect" id="node2" href="$classG4MonopolePhysicsMessenger.html" title="G4MonopolePhysicsMessenger" alt="" coords="185,5,392,32"/>
+<area shape="rect" id="node3" href="$classTG4ComposedPhysicsMessenger.html" title="Messenger class that defines commands for Geant4 VMC composed physics list and related classes..." alt="" coords="178,56,399,83"/>
+<area shape="rect" id="node4" href="$classTG4CrossSectionMessenger.html" title="Messenger class that defines commands for TG4CrossSectionManager. " alt="" coords="193,107,384,133"/>
+<area shape="rect" id="node5" href="$classTG4DetConstructionMessenger.html" title="Messenger class that defines commands for TG4DetConstruction. " alt="" coords="185,157,392,184"/>
+<area shape="rect" id="node6" href="$classTG4EventActionMessenger.html" title="Messenger class that defines commands for TG4EventAction. " alt="" coords="197,208,380,235"/>
+<area shape="rect" id="node7" href="$classTG4ExtDecayerMessenger.html" title="Messenger class that defines commands for the stack popper special process. " alt="" coords="199,259,379,285"/>
+<area shape="rect" id="node8" href="$classTG4FieldParametersMessenger.html" title="Messenger class that defines commands for TG4DetConstruction. " alt="" coords="185,309,392,336"/>
+<area shape="rect" id="node9" href="$classTG4GflashFastSimulationMessenger.html" title="Messenger class that defines commands for the Gflash fast simulation model. " alt="" coords="171,360,407,387"/>
+<area shape="rect" id="node10" href="$classTG4ModelConfigurationMessenger.html" title="Messenger class that defines commands for the special physica models. " alt="" coords="177,411,400,437"/>
+<area shape="rect" id="node11" href="$classTG4ParticlesCheckerMessenger.html" title="Messenger class that defines commands for TG4ParticlesChecker. " alt="" coords="183,461,394,488"/>
+<area shape="rect" id="node12" href="$classTG4PrimaryGeneratorMessenger.html" title="Messenger class that defines commands for TG4PrimaryGeneratorAction. " alt="" coords="182,512,395,539"/>
+<area shape="rect" id="node13" href="$classTG4RegionsMessenger.html" title="Messenger class that defines commands for TG4RegionsManager. " alt="" coords="209,563,368,589"/>
+<area shape="rect" id="node14" href="$classTG4RunActionMessenger.html" title="Messenger class that defines commands for TG4RunAction. " alt="" coords="203,613,375,640"/>
+<area shape="rect" id="node15" href="$classTG4RunMessenger.html" title="Messenger class that defines commands for TG4RunManager. " alt="" coords="221,664,356,691"/>
+<area shape="rect" id="node16" href="$classTG4SDMessenger.html" title="Messenger class that defines commands for the SD construction. " alt="" coords="223,715,354,741"/>
+<area shape="rect" id="node17" href="$classTG4SpecialStackingActionMessenger.html" title="Messenger class that defines commands for TG4StackingAction. " alt="" coords="199,766,378,807"/>
+<area shape="rect" id="node18" href="$classTG4StackPopperMessenger.html" title="Messenger class that defines commands for the stack popper special process. " alt="" coords="195,832,382,859"/>
+<area shape="rect" id="node19" href="$classTG4SteppingActionMessenger.html" title="Messenger class that defines commands for TG4SteppingAction. " alt="" coords="189,883,388,909"/>
+<area shape="rect" id="node20" href="$classTG4TrackingActionMessenger.html" title="Messenger class that defines commands for TG4TrackingAction. " alt="" coords="189,933,388,960"/>
+<area shape="rect" id="node21" href="$classTG4VerboseMessenger.html" title="Messenger class that defines commands for the verbose classes. " alt="" coords="209,984,368,1011"/>
+<area shape="rect" id="node22" href="$classTG4VGMMessenger.html" title="Messenger class that defines commands for VGM XML Exporter. " alt="" coords="218,1035,359,1061"/>
+</map>

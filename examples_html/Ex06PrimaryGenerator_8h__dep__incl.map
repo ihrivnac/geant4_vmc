@@ -1,0 +1,6 @@
+<map id="examples/E06/include/Ex06PrimaryGenerator.h" name="examples/E06/include/Ex06PrimaryGenerator.h">
+<area shape="rect" id="node2" href="$exampleE06_8cxx.html" title="The Geant4 VMC example E06 application executable. " alt="" coords="5,102,212,129"/>
+<area shape="rect" id="node3" href="$Ex06MCApplication_8cxx.html" title="Implementation of the Ex06MCApplication class. " alt="" coords="236,102,507,129"/>
+<area shape="rect" id="node4" href="$Ex06PrimaryGenerator_8cxx.html" title="Implementation of the class. " alt="" coords="531,95,737,136"/>
+<area shape="rect" id="node5" href="$testE06_8cxx.html" title="The Geant4 VMC example E06 test application. " alt="" coords="762,102,941,129"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="examples/TR/include/DetectorConstruction.h" name="examples/TR/include/DetectorConstruction.h">
+<area shape="rect" id="node2" href="$ExGarfield_2src_2DetectorConstruction_8cxx.html" title="Implementation of the ExGarfield::DetectorConstruction class. " alt="" coords="5,95,203,136"/>
+<area shape="rect" id="node3" href="$Gflash_2src_2DetectorConstruction_8cxx.html" title="Implementation of the Gflash::DetectorConstruction class. " alt="" coords="227,95,402,136"/>
+<area shape="rect" id="node4" href="$exampleMonopole_8cxx.html" title="The Geant4 VMC example Monopole application executable. " alt="" coords="426,95,617,136"/>
+<area shape="rect" id="node5" href="$Monopole_2src_2DetectorConstruction_8cxx.html" title="examples/Monopole/src\l/DetectorConstruction.cxx" alt="" coords="641,95,815,136"/>
+<area shape="rect" id="node6" href="$Monopole_2src_2MCApplication_8cxx.html" title="examples/Monopole/src\l/MCApplication.cxx" alt="" coords="840,95,1000,136"/>
+<area shape="rect" id="node7" href="$testMonopole_8cxx.html" title="The Geant4 VMC example Monopole test application. " alt="" coords="1024,102,1269,129"/>
+<area shape="rect" id="node8" href="$TR_2src_2DetectorConstruction_8cxx.html" title="Implementation of the DetectorConstruction class. " alt="" coords="1293,95,1469,136"/>
+<area shape="rect" id="node9" href="$TR_2src_2MCApplication_8cxx.html" title="Implementation of the MCApplication class. " alt="" coords="1494,102,1730,129"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TG4GflashSensitiveDetector" name="TG4GflashSensitiveDetector">
+<area shape="rect" id="node2" href="$classTG4SensitiveDetector.html" title="Sensitive detector class for calling a user defined stepping function. " alt="" coords="6,80,157,107"/>
+<area shape="rect" id="node3" href="$classG4VSensitiveDetector.html" title="G4VSensitiveDetector" alt="" coords="5,5,157,32"/>
+<area shape="rect" id="node4" href="$classG4VGFlashSensitiveDetector.html" title="G4VGFlashSensitiveDetector" alt="" coords="181,80,376,107"/>
+</map>

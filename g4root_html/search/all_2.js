@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['fconnected',['fConnected',['../classTG4RootNavMgr.html#a4ab1c5e9d05901f55c1dbb929fb40b33',1,'TG4RootNavMgr']]],
+  ['fdetconstruction',['fDetConstruction',['../classTG4RootNavigator.html#a1c36d0f8e646e3b7b130c9f1b748f801',1,'TG4RootNavigator::fDetConstruction()'],['../classTG4RootNavMgr.html#ae0156f12d33c0fb83811fccd0b0aa1af',1,'TG4RootNavMgr::fDetConstruction()']]],
+  ['fg4materialmap',['fG4MaterialMap',['../classTG4RootDetectorConstruction.html#a6df8477552b4c0a90d6abc03207c8746',1,'TG4RootDetectorConstruction']]],
+  ['fg4pvolumemap',['fG4PVolumeMap',['../classTG4RootDetectorConstruction.html#a2ecb28440c6e1e27e96cb16e29525b97',1,'TG4RootDetectorConstruction']]],
+  ['fg4volumemap',['fG4VolumeMap',['../classTG4RootDetectorConstruction.html#ac9c0826deaa62667573de61b1b7b3fa1',1,'TG4RootDetectorConstruction']]],
+  ['fgeometry',['fGeometry',['../classTG4RootDetectorConstruction.html#afe406d42a416414b3dfb83bf38f5496d',1,'TG4RootDetectorConstruction::fGeometry()'],['../classTG4RootNavigator.html#a44aae7b070a4c210dee1982cf9f3d979',1,'TG4RootNavigator::fGeometry()'],['../classTG4RootNavMgr.html#a11a6473e26c67d7dbc0e4909c6604ff5',1,'TG4RootNavMgr::fGeometry()']]],
+  ['fgmasterinstance',['fgMasterInstance',['../classTG4RootNavMgr.html#a241ae6d7e655e3c75c0632c0d3654add',1,'TG4RootNavMgr']]],
+  ['fisconstructed',['fIsConstructed',['../classTG4RootDetectorConstruction.html#aaa7576704c183186c59b1205b6d8a151',1,'TG4RootDetectorConstruction']]],
+  ['flastsafety',['fLastSafety',['../classTG4RootNavigator.html#a0977a6bb8b1b0c412812caf2f5e838b4',1,'TG4RootNavigator']]],
+  ['fnavigator',['fNavigator',['../classTG4RootNavigator.html#a4f442ba7f68ff4829b6ddfee9f62581d',1,'TG4RootNavigator::fNavigator()'],['../classTG4RootNavMgr.html#a89bde49a1f2a8517ebaa77f8e1ac2ef3',1,'TG4RootNavMgr::fNavigator()']]],
+  ['fnextpoint',['fNextPoint',['../classTG4RootNavigator.html#a926c79a5f75989274aab8d56fdd7abab',1,'TG4RootNavigator']]],
+  ['fnzerosteps',['fNzeroSteps',['../classTG4RootNavigator.html#a6b42de6e75823db5322d9991dda06838',1,'TG4RootNavigator']]],
+  ['fpostdetdetconstruction',['fPostDetDetConstruction',['../classTG4RootNavMgr.html#a3368bce46b78fd8c01fcb33a127dba5f',1,'TG4RootNavMgr']]],
+  ['fpvolumemap',['fPVolumeMap',['../classTG4RootDetectorConstruction.html#a0a06d916f0de12c639c3d30d4b2911de',1,'TG4RootDetectorConstruction']]],
+  ['frootnavmgr',['fRootNavMgr',['../classTG4RootNavMgr.html#a041a4ab719fa2dcf377f738e9371c26a',1,'TG4RootNavMgr']]],
+  ['fsafetyorig',['fSafetyOrig',['../classTG4RootNavigator.html#a935364aad2b417455e548e2d3010675a',1,'TG4RootNavigator']]],
+  ['fsdinit',['fSDInit',['../classTG4RootDetectorConstruction.html#a0b199c3ada126e338793132b478ea5aa',1,'TG4RootDetectorConstruction']]],
+  ['fshape',['fShape',['../classTG4RootSolid.html#a6e126ddc12ece146de57af7bdd3c26eb',1,'TG4RootSolid']]],
+  ['fstepentering',['fStepEntering',['../classTG4RootNavigator.html#af9a85646a587ba685f69e289484159e8',1,'TG4RootNavigator']]],
+  ['fstepexiting',['fStepExiting',['../classTG4RootNavigator.html#aeeb4e60ca8ceabd94b60346732b8fd43',1,'TG4RootNavigator']]],
+  ['ftoppv',['fTopPV',['../classTG4RootDetectorConstruction.html#aa1177ebddc049086fa63f233040cee99',1,'TG4RootDetectorConstruction']]],
+  ['fvolumemap',['fVolumeMap',['../classTG4RootDetectorConstruction.html#a458140a5c66aedb72dd754486b891a76',1,'TG4RootDetectorConstruction']]]
+];

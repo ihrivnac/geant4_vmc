@@ -1,0 +1,41 @@
+<map id="TG4Verbose" name="TG4Verbose">
+<area shape="rect" id="node2" href="$classTG4ComposedPhysicsList.html" title="The Geant4 VMC physics list builder. " alt="" coords="163,5,342,32"/>
+<area shape="rect" id="node3" href="$classTG4CrossSectionManager.html" title="The manager class for accessing hadronic cross sections. " alt="" coords="165,56,341,83"/>
+<area shape="rect" id="node4" href="$classTG4EmPhysicsList.html" title="The standard EM physics list. " alt="" coords="185,107,320,133"/>
+<area shape="rect" id="node5" href="$classTG4EventAction.html" title="Actions at the beginning and the end of event. " alt="" coords="193,157,312,184"/>
+<area shape="rect" id="node6" href="$classTG4ExtDecayer.html" title="Implements the G4VExtDecayer abstract class with the TVirtualMCDecayer. " alt="" coords="195,208,311,235"/>
+<area shape="rect" id="node7" href="$classTG4ExtraPhysicsList.html" title="The physics list with extra physics builders. " alt="" coords="179,259,326,285"/>
+<area shape="rect" id="node8" href="$classTG4GeometryManager.html" title="The manager class for building Geant4 geometry depending on a selected user input. " alt="" coords="175,309,330,336"/>
+<area shape="rect" id="node9" href="$classTG4GeometryServices.html" title="Services for accessing to Geant4 geometry. " alt="" coords="175,360,330,387"/>
+<area shape="rect" id="node10" href="$classTG4GeoTrackManager.html" title="The manager class for collecting TGeo tracks for visualization. " alt="" coords="175,411,330,437"/>
+<area shape="rect" id="node11" href="$classTG4HadronPhysicsList.html" title="The hadron physics list helper class. " alt="" coords="174,461,331,488"/>
+<area shape="rect" id="node12" href="$classTG4MCGeometry.html" title="Geant4 implementation of the TVirtualMCGeometry interface. " alt="" coords="190,512,315,539"/>
+<area shape="rect" id="node13" href="$classTG4ModelConfigurationManager.html" title="The model configuration vector with suitable setters and a messenger. " alt="" coords="148,563,357,589"/>
+<area shape="rect" id="node14" href="$classTG4OpGeometryManager.html" title="Geant4 implementation of the TVirtualMC interface methods for definition of material properties for o..." alt="" coords="167,613,338,640"/>
+<area shape="rect" id="node15" href="$classTG4ParticlesChecker.html" title="A helper class for comparing the basic particles properties in between Root and Geant4. " alt="" coords="179,664,326,691"/>
+<area shape="rect" id="node16" href="$classTG4ParticlesManager.html" title="Provides mapping between TDatabasePDG and Geant4 particles. " alt="" coords="179,715,327,741"/>
+<area shape="rect" id="node17" href="$classTG4PhysicsManager.html" title="Geant4 implementation of the TVirtualMC interface methods for building Geant4 physics and access to i..." alt="" coords="181,765,325,792"/>
+<area shape="rect" id="node18" href="$classTG4PrimaryGeneratorAction.html" title="Primary generator action defined via TVirtualMCStack and TVirtualMCApplication. " alt="" coords="159,816,346,843"/>
+<area shape="rect" id="node19" href="$classTG4RegionsManager.html" title="Manager class for converting VMC cuts in energy in G4 regions. " alt="" coords="180,867,325,893"/>
+<area shape="rect" id="node20" href="$classTG4RunAction.html" title="Actions at the beginning and the end of run. " alt="" coords="199,917,307,944"/>
+<area shape="rect" id="node21" href="$classTG4RunManager.html" title="Geant4 implementation of the TVirtualMC interface methods for access to Geant4 at run level..." alt="" coords="192,968,313,995"/>
+<area shape="rect" id="node22" href="$classTG4SDConstruction.html" title="Sensitive detector construction. " alt="" coords="183,1019,323,1045"/>
+<area shape="rect" id="node23" href="$classTG4SpecialControlsV2.html" title="The manager class for G3 process controls. " alt="" coords="175,1069,330,1096"/>
+<area shape="rect" id="node24" href="$classTG4SpecialPhysicsList.html" title="The Geant4 VMC special physics list helper class. " alt="" coords="173,1120,332,1147"/>
+<area shape="rect" id="node25" href="$classTG4SpecialStackingAction.html" title="Defines a special stacking mechanism. " alt="" coords="163,1171,342,1197"/>
+<area shape="rect" id="node26" href="$classTG4StateManager.html" title="The manager class for application state. " alt="" coords="189,1221,317,1248"/>
+<area shape="rect" id="node27" href="$classTG4TrackingAction.html" title="Actions at the beginnig and at the end of track. " alt="" coords="185,1272,320,1299"/>
+<area shape="rect" id="node28" href="$classTG4TrackManager.html" title="The class for storing G4 tracks in VMC sack. " alt="" coords="187,1323,318,1349"/>
+<area shape="rect" id="node29" href="$classTG4VPhysicsConstructor.html" title="Abstract base class for physics constructors with verbose. " alt="" coords="167,1373,338,1400"/>
+<area shape="rect" id="node30" href="$classTG4EmModelPhysics.html" title="Physics builder which activates a selected EM energy loss and/or fluctuations model. " alt="" coords="435,1120,585,1147"/>
+<area shape="rect" id="node31" href="$classTG4ExtDecayerPhysics.html" title="The builder for external decayer. " alt="" coords="429,1171,591,1197"/>
+<area shape="rect" id="node32" href="$classTG4FastSimulationPhysics.html" title="Physics builder which activates selected fast simulation models. " alt="" coords="419,1221,601,1248"/>
+<area shape="rect" id="node33" href="$classTG4OpticalPhysics.html" title="Optical physics builder. " alt="" coords="443,1272,577,1299"/>
+<area shape="rect" id="node34" href="$classTG4ProcessControlMapPhysics.html" title="Special builder which fills the VMC process control map. " alt="" coords="405,1323,615,1349"/>
+<area shape="rect" id="node35" href="$classTG4ProcessMCMapPhysics.html" title="The special builder which fills the VMC process maps. " alt="" coords="416,1373,604,1400"/>
+<area shape="rect" id="node36" href="$classTG4SpecialCutsPhysics.html" title="The builder for special cuts process. " alt="" coords="427,1424,593,1451"/>
+<area shape="rect" id="node37" href="$classTG4StackPopperPhysics.html" title="The builder for stack popper process. " alt="" coords="425,1475,595,1501"/>
+<area shape="rect" id="node38" href="$classTG4StepLimiterPhysics.html" title="The builder for step limiter process. " alt="" coords="430,1525,590,1552"/>
+<area shape="rect" id="node39" href="$classTG4TransitionRadiationPhysics.html" title="The builder for transition radiation processes. " alt="" coords="407,1576,613,1603"/>
+<area shape="rect" id="node40" href="$classTG4UserParticlesPhysics.html" title="The builder for user defined particles. " alt="" coords="423,1627,597,1653"/>
+</map>

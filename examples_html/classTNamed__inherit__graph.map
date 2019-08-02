@@ -1,0 +1,10 @@
+<map id="TNamed" name="TNamed">
+<area shape="rect" id="node2" href="$classA01DriftChamberSD.html" title="The calorimeter sensitive detector. " alt="" coords="159,5,302,32"/>
+<area shape="rect" id="node3" href="$classA01EmCalorimeterSD.html" title="The EM calorimeter sensitive detector. " alt="" coords="155,56,306,83"/>
+<area shape="rect" id="node4" href="$classA01HadCalorimeterSD.html" title="The hadron calorimeter sensitive detector. " alt="" coords="153,107,308,133"/>
+<area shape="rect" id="node5" href="$classA01HodoscopeSD.html" title="The calorimeter sensitive detector. " alt="" coords="165,157,296,184"/>
+<area shape="rect" id="node6" href="$classEx02TrackerSD.html" title="The tracker sensitive detector. " alt="" coords="173,208,288,235"/>
+<area shape="rect" id="node7" href="$classVMC_1_1ExGarfield_1_1SensitiveDetector.html" title="The calorimeter sensitive detector. " alt="" coords="139,259,322,301"/>
+<area shape="rect" id="node8" href="$classVMC_1_1Gflash_1_1SensitiveDetector.html" title="The calorimeter sensitive detector. " alt="" coords="125,325,336,352"/>
+<area shape="rect" id="node9" href="$classVMC_1_1TR_1_1SensitiveDetector.html" title="The absorber sensitive detector. " alt="" coords="135,376,326,403"/>
+</map>

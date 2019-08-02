@@ -1,0 +1,5 @@
+<map id="TG4SpecialCutsPhysics" name="TG4SpecialCutsPhysics">
+<area shape="rect" id="node2" href="$classTG4VPhysicsConstructor.html" title="Abstract base class for physics constructors with verbose. " alt="" coords="77,80,248,107"/>
+<area shape="rect" id="node3" href="$classG4VPhysicsConstructor.html" title="G4VPhysicsConstructor" alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node4" href="$classTG4Verbose.html" title="Base class for defining the verbose level and a common messenger. " alt="" coords="193,5,287,32"/>
+</map>
