@@ -17,7 +17,10 @@
 
 #include "G4VBiasingOperation.hh"
 
+#include <set>
+
 class G4HadronInelasticProcess;
+class G4VProcess;
 
 class TG4BiasingOperation : public G4VBiasingOperation
 {
@@ -28,6 +31,7 @@ class TG4BiasingOperation : public G4VBiasingOperation
  public:
   TG4BiasingOperation(G4String name);
   virtual ~TG4BiasingOperation();
+
   virtual G4VParticleChange* ApplyFinalStateBiasing(
     const G4BiasingProcessInterface*, const G4Track*, const G4Step*, G4bool&);
   // Unused :
@@ -47,11 +51,16 @@ class TG4BiasingOperation : public G4VBiasingOperation
     return 0;
   }
 
+  std::set<G4VProcess*>* GetProcesses() {
+    return &fProcesses;
+  }
+
  private:
   G4HadronInelasticProcess* fProtonInelasticProcess;
   G4HadronInelasticProcess* fNeutronInelasticProcess;
   G4HadronInelasticProcess* fPionPlusInelasticProcess;
   G4HadronInelasticProcess* fPionMinusInelasticProcess;
+  std::set<G4VProcess*> fProcesses;
 };
 
 #endif

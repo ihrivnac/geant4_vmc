@@ -22,6 +22,7 @@
 TG4BiasingOperator::TG4BiasingOperator() : G4VBiasingOperator("BiasingOperator")
 {
   fBiasingOperation = new TG4BiasingOperation("BiasingOperation");
+  fProcesses = fBiasingOperation->GetProcesses();
 }
 
 void TG4BiasingOperator::AddParticle(G4String particleName)
@@ -41,7 +42,6 @@ void TG4BiasingOperator::AddParticle(G4String particleName)
 G4VBiasingOperation* TG4BiasingOperator::ProposeFinalStateBiasingOperation(
   const G4Track*, const G4BiasingProcessInterface* callingProcess)
 {
-
   // G4cout << "In TG4BiasingOperator::ProposeFinalStateTG4BiasingOperation "
   //        << " calling process: " << callingProcess
   //        << " wrapper process: " << callingProcess->GetWrappedProcess();
@@ -51,23 +51,15 @@ G4VBiasingOperation* TG4BiasingOperator::ProposeFinalStateBiasingOperation(
   // }
   // G4cout << G4endl;
 
-  // Apply the biasing operation only for inelastic processes of:
-  // proton, neutron, pion+ and pion-
+  // Apply the biasing operation only for registered inelastic processes
   if (callingProcess && callingProcess->GetWrappedProcess() &&
-      (callingProcess->GetWrappedProcess()->GetProcessName() ==
-          "protonInelastic" ||
-        callingProcess->GetWrappedProcess()->GetProcessName() ==
-          "neutronInelastic" ||
-        callingProcess->GetWrappedProcess()->GetProcessName() ==
-          "pi+Inelastic" ||
-        callingProcess->GetWrappedProcess()->GetProcessName() ==
-          "pi-Inelastic")) {
+      fProcesses->find(callingProcess->GetWrappedProcess()) != fProcesses->end()) {
     // G4cout << "In TG4BiasingOperator: Returning " << fBiasingOperation <<
     // G4endl;
     return fBiasingOperation;
   }
   else {
     // G4cout << "In TG4BiasingOperator: Returning 0 " << G4endl;
-    return 0;
+    return nullptr;
   }
 }

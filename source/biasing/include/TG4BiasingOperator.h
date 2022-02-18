@@ -16,10 +16,14 @@
 /// \author Alberto Ribon, CERN
 
 #include "G4VBiasingOperator.hh"
+
 #include <vector>
+#include <set>
+
+class TG4BiasingOperation;
 
 class G4ParticleDefinition;
-class TG4BiasingOperation;
+class G4VProcess;
 
 class TG4BiasingOperator : public G4VBiasingOperator
 {
@@ -32,6 +36,7 @@ class TG4BiasingOperator : public G4VBiasingOperator
  public:
   TG4BiasingOperator();
   virtual ~TG4BiasingOperator() {}
+
   void AddParticle(G4String particleName);
   virtual G4VBiasingOperation* ProposeFinalStateBiasingOperation(
     const G4Track* track,
@@ -50,7 +55,8 @@ class TG4BiasingOperator : public G4VBiasingOperator
 
  private:
   std::vector<const G4ParticleDefinition*> fParticlesToBias;
-  TG4BiasingOperation* fBiasingOperation;
+  std::set<G4VProcess*>* fProcesses = nullptr;
+  TG4BiasingOperation* fBiasingOperation = nullptr;
 };
 
 #endif // TG4_BIASING_OPERATOR_HH
