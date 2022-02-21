@@ -51,16 +51,11 @@ class TG4BiasingOperation : public G4VBiasingOperation
     return 0;
   }
 
-  std::set<G4VProcess*>* GetProcesses() {
-    return &fProcesses;
-  }
-
  private:
   G4HadronInelasticProcess* fProtonInelasticProcess;
   G4HadronInelasticProcess* fNeutronInelasticProcess;
   G4HadronInelasticProcess* fPionPlusInelasticProcess;
   G4HadronInelasticProcess* fPionMinusInelasticProcess;
-  std::set<G4VProcess*> fProcesses;
 };
 
 #endif

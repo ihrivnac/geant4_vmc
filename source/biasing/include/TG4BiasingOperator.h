@@ -55,7 +55,7 @@ class TG4BiasingOperator : public G4VBiasingOperator
 
  private:
   std::vector<const G4ParticleDefinition*> fParticlesToBias;
-  std::set<G4VProcess*>* fProcesses = nullptr;
+  std::set<G4VProcess*> fProcessesToBias;
   TG4BiasingOperation* fBiasingOperation = nullptr;
 };
 

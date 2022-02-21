@@ -44,11 +44,6 @@ TG4BiasingOperation::TG4BiasingOperation(G4String name)
   fPionMinusInelasticProcess =
     new G4HadronInelasticProcess("pi-Inelastic", G4PionMinus::Definition());
 
-  fProcesses.insert(fProtonInelasticProcess);
-  fProcesses.insert(fNeutronInelasticProcess);
-  fProcesses.insert(fPionPlusInelasticProcess);
-  fProcesses.insert(fPionMinusInelasticProcess);
-
   // Set the energy ranges
   const G4double minPreco = 0.0;
   const G4double maxPreco = 2.0 * CLHEP::MeV;

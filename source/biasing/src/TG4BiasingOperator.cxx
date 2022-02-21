@@ -18,11 +18,12 @@
 #include "G4BiasingProcessInterface.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleTable.hh"
+#include "G4ProcessManager.hh"
 
 TG4BiasingOperator::TG4BiasingOperator() : G4VBiasingOperator("BiasingOperator")
 {
+  G4cout << "TG4BiasingOperator::TG4BiasingOperator constructed" << G4endl;
   fBiasingOperation = new TG4BiasingOperation("BiasingOperation");
-  fProcesses = fBiasingOperation->GetProcesses();
 }
 
 void TG4BiasingOperator::AddParticle(G4String particleName)
@@ -51,11 +52,27 @@ G4VBiasingOperation* TG4BiasingOperator::ProposeFinalStateBiasingOperation(
   // }
   // G4cout << G4endl;
 
+  // Fill processes to be biased (only once)
+  if ( fProcessesToBias.empty()) {
+    for (auto particle: fParticlesToBias) {
+      auto processVector = particle->GetProcessManager()->GetProcessList();
+      for (size_t i = 0; i < processVector->length(); ++i) {
+        auto wrapper = dynamic_cast<G4BiasingProcessInterface*>((*processVector)[i]);
+        if (wrapper == nullptr || wrapper->GetWrappedProcess() == nullptr) continue;
+
+        if (G4StrUtil::contains(wrapper->GetWrappedProcess()->GetProcessName(), "Inelastic")) {
+          // G4cout << "Adding " << wrapper->GetWrappedProcess()->GetProcessName()
+          //        << " to Processes to Bias" << G4endl;
+          fProcessesToBias.insert(wrapper->GetWrappedProcess());
+        }
+      }
+    }
+  }
+
   // Apply the biasing operation only for registered inelastic processes
   if (callingProcess && callingProcess->GetWrappedProcess() &&
-      fProcesses->find(callingProcess->GetWrappedProcess()) != fProcesses->end()) {
-    // G4cout << "In TG4BiasingOperator: Returning " << fBiasingOperation <<
-    // G4endl;
+      fProcessesToBias.find(callingProcess->GetWrappedProcess()) != fProcessesToBias.end()) {
+    // G4cout << "In TG4BiasingOperator: Returning operation " << G4endl;
     return fBiasingOperation;
   }
   else {
