@@ -25,14 +25,18 @@
 #include <G4Electron.hh>
 #include <G4Positron.hh>
 #include <G4Run.hh>
+#include <G4RunManager.hh>
 #include <G4SystemOfUnits.hh>
 #include <G4Threading.hh>
 #include <G4Transportation.hh>
 #include <G4Types.hh>
 #include <G4UImanager.hh>
+#include <G4VUserPhysicsList.hh>
 #include <Randomize.hh>
 
 #include <TObjArray.h>
+
+#include <filesystem>
 
 // mutex in a file scope
 
@@ -54,6 +58,7 @@ G4Transportation* FindTransportation(
 
 } // namespace
 
+const G4String TG4RunAction::fgkDefaultPhysicsTableDir = "g4PhysicsTable";
 const G4String TG4RunAction::fgkDefaultRandomStatusFile = "currentRun.rndm";
 
 //_____________________________________________________________________________
@@ -64,6 +69,8 @@ TG4RunAction::TG4RunAction()
     fCrossSectionManager(),
     fTimer(0),
     fRunID(-1),
+    fStorePhysicsTable(false),
+    fPhysicsTableDir(fgkDefaultPhysicsTableDir),
     fSaveRandomStatus(false),
     fReadRandomStatus(false),
     fRandomStatusFile(fgkDefaultRandomStatusFile),
@@ -173,6 +180,37 @@ void TG4RunAction::BeginOfRunAction(const G4Run* run)
     }
     if (TG4RegionsManager::Instance()->IsPrint()) {
       TG4RegionsManager::Instance()->PrintRegions();
+    }
+  }
+
+  // Store Geant4 physics tables
+  // G4UImanager::GetUIpointer()->ApplyCommand(
+  //   "/run/particle/storePhysicsTable  g4PhysicsTable.dat");
+  // not available as we are in G4State_GeomClosed and not G4State_Idle
+  if (fStorePhysicsTable) {
+    namespace fs = std::filesystem;
+    auto isDirectory = fs::is_directory(fPhysicsTableDir.data());
+    if (! isDirectory) {
+      // create directory if it does not exist
+      std::error_code ec;
+      fs::create_directory(fPhysicsTableDir.data(), ec);
+      if (ec) {
+        G4cerr << "Error: " << ec.message() << G4endl;
+      }
+      else {
+        isDirectory = true;  
+      }
+    }
+    if (isDirectory) {
+      auto result =
+        const_cast<G4VUserPhysicsList*>(G4RunManager::GetRunManager()->GetUserPhysicsList())
+          ->StorePhysicsTable(fPhysicsTableDir);
+
+      if (VerboseLevel() > 0) {  
+        G4cout << "### Geant4 physics table stored in " << fPhysicsTableDir;
+        result ? G4cout << " with success." :  G4cout << " failed."; 
+        G4cout << G4endl;
+      }
     }
   }
 

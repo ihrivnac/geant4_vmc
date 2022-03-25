@@ -43,6 +43,8 @@ class TG4RunAction : public G4UserRunAction, public TG4Verbose
   virtual void EndOfRunAction(const G4Run* run);
 
   // set methods
+  void SetStorePhysicsTable(G4bool value);
+  void SetPhysicsTableDir(G4String value);
   void SetSaveRandomStatus(G4bool saveRandomStatus);
   void SetReadRandomStatus(G4bool readRandomStatus);
   void SetRandomStatusFile(G4String RandomStatusFile);
@@ -61,6 +63,8 @@ class TG4RunAction : public G4UserRunAction, public TG4Verbose
   void PrintLooperParameters() const;
 
   // static data members
+  /// default name of the G4 physics table directory
+  static const G4String fgkDefaultPhysicsTableDir;
   /// default name of the random engine status file to be read in
   static const G4String fgkDefaultRandomStatusFile;
 
@@ -68,7 +72,9 @@ class TG4RunAction : public G4UserRunAction, public TG4Verbose
   TG4RunActionMessenger fMessenger;            ///< messenger
   TG4CrossSectionManager fCrossSectionManager; ///< cross section manager
   G4Timer* fTimer;                             ///< G4Timer
-  G4int fRunID;                                ///< run ID
+  G4int fRunID;                                ///< run ID  
+  G4bool fStorePhysicsTable;    ///< control for storing G4 physics table
+  G4String fPhysicsTableDir;    ///< G4 physics table directory name
   G4bool fSaveRandomStatus;   ///< control for saving random engine status
   G4bool fReadRandomStatus;   ///< control for reading random engine status
   G4String fRandomStatusFile; ///< random engine status file name
@@ -84,6 +90,18 @@ class TG4RunAction : public G4UserRunAction, public TG4Verbose
   /// Number of trials to propagate a looping track
   G4int fNumberOfThresholdTrials;
 };
+
+inline void TG4RunAction::SetStorePhysicsTable(G4bool value)
+{
+  /// Set option for saving random engine status
+  fStorePhysicsTable = value;
+}
+
+inline void TG4RunAction::SetPhysicsTableDir(G4String value)
+{
+  /// Set random engine status file name
+  fPhysicsTableDir = value;
+}
 
 inline void TG4RunAction::SetSaveRandomStatus(G4bool saveRandomStatus)
 {

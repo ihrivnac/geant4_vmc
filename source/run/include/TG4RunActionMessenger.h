@@ -29,6 +29,8 @@ class G4UIcmdWithAnInteger;
 /// \brief Messenger class that defines commands for TG4RunAction.
 ///
 /// Implements command
+/// - /mcRun/storePhysicsTable [true|false]
+/// - /mcRun/setPhysicsTableDir dirName
 /// - /mcRun/saveRandom [true|false]
 /// - /mcRun/readRandom [true|false]
 /// - /mcRun/setRandomFile fileName
@@ -58,6 +60,8 @@ class TG4RunActionMessenger : public G4UImessenger
   // data members
   TG4RunAction* fRunAction;                 ///< associated class
   G4UIdirectory* fRunDirectory;             ///< command directory
+  G4UIcmdWithABool* fStorePhysicsTableCmd;  ///< command: saveRandom
+  G4UIcmdWithAString* fPhysicsTableDirCmd;  ///< command: setRandomFile
   G4UIcmdWithABool* fSaveRandomStatusCmd;   ///< command: saveRandom
   G4UIcmdWithABool* fReadRandomStatusCmd;   ///< command: readRandom
   G4UIcmdWithAString* fRandomStatusFileCmd; ///< command: setRandomFile

@@ -27,6 +27,8 @@ TG4RunActionMessenger::TG4RunActionMessenger(TG4RunAction* runAction)
   : G4UImessenger(),
     fRunAction(runAction),
     fRunDirectory(0),
+    fStorePhysicsTableCmd(0),
+    fPhysicsTableDirCmd(0),
     fSaveRandomStatusCmd(0),
     fReadRandomStatusCmd(0),
     fRandomStatusFileCmd(0),
@@ -39,6 +41,20 @@ TG4RunActionMessenger::TG4RunActionMessenger(TG4RunAction* runAction)
 
   fRunDirectory = new G4UIdirectory("/mcRun/");
   fRunDirectory->SetGuidance("TG4RunAction control commands.");
+
+  fStorePhysicsTableCmd = new G4UIcmdWithABool("/mcRun/storePhysicsTable", this);
+  fStorePhysicsTableCmd->SetGuidance(
+    "Store Geant4 physics table data in a file system directory");
+  fStorePhysicsTableCmd->SetParameterName("StorePhysicsTable", false);
+  fStorePhysicsTableCmd->AvailableForStates(
+    G4State_PreInit, G4State_Init, G4State_Idle);
+
+  fPhysicsTableDirCmd = new G4UIcmdWithAString("/mcRun/setPhysicsTableDir", this);
+  fPhysicsTableDirCmd->SetGuidance(
+    "Set the name of the file system directory for storing/retrieving Geant4 physics table");
+  fPhysicsTableDirCmd->SetParameterName("RandomFile", false);
+  fPhysicsTableDirCmd->AvailableForStates(
+    G4State_PreInit, G4State_Init, G4State_Idle);
 
   fSaveRandomStatusCmd = new G4UIcmdWithABool("/mcRun/saveRandom", this);
   fSaveRandomStatusCmd->SetGuidance(
@@ -99,6 +115,8 @@ TG4RunActionMessenger::~TG4RunActionMessenger()
   /// Destructor
 
   delete fRunDirectory;
+  delete fStorePhysicsTableCmd;
+  delete fPhysicsTableDirCmd;
   delete fSaveRandomStatusCmd;
   delete fReadRandomStatusCmd;
   delete fRandomStatusFileCmd;
@@ -116,6 +134,13 @@ void TG4RunActionMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 {
   /// Apply command to the associated object.
 
+  if (command == fStorePhysicsTableCmd) {
+    fRunAction->SetStorePhysicsTable(
+      fStorePhysicsTableCmd->GetNewBoolValue(newValue));
+  }
+  else if (command == fPhysicsTableDirCmd) {
+    fRunAction->SetPhysicsTableDir(newValue);
+  }
   if (command == fSaveRandomStatusCmd) {
     fRunAction->SetSaveRandomStatus(
       fSaveRandomStatusCmd->GetNewBoolValue(newValue));
