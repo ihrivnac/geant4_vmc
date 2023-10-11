@@ -37,13 +37,13 @@ class TG4SpecialCutsPhysics : public TG4VPhysicsConstructor
   TG4SpecialCutsPhysics(const G4String& name = "SpecialCuts");
   TG4SpecialCutsPhysics(
     G4int theVerboseLevel, const G4String& name = "SpecialCuts");
-  virtual ~TG4SpecialCutsPhysics();
+  ~TG4SpecialCutsPhysics() override;
 
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

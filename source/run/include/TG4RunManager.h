@@ -46,7 +46,7 @@ class TG4RunManager : public TG4Verbose
  public:
   TG4RunManager(
     TG4RunConfiguration* configuration, int argc = 0, char** argv = 0);
-  virtual ~TG4RunManager();
+  ~TG4RunManager() override;
 
   // static access method
   static TG4RunManager* Instance();

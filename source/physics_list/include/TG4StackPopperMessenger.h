@@ -35,10 +35,10 @@ class TG4StackPopperMessenger : public G4UImessenger
 {
  public:
   TG4StackPopperMessenger(TG4StackPopperPhysics* stackPopperPhysics);
-  virtual ~TG4StackPopperMessenger();
+  ~TG4StackPopperMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

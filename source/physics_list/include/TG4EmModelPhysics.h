@@ -58,7 +58,7 @@ class TG4EmModelPhysics : public TG4VPhysicsConstructor
  public:
   TG4EmModelPhysics(const G4String& name = "EmModel");
   TG4EmModelPhysics(G4int theVerboseLevel, const G4String& name = "EmModel");
-  virtual ~TG4EmModelPhysics();
+  ~TG4EmModelPhysics() override;
 
   // static methods
   static TG4EmModel GetEmModel(const G4String& modelName);
@@ -67,8 +67,8 @@ class TG4EmModelPhysics : public TG4VPhysicsConstructor
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

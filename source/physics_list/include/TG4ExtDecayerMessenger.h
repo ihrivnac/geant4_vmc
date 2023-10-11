@@ -37,10 +37,10 @@ class TG4ExtDecayerMessenger : public G4UImessenger
 {
  public:
   TG4ExtDecayerMessenger(TG4ExtDecayerPhysics* extDecayerPhysics);
-  virtual ~TG4ExtDecayerMessenger();
+  ~TG4ExtDecayerMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

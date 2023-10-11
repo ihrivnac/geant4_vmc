@@ -50,10 +50,10 @@ class TG4CrossSectionMessenger : public G4UImessenger
 {
  public:
   TG4CrossSectionMessenger(TG4CrossSectionManager* crossSectionManager);
-  virtual ~TG4CrossSectionMessenger();
+  ~TG4CrossSectionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

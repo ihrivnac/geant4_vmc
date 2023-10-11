@@ -37,7 +37,7 @@ class TG4ModelConfigurationManager : public TG4Verbose
  public:
   TG4ModelConfigurationManager(
     const G4String& name, const G4String& availableModels = "");
-  virtual ~TG4ModelConfigurationManager();
+  ~TG4ModelConfigurationManager() override;
 
   // methods
   void CreateRegions();

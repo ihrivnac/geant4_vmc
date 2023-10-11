@@ -35,14 +35,14 @@ class TG4ComposedPhysicsList : public G4VUserPhysicsList, public TG4Verbose
 {
  public:
   TG4ComposedPhysicsList();
-  virtual ~TG4ComposedPhysicsList();
+  ~TG4ComposedPhysicsList() override;
 
   // methods
   void AddPhysicsList(G4VUserPhysicsList* physicsList);
 
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
-  virtual void SetCuts();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
+  void SetCuts() override;
 
   void SetCutForGamma(G4double cut);
   void SetCutForElectron(G4double cut);
@@ -56,8 +56,8 @@ class TG4ComposedPhysicsList : public G4VUserPhysicsList, public TG4Verbose
   void PrintAllProcesses() const;
   void DumpAllProcesses() const;
 
-  virtual G4int VerboseLevel() const;
-  virtual void VerboseLevel(G4int level);
+  G4int VerboseLevel() const override;
+  void VerboseLevel(G4int level) override;
 
  private:
   /// Not implemented

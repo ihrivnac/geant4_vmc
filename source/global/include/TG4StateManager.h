@@ -31,7 +31,7 @@ class TG4StateManager : public TG4Verbose
 {
  public:
   TG4StateManager();
-  virtual ~TG4StateManager();
+  ~TG4StateManager() override;
 
   // static access method
   static TG4StateManager* Instance();

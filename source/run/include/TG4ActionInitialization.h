@@ -39,12 +39,12 @@ class TG4ActionInitialization : public G4VUserActionInitialization
 {
  public:
   TG4ActionInitialization(TG4RunConfiguration* runConfiguration);
-  virtual ~TG4ActionInitialization();
+  ~TG4ActionInitialization() override;
 
   // methods
   //
-  virtual void BuildForMaster() const;
-  virtual void Build() const;
+  void BuildForMaster() const override;
+  void Build() const override;
 
  private:
   /// Not implemented

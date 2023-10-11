@@ -48,20 +48,20 @@ class TG4ExtraPhysicsList : public G4VModularPhysicsList, public TG4Verbose
  public:
   TG4ExtraPhysicsList(
     const G4String& selection, const std::map<TString, Double_t>& parameters);
-  virtual ~TG4ExtraPhysicsList();
+  ~TG4ExtraPhysicsList() override;
 
   // static methods
   static G4String AvailableSelections();
   static G4bool IsAvailableSelection(const G4String& selection);
 
   // methods
-  virtual void ConstructProcess();
+  void ConstructProcess() override;
 
   /// No cuts are set here
-  virtual void SetCuts() {}
+  void SetCuts() override {}
 
-  virtual G4int VerboseLevel() const;
-  virtual void VerboseLevel(G4int level);
+  G4int VerboseLevel() const override;
+  void VerboseLevel(G4int level) override;
 
   // set methods
   void SetRangeCut(G4double value);

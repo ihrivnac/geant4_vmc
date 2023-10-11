@@ -30,11 +30,11 @@ class TG4PostDetConstruction : public TVirtualUserPostDetConstruction
 {
  public:
   TG4PostDetConstruction();
-  virtual ~TG4PostDetConstruction();
+  ~TG4PostDetConstruction() override;
 
   // methods
-  virtual void Initialize(TG4RootDetectorConstruction* dc);
-  virtual void InitializeSDandField();
+  void Initialize(TG4RootDetectorConstruction* dc) override;
+  void InitializeSDandField() override;
 
  private:
   /// Not implemented

@@ -53,7 +53,7 @@ class TG4TrackManager : public TG4Verbose
 {
  public:
   TG4TrackManager();
-  virtual ~TG4TrackManager();
+  ~TG4TrackManager() override;
 
   // static access method
   static TG4TrackManager* Instance();

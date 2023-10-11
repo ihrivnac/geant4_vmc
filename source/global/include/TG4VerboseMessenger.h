@@ -44,12 +44,12 @@ class TG4VerboseMessenger : public G4UImessenger
 
  public:
   TG4VerboseMessenger(const G4String& directoryName);
-  virtual ~TG4VerboseMessenger();
+  ~TG4VerboseMessenger() override;
 
   // methods
   G4UIcommand* AddCommand(TG4Verbose* verbose, const G4String& cmdName);
   void RemoveCommand(TG4Verbose* verbose, G4UIcommand* command);
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

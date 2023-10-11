@@ -37,10 +37,10 @@ class TG4SpecialStackingActionMessenger : public G4UImessenger
 {
  public:
   TG4SpecialStackingActionMessenger(TG4SpecialStackingAction* stackingAction);
-  virtual ~TG4SpecialStackingActionMessenger();
+  ~TG4SpecialStackingActionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

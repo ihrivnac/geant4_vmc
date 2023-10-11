@@ -36,10 +36,10 @@ class TG4GflashFastSimulationMessenger : public G4UImessenger
  public:
   TG4GflashFastSimulationMessenger(
     TG4GflashFastSimulation* gflashFastSimulation);
-  virtual ~TG4GflashFastSimulationMessenger();
+  ~TG4GflashFastSimulationMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

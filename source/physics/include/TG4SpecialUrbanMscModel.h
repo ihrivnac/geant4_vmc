@@ -92,24 +92,24 @@ class TG4SpecialUrbanMscModel : public G4VMscModel
  public:
   TG4SpecialUrbanMscModel(const G4String& nam = "ALICEUrbanMsc");
 
-  virtual ~TG4SpecialUrbanMscModel();
+  ~TG4SpecialUrbanMscModel() override;
 
-  void Initialise(const G4ParticleDefinition*, const G4DataVector&);
+  void Initialise(const G4ParticleDefinition*, const G4DataVector&) override;
 
-  void StartTracking(G4Track*);
+  void StartTracking(G4Track*) override;
 
   G4double ComputeCrossSectionPerAtom(const G4ParticleDefinition* particle,
     G4double KineticEnergy, G4double AtomicNumber, G4double AtomicWeight = 0.,
-    G4double cut = 0., G4double emax = DBL_MAX);
+    G4double cut = 0., G4double emax = DBL_MAX) override;
 
-  G4ThreeVector& SampleScattering(const G4ThreeVector&, G4double safety);
+  G4ThreeVector& SampleScattering(const G4ThreeVector&, G4double safety) override;
 
   G4double ComputeTruePathLengthLimit(
-    const G4Track& track, G4double& currentMinimalStep);
+    const G4Track& track, G4double& currentMinimalStep) override;
 
-  G4double ComputeGeomPathLength(G4double truePathLength);
+  G4double ComputeGeomPathLength(G4double truePathLength) override;
 
-  G4double ComputeTrueStepLength(G4double geomStepLength);
+  G4double ComputeTrueStepLength(G4double geomStepLength) override;
 
   inline G4double ComputeTheta0(
     G4double truePathLength, G4double KineticEnergy);

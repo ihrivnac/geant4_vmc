@@ -32,11 +32,11 @@ class TG4GflashSensitiveDetector : public TG4SensitiveDetector,
 {
  public:
   TG4GflashSensitiveDetector(G4String sdName, G4int mediumID);
-  virtual ~TG4GflashSensitiveDetector();
+  ~TG4GflashSensitiveDetector() override;
 
   // methods
   using TG4SensitiveDetector::ProcessHits;
-  virtual G4bool ProcessHits(G4GFlashSpot* gflashSpot, G4TouchableHistory*);
+  G4bool ProcessHits(G4GFlashSpot* gflashSpot, G4TouchableHistory*) override;
 
  private:
   /// Not implemented

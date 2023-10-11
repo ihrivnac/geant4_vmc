@@ -29,12 +29,12 @@ class TG4UserParticlesPhysics : public TG4VPhysicsConstructor
   TG4UserParticlesPhysics(const G4String& name = "UserParticles");
   TG4UserParticlesPhysics(
     G4int theVerboseLevel, const G4String& name = "UserParticles");
-  virtual ~TG4UserParticlesPhysics();
+  ~TG4UserParticlesPhysics() override;
 
  protected:
   // methods
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

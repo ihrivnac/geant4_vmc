@@ -42,10 +42,10 @@ class TG4ModelConfigurationMessenger : public G4UImessenger
  public:
   TG4ModelConfigurationMessenger(
     TG4ModelConfigurationManager* manager, const G4String& availableModels);
-  virtual ~TG4ModelConfigurationMessenger();
+  ~TG4ModelConfigurationMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

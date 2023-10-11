@@ -45,11 +45,11 @@ class TG4ParticlesCheckerMessenger : public G4UImessenger
 {
  public:
   TG4ParticlesCheckerMessenger(TG4ParticlesChecker* particlesChecker);
-  virtual ~TG4ParticlesCheckerMessenger();
+  ~TG4ParticlesCheckerMessenger() override;
 
   // methods
   void Init();
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

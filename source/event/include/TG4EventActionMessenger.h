@@ -35,10 +35,10 @@ class TG4EventActionMessenger : public G4UImessenger
 {
  public:
   TG4EventActionMessenger(TG4EventAction* eventAction);
-  virtual ~TG4EventActionMessenger();
+  ~TG4EventActionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

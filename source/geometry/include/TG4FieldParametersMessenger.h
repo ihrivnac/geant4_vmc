@@ -61,10 +61,10 @@ class TG4FieldParametersMessenger : public G4UImessenger
 {
  public:
   TG4FieldParametersMessenger(TG4FieldParameters* fieldParameters);
-  virtual ~TG4FieldParametersMessenger();
+  ~TG4FieldParametersMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String newValues);
+  void SetNewValue(G4UIcommand* command, G4String newValues) override;
 
  private:
   /// Not implemented

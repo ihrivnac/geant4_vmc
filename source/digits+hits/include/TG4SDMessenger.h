@@ -41,10 +41,10 @@ class TG4SDMessenger : public G4UImessenger
 {
  public:
   TG4SDMessenger(TG4SDConstruction* sdConstruction);
-  virtual ~TG4SDMessenger();
+  ~TG4SDMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

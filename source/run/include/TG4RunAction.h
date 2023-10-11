@@ -36,11 +36,11 @@ class TG4RunAction : public G4UserRunAction, public TG4Verbose
 {
  public:
   TG4RunAction();
-  virtual ~TG4RunAction();
+  ~TG4RunAction() override;
 
   // methods
-  virtual void BeginOfRunAction(const G4Run* run);
-  virtual void EndOfRunAction(const G4Run* run);
+  void BeginOfRunAction(const G4Run* run) override;
+  void EndOfRunAction(const G4Run* run) override;
 
   // set methods
   void SetSaveRandomStatus(G4bool saveRandomStatus);

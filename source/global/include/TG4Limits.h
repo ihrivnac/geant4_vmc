@@ -43,7 +43,7 @@ class TG4Limits : public G4UserLimits
   TG4Limits(const G4UserLimits& g4Limits, const TG4G3CutVector& cuts,
     const TG4G3ControlVector& controls);
   TG4Limits(const TG4Limits& right);
-  virtual ~TG4Limits();
+  ~TG4Limits() override;
 
   // operators
   TG4Limits& operator=(const TG4Limits& right);
@@ -72,7 +72,7 @@ class TG4Limits : public G4UserLimits
   const TG4G3ControlVector* GetControlVector() const;
   G4bool IsCut() const;
   G4bool IsControl() const;
-  virtual G4double GetUserMinEkine(const G4Track& track);
+  G4double GetUserMinEkine(const G4Track& track) override;
   G4double GetMinEkineForGamma(const G4Track& track) const;
   G4double GetMinEkineForElectron(const G4Track& track) const;
   G4double GetMinEkineForChargedHadron(const G4Track& track) const;

@@ -36,10 +36,10 @@ class TG4SteppingActionMessenger : public G4UImessenger
 {
  public:
   TG4SteppingActionMessenger(TG4SteppingAction* steppingAction);
-  virtual ~TG4SteppingActionMessenger();
+  ~TG4SteppingActionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

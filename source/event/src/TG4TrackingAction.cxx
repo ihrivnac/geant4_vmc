@@ -144,7 +144,7 @@ void TG4TrackingAction::LateInitialize()
 //_____________________________________________________________________________
 void TG4TrackingAction::PrepareNewEvent()
 {
-  /// Called by G4 kernel at the beginning of event.
+  /// Called by TG4EventAction at the beginning of event.
 
   // set g4 stepping manager pointer and world volume
   fStepManager->SetSteppingManager(fpTrackingManager->GetSteppingManager());

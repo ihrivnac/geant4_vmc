@@ -158,18 +158,6 @@ inline Int_t TGeant4::CurrentMedium() const
 }
 
 //_____________________________________________________________________________
-inline Int_t TGeant4::GetMedium() const
-{
-  /// Returns the second index of the current material (corresponding to
-  /// G3 tracking medium index).
-
-  TG4Globals::Warning("TGeant4", "GetMedium",
-    "Deprecated function - use CurrentMedium() instead");
-
-  return CurrentMedium();
-}
-
-//_____________________________________________________________________________
 inline void TGeant4::Gmtod(Float_t* xm, Float_t* xd, Int_t iflag)
 {
   /// Transforms a position from the world reference frame

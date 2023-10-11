@@ -53,7 +53,7 @@ class TG4SteppingAction : public G4UserSteppingAction
 
  public:
   TG4SteppingAction();
-  virtual ~TG4SteppingAction();
+  ~TG4SteppingAction() override;
 
   // static access method
   static TG4SteppingAction* Instance();
@@ -64,7 +64,7 @@ class TG4SteppingAction : public G4UserSteppingAction
   virtual void SteppingAction(const G4Step* step);
   // the following method should not
   // be overwritten in a derived class
-  virtual void UserSteppingAction(const G4Step* step);
+  void UserSteppingAction(const G4Step* step) final;
 
   // set methods
   void SetLoopVerboseLevel(G4int level);

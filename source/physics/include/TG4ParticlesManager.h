@@ -54,7 +54,7 @@ class TG4ParticlesManager : public TG4Verbose
   typedef std::vector<TG4UserParticle*> UserParticleVector;
 
   TG4ParticlesManager();
-  virtual ~TG4ParticlesManager();
+  ~TG4ParticlesManager() override;
 
   // static access method
   static TG4ParticlesManager* Instance();

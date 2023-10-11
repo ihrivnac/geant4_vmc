@@ -75,7 +75,7 @@ class TG4RegionsManager : public TG4Verbose
 {
  public:
   TG4RegionsManager();
-  virtual ~TG4RegionsManager();
+  ~TG4RegionsManager() override;
 
   static TG4RegionsManager* Instance();
 

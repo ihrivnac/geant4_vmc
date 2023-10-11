@@ -43,10 +43,10 @@ class TG4PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction,
 {
  public:
   TG4PrimaryGeneratorAction();
-  virtual ~TG4PrimaryGeneratorAction();
+  ~TG4PrimaryGeneratorAction() override;
 
   // methods
-  virtual void GeneratePrimaries(G4Event* event);
+  void GeneratePrimaries(G4Event* event) override;
 
   // set methods
   void SetSkipUnknownParticles(G4bool value);

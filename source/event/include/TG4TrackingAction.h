@@ -46,20 +46,20 @@ class TG4TrackingAction : public G4UserTrackingAction, public TG4Verbose
 {
  public:
   TG4TrackingAction();
-  virtual ~TG4TrackingAction();
+  ~TG4TrackingAction() override;
 
   // static access method
   static TG4TrackingAction* Instance();
 
   // methods
   void LateInitialize();
-  virtual void PrepareNewEvent();
+  void PrepareNewEvent();
   virtual void PreTrackingAction(const G4Track* aTrack);
   virtual void PostTrackingAction(const G4Track* aTrack);
   // the following methods should not
   // be overwritten in a derived class
-  virtual void PreUserTrackingAction(const G4Track* aTrack);
-  virtual void PostUserTrackingAction(const G4Track* aTrack);
+  void PreUserTrackingAction(const G4Track* aTrack) final;
+  void PostUserTrackingAction(const G4Track* aTrack) final;
   void FinishPrimaryTrack();
 
   // set methods

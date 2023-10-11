@@ -37,11 +37,11 @@ class TG4SpecialCutsForChargedHadron : public TG4VSpecialCuts
  public:
   TG4SpecialCutsForChargedHadron(
     const G4String& processName = "specialCutForChargedHadron");
-  virtual ~TG4SpecialCutsForChargedHadron();
+  ~TG4SpecialCutsForChargedHadron() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
 };
 
 /// \ingroup physics
@@ -56,11 +56,11 @@ class TG4SpecialCutsForElectron : public TG4VSpecialCuts
  public:
   TG4SpecialCutsForElectron(
     const G4String& processName = "specialCutForElectron");
-  virtual ~TG4SpecialCutsForElectron();
+  ~TG4SpecialCutsForElectron() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
 };
 
 /// \ingroup physics
@@ -74,11 +74,11 @@ class TG4SpecialCutsForGamma : public TG4VSpecialCuts
 {
  public:
   TG4SpecialCutsForGamma(const G4String& processName = "specialCutForGamma");
-  virtual ~TG4SpecialCutsForGamma();
+  ~TG4SpecialCutsForGamma() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
 };
 
 /// \ingroup physics
@@ -92,11 +92,11 @@ class TG4SpecialCutsForMuon : public TG4VSpecialCuts
 {
  public:
   TG4SpecialCutsForMuon(const G4String& processName = "specialCutForMuon");
-  virtual ~TG4SpecialCutsForMuon();
+  ~TG4SpecialCutsForMuon() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
 };
 
 /// \ingroup physics
@@ -111,11 +111,11 @@ class TG4SpecialCutsForNeutralHadron : public TG4VSpecialCuts
  public:
   TG4SpecialCutsForNeutralHadron(
     const G4String& processName = "specialCutForNeutralHadron");
-  virtual ~TG4SpecialCutsForNeutralHadron();
+  ~TG4SpecialCutsForNeutralHadron() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
 };
 
 /// \ingroup physics
@@ -135,13 +135,13 @@ class TG4SpecialCutsForNeutron : public TG4VSpecialCuts
  public:
   TG4SpecialCutsForNeutron(
     const G4String& processName = "specialCutForNeutron");
-  virtual ~TG4SpecialCutsForNeutron();
+  ~TG4SpecialCutsForNeutron() override;
 
   // methods
-  virtual G4double GetMinEkine(
-    const TG4Limits& limits, const G4Track& track) const;
-  virtual G4VParticleChange* PostStepDoIt(
-    const G4Track& track, const G4Step& /*step*/);
+  G4double GetMinEkine(
+    const TG4Limits& limits, const G4Track& track) const override;
+  G4VParticleChange* PostStepDoIt(
+    const G4Track& track, const G4Step& /*step*/) override;
 };
 
 #endif // TG4_SPECIAL_CUTS_H

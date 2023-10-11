@@ -41,12 +41,12 @@ class TG4SpecialStackingAction : public G4UserStackingAction, public TG4Verbose
 {
  public:
   TG4SpecialStackingAction();
-  virtual ~TG4SpecialStackingAction();
+  ~TG4SpecialStackingAction() override;
 
   // methods
-  G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* track);
-  void NewStage();
-  void PrepareNewEvent();
+  G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* track) override;
+  void NewStage() override;
+  void PrepareNewEvent() override;
 
   // set method
   void SetSkipNeutrino(G4bool value);

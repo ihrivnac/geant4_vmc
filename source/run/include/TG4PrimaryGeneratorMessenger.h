@@ -37,10 +37,10 @@ class TG4PrimaryGeneratorMessenger : public G4UImessenger
 {
  public:
   TG4PrimaryGeneratorMessenger(TG4PrimaryGeneratorAction* action);
-  virtual ~TG4PrimaryGeneratorMessenger();
+  ~TG4PrimaryGeneratorMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

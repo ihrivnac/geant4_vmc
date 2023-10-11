@@ -35,7 +35,7 @@ class TG4ExtDecayerPhysics : public TG4VPhysicsConstructor
   TG4ExtDecayerPhysics(const G4String& name = "ExtDecayer");
   TG4ExtDecayerPhysics(
     G4int theVerboseLevel, const G4String& name = "ExtDecayer");
-  virtual ~TG4ExtDecayerPhysics();
+  ~TG4ExtDecayerPhysics() override;
 
   // set methods
   void SetSelection(const G4String& selection);
@@ -44,8 +44,8 @@ class TG4ExtDecayerPhysics : public TG4VPhysicsConstructor
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

@@ -42,10 +42,10 @@ class TG4RunMessenger : public G4UImessenger
 {
  public:
   TG4RunMessenger(TG4RunManager* runManager);
-  virtual ~TG4RunMessenger();
+  ~TG4RunMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

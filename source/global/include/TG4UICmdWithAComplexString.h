@@ -31,7 +31,7 @@ class TG4UICmdWithAComplexString : public G4UIcommand
  public:
   TG4UICmdWithAComplexString(
     const G4String& theCommandPath, G4UImessenger* theMessenger);
-  virtual ~TG4UICmdWithAComplexString();
+  ~TG4UICmdWithAComplexString() override;
 
   // set methods
   void SetParameterName(const G4String& name, G4bool omittable);

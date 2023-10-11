@@ -57,7 +57,7 @@ class TG4GeometryServices : public TG4Verbose
 {
  public:
   TG4GeometryServices();
-  virtual ~TG4GeometryServices();
+  ~TG4GeometryServices() override;
 
   // static access method
   static TG4GeometryServices* Instance();

@@ -37,7 +37,7 @@ class TG4UserParticle : public G4ParticleDefinition
     G4bool stable, G4double lifetime, G4DecayTable* decaytable,
     G4bool shortlived, const G4String& subType = "", G4int anti_encoding = 0,
     G4double magneticMoment = 0.0, G4double excitation = 0.0);
-  virtual ~TG4UserParticle();
+  ~TG4UserParticle() override;
 
   TMCParticleType GetMCType() const;
   G4double GetExcitationEnergy() const;

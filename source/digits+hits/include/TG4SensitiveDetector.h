@@ -42,12 +42,12 @@ class TG4SensitiveDetector : public G4VSensitiveDetector
   TG4SensitiveDetector(G4String sdName, G4int mediumID);
   TG4SensitiveDetector(
     TVirtualMCSensitiveDetector* userSD, G4int mediumID, G4bool exclusiveSD);
-  virtual ~TG4SensitiveDetector();
+  ~TG4SensitiveDetector() override;
 
   // methods
-  virtual G4bool ProcessHits(G4Step* step, G4TouchableHistory* history);
-  virtual G4bool ProcessHitsOnBoundary(G4Step* step);
-  virtual void ProcessHitsOnTrackStart();
+  G4bool ProcessHits(G4Step* step, G4TouchableHistory* history) override;
+  G4bool ProcessHitsOnBoundary(G4Step* step);
+  void ProcessHitsOnTrackStart();
   // Was user process hits
 
   // static get method

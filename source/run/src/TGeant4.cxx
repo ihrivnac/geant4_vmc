@@ -35,10 +35,10 @@
 
 /// \cond CLASSIMP
 ClassImp(TGeant4)
-  /// \endcond
+/// \endcond
 
-  //_____________________________________________________________________________
-  TGeant4* TGeant4::fgMasterInstance = 0;
+//_____________________________________________________________________________
+TGeant4* TGeant4::fgMasterInstance = 0;
 TVirtualMCApplication* TGeant4::fgMasterApplicationInstance = 0;
 
 namespace
@@ -273,47 +273,6 @@ Bool_t TGeant4::IsRootGeometrySupported() const
   /// Returns info about supporting geometry defined via Root
 
   return true;
-}
-
-//_____________________________________________________________________________
-void TGeant4::FinishGeometry()
-{
-  /// Sets the top VTE in temporary G3 volume table.
-  /// Close geometry output file (if fWriteGeometry is set true).
-
-  if (!CheckApplicationState("FinishGeometry", kConstructGeometry)) return;
-
-  // Ggclos();
-  fGeometryManager->FinishGeometry();
-}
-
-//_____________________________________________________________________________
-void TGeant4::Gfmate(Int_t imat, char* name, Float_t& a, Float_t& z,
-  Float_t& dens, Float_t& radl, Float_t& absl, Float_t* ubuf, Int_t& nbuf)
-{
-  /// Return parameters for material specified by material number imat
-
-  fGeometryManager->GetOpManager()->Gfmate(
-    imat, name, a, z, dens, radl, absl, ubuf, nbuf);
-}
-
-//_____________________________________________________________________________
-void TGeant4::Gfmate(Int_t imat, char* name, Double_t& a, Double_t& z,
-  Double_t& dens, Double_t& radl, Double_t& absl, Double_t* ubuf, Int_t& nbuf)
-{
-  /// Return parameters for material specified by material number imat
-
-  fGeometryManager->GetOpManager()->Gfmate(
-    imat, name, a, z, dens, radl, absl, ubuf, nbuf);
-}
-
-//_____________________________________________________________________________
-void TGeant4::Gckmat(Int_t /*itmed*/, char* /*natmed*/)
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "Gckmat", "Not implemented.");
 }
 
 //_____________________________________________________________________________
@@ -1129,16 +1088,6 @@ void TGeant4::Init()
 }
 
 //_____________________________________________________________________________
-void TGeant4::InitMT(Int_t /*threadRank*/)
-{
-  /// Initialize G4 run manager.
-
-  TG4Globals::Warning("TGeant4", "InitMT", "Deprecated function.");
-
-  Init();
-}
-
-//_____________________________________________________________________________
 void TGeant4::BuildPhysics()
 {
   /// Finish initialization of Geant4 after the G4 run manager initialization
@@ -1271,56 +1220,6 @@ TGeant4* TGeant4::CloneForWorker() const
   return geant4;
 }
 
-// Geant3 specific methods
-// !!! need to be transformed to common interface
-// ------------------------------------------------
-
-//_____________________________________________________________________________
-void TGeant4::Gdopt(const char* /*name*/, const char* /*value*/)
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "Gdopt", "Not implemented.");
-}
-
-//_____________________________________________________________________________
-void TGeant4::SetClipBox(const char* /*name*/, Double_t /*xmin*/,
-  Double_t /*xmax*/, Double_t /*ymin*/, Double_t /*ymax*/, Double_t /*zmin*/,
-  Double_t /*zmax*/)
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "SetClipBox", "Not implemented.");
-}
-
-//_____________________________________________________________________________
-void TGeant4::DefaultRange()
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "DefaultRange", "Not implemented.");
-}
-
-//_____________________________________________________________________________
-void TGeant4::Gdhead(Int_t /*isel*/, const char* /*name*/, Double_t /*chrsiz*/)
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "Gdhead", "Not implemented.");
-}
-
-//_____________________________________________________________________________
-void TGeant4::Gdman(Double_t /*u*/, Double_t /*v*/, const char* /*type*/)
-{
-  /// Function not implemented.
-  /// Return warning.
-
-  TG4Globals::Warning("TGeant4", "Gdman", "Not implemented.");
-}
 //_____________________________________________________________________________
 void TGeant4::InitLego()
 {
@@ -1329,6 +1228,7 @@ void TGeant4::InitLego()
 
   TG4Globals::Warning("TGeant4", "InitLego", "Not implemented.");
 }
+
 //_____________________________________________________________________________
 void TGeant4::SetRandomSeed() {
   fRunManager->SetRandomSeed();

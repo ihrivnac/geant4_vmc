@@ -42,9 +42,9 @@ class TG4ExtDecayer : public G4VExtDecayer, public TG4Verbose
 {
  public:
   TG4ExtDecayer(TVirtualMCDecayer* externalDecayer);
-  virtual ~TG4ExtDecayer();
+  ~TG4ExtDecayer() override;
 
-  virtual G4DecayProducts* ImportDecayProducts(const G4Track& track);
+  G4DecayProducts* ImportDecayProducts(const G4Track& track) override;
 
   // set methods
   void SetSkipNeutrino(G4bool skipNeutrino);

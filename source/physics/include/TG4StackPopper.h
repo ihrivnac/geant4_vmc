@@ -41,45 +41,45 @@ class TG4StackPopper : public G4VProcess
 {
  public:
   TG4StackPopper(const G4String& processName = "stackPopper");
-  virtual ~TG4StackPopper();
+  ~TG4StackPopper() override;
 
   // static access method
   static TG4StackPopper* Instance();
 
   // methods
-  virtual G4bool IsApplicable(
-    const G4ParticleDefinition& /*particleDefinition*/);
+  G4bool IsApplicable(
+    const G4ParticleDefinition& /*particleDefinition*/) override;
 
-  virtual G4double PostStepGetPhysicalInteractionLength(const G4Track& track,
-    G4double previousStepSize, G4ForceCondition* condition);
+  G4double PostStepGetPhysicalInteractionLength(const G4Track& track,
+    G4double previousStepSize, G4ForceCondition* condition) override;
 
-  virtual G4VParticleChange* PostStepDoIt(
-    const G4Track& track, const G4Step& step);
+  G4VParticleChange* PostStepDoIt(
+    const G4Track& track, const G4Step& step) override;
 
   // No operation in AlongStepDoIt and AtRestDoIt
 
-  virtual G4double AlongStepGetPhysicalInteractionLength(
+  G4double AlongStepGetPhysicalInteractionLength(
     const G4Track& /*track*/, G4double /*previousStepSize*/,
     G4double /*currentMinimumStep*/, G4double& /*proposedSafety*/,
-    G4GPILSelection* /*selection*/)
+    G4GPILSelection* /*selection*/) override
   {
     return -1.0;
   }
 
-  virtual G4double AtRestGetPhysicalInteractionLength(
-    const G4Track& /*track*/, G4ForceCondition* /*condition*/)
+  G4double AtRestGetPhysicalInteractionLength(
+    const G4Track& /*track*/, G4ForceCondition* /*condition*/) override
   {
     return -1.0;
   }
 
-  virtual G4VParticleChange* AlongStepDoIt(
-    const G4Track& /*track*/, const G4Step& /*step*/)
+  G4VParticleChange* AlongStepDoIt(
+    const G4Track& /*track*/, const G4Step& /*step*/) override
   {
     return 0;
   }
 
-  virtual G4VParticleChange* AtRestDoIt(
-    const G4Track& /*track*/, const G4Step& /*step*/)
+  G4VParticleChange* AtRestDoIt(
+    const G4Track& /*track*/, const G4Step& /*step*/) override
   {
     return 0;
   }

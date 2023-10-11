@@ -61,10 +61,10 @@ class TG4DetConstructionMessenger : public G4UImessenger
 {
  public:
   TG4DetConstructionMessenger(TG4GeometryManager* geometryManager);
-  virtual ~TG4DetConstructionMessenger();
+  ~TG4DetConstructionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String newValues);
+  void SetNewValue(G4UIcommand* command, G4String newValues) override;
 
  private:
   /// Not implemented

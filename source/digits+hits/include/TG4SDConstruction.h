@@ -41,13 +41,13 @@ class TG4SDConstruction : public TG4Verbose
 {
  public:
   TG4SDConstruction();
-  virtual ~TG4SDConstruction();
+  ~TG4SDConstruction() override;
 
   // static methods
   static const G4String& GetDefaultSVLabel();
 
   // methods
-  virtual void Construct();
+  void Construct();
 
   // set methods
   void AddSelection(const G4String& selection);

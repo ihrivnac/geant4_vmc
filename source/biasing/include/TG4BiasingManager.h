@@ -35,7 +35,7 @@ class TG4BiasingManager : public TG4ModelConfigurationManager
 
  public:
   TG4BiasingManager(const G4String& name, const G4String& availableModels = "");
-  virtual ~TG4BiasingManager();
+  ~TG4BiasingManager() override;
 
   // methods
   void CreateBiasingOperator();

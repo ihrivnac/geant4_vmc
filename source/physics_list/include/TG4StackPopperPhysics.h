@@ -33,7 +33,7 @@ class TG4StackPopperPhysics : public TG4VPhysicsConstructor
   TG4StackPopperPhysics(const G4String& name = "StackPopper");
   TG4StackPopperPhysics(
     G4int theVerboseLevel, const G4String& name = "StackPopper");
-  virtual ~TG4StackPopperPhysics();
+  ~TG4StackPopperPhysics() override;
 
   // set methods
   void SetSelection(const G4String& selection);
@@ -41,8 +41,8 @@ class TG4StackPopperPhysics : public TG4VPhysicsConstructor
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

@@ -41,12 +41,12 @@ class TG4EventAction : public G4UserEventAction, public TG4Verbose
 {
  public:
   TG4EventAction();
-  virtual ~TG4EventAction();
+  ~TG4EventAction() override;
 
   // methods
   void LateInitialize();
-  virtual void BeginOfEventAction(const G4Event* event);
-  virtual void EndOfEventAction(const G4Event* event);
+  void BeginOfEventAction(const G4Event* event) override;
+  void EndOfEventAction(const G4Event* event) override;
 
   // set methods
   void SetMCStack(TVirtualMCStack* mcStack);

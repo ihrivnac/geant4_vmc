@@ -27,22 +27,22 @@ class TG4BiasingOperation : public G4VBiasingOperation
   // particular logical volume, Tracking_region, where the biasing is applied.
  public:
   TG4BiasingOperation(G4String name);
-  virtual ~TG4BiasingOperation();
-  virtual G4VParticleChange* ApplyFinalStateBiasing(
-    const G4BiasingProcessInterface*, const G4Track*, const G4Step*, G4bool&);
+  ~TG4BiasingOperation() override;
+  G4VParticleChange* ApplyFinalStateBiasing(
+    const G4BiasingProcessInterface*, const G4Track*, const G4Step*, G4bool&) override;
   // Unused :
-  virtual const G4VBiasingInteractionLaw* ProvideOccurenceBiasingInteractionLaw(
-    const G4BiasingProcessInterface*, G4ForceCondition&)
+  const G4VBiasingInteractionLaw* ProvideOccurenceBiasingInteractionLaw(
+    const G4BiasingProcessInterface*, G4ForceCondition&)  override
   {
     return 0;
   }
-  virtual G4double DistanceToApplyOperation(
-    const G4Track*, G4double, G4ForceCondition*)
+  G4double DistanceToApplyOperation(
+    const G4Track*, G4double, G4ForceCondition*) override
   {
     return DBL_MAX;
   }
-  virtual G4VParticleChange* GenerateBiasingFinalState(
-    const G4Track*, const G4Step*)
+  G4VParticleChange* GenerateBiasingFinalState(
+    const G4Track*, const G4Step*) override
   {
     return 0;
   }

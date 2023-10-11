@@ -67,7 +67,7 @@ class TG4CrossSectionManager : public TG4Verbose
 {
  public:
   TG4CrossSectionManager();
-  virtual ~TG4CrossSectionManager();
+  ~TG4CrossSectionManager() override;
 
   // methods
   TObjArray* MakeHistograms();

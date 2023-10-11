@@ -52,7 +52,7 @@ class TG4PhysicsManager : public TG4Verbose
 {
  public:
   TG4PhysicsManager();
-  virtual ~TG4PhysicsManager();
+  ~TG4PhysicsManager() override;
 
   // static access method
   static TG4PhysicsManager* Instance();

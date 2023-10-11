@@ -39,7 +39,7 @@ class TG4SpecialPhysicsList : public G4VModularPhysicsList, public TG4Verbose
  public:
   TG4SpecialPhysicsList(const G4String& selection);
   TG4SpecialPhysicsList();
-  virtual ~TG4SpecialPhysicsList();
+  ~TG4SpecialPhysicsList() override;
 
   // static methods
   static TG4SpecialPhysicsList* Instance();
@@ -47,13 +47,13 @@ class TG4SpecialPhysicsList : public G4VModularPhysicsList, public TG4Verbose
   static G4bool IsAvailableSelection(const G4String& selection);
 
   // methods
-  virtual void ConstructProcess();
+  void ConstructProcess() override;
 
   /// No cuts are set here
-  virtual void SetCuts() {}
+  void SetCuts() override {}
 
-  virtual G4int VerboseLevel() const;
-  virtual void VerboseLevel(G4int level);
+  G4int VerboseLevel() const override;
+  void VerboseLevel(G4int level) override;
 
   // set methods
   void SetUserFastSimulation(TG4VUserFastSimulation* fastSimulation);

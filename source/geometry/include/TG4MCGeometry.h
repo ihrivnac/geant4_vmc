@@ -49,84 +49,84 @@ class TG4MCGeometry : public TVirtualMCGeometry, public TG4Verbose
 {
  public:
   TG4MCGeometry();
-  virtual ~TG4MCGeometry();
+  ~TG4MCGeometry() override;
 
   //
   // methods (from the base class)
 
   // detector composition
-  virtual void Material(Int_t& kmat, const char* name, Double_t a, Double_t z,
-    Double_t dens, Double_t radl, Double_t absl, Float_t* buf, Int_t nwbuf);
-  virtual void Material(Int_t& kmat, const char* name, Double_t a, Double_t z,
-    Double_t dens, Double_t radl, Double_t absl, Double_t* buf, Int_t nwbuf);
-  virtual void Mixture(Int_t& kmat, const char* name, Float_t* a, Float_t* z,
-    Double_t dens, Int_t nlmat, Float_t* wmat);
-  virtual void Mixture(Int_t& kmat, const char* name, Double_t* a, Double_t* z,
-    Double_t dens, Int_t nlmat, Double_t* wmat);
-  virtual void Medium(Int_t& kmed, const char* name, Int_t nmat, Int_t isvol,
+  void Material(Int_t& kmat, const char* name, Double_t a, Double_t z,
+    Double_t dens, Double_t radl, Double_t absl, Float_t* buf, Int_t nwbuf) override;
+  void Material(Int_t& kmat, const char* name, Double_t a, Double_t z,
+    Double_t dens, Double_t radl, Double_t absl, Double_t* buf, Int_t nwbuf) override;
+  void Mixture(Int_t& kmat, const char* name, Float_t* a, Float_t* z,
+    Double_t dens, Int_t nlmat, Float_t* wmat) override;
+  void Mixture(Int_t& kmat, const char* name, Double_t* a, Double_t* z,
+    Double_t dens, Int_t nlmat, Double_t* wmat) override;
+  void Medium(Int_t& kmed, const char* name, Int_t nmat, Int_t isvol,
     Int_t ifield, Double_t fieldm, Double_t tmaxfd, Double_t stemax,
-    Double_t deemax, Double_t epsil, Double_t stmin, Float_t* ubuf, Int_t nbuf);
-  virtual void Medium(Int_t& kmed, const char* name, Int_t nmat, Int_t isvol,
+    Double_t deemax, Double_t epsil, Double_t stmin, Float_t* ubuf, Int_t nbuf) override;
+  void Medium(Int_t& kmed, const char* name, Int_t nmat, Int_t isvol,
     Int_t ifield, Double_t fieldm, Double_t tmaxfd, Double_t stemax,
     Double_t deemax, Double_t epsil, Double_t stmin, Double_t* ubuf,
-    Int_t nbuf);
-  virtual void Matrix(Int_t& krot, Double_t thetaX, Double_t phiX,
-    Double_t thetaY, Double_t phiY, Double_t thetaZ, Double_t phiZ);
+    Int_t nbuf) override;
+  void Matrix(Int_t& krot, Double_t thetaX, Double_t phiX,
+    Double_t thetaY, Double_t phiY, Double_t thetaZ, Double_t phiZ) override;
 
   // functions from GBASE
-  virtual void Ggclos();
+  void Ggclos();
 
   // functions from GGEOM
-  virtual Int_t Gsvolu(
-    const char* name, const char* shape, Int_t nmed, Double_t* upar, Int_t np);
-  virtual Int_t Gsvolu(
-    const char* name, const char* shape, Int_t nmed, Float_t* upar, Int_t np);
-  virtual void Gsdvn(
-    const char* name, const char* mother, Int_t ndiv, Int_t iaxis);
-  virtual void Gsdvn2(const char* name, const char* mother, Int_t ndiv,
-    Int_t iaxis, Double_t c0i, Int_t numed);
-  virtual void Gsdvt(const char* name, const char* mother, Double_t step,
-    Int_t iaxis, Int_t numed, Int_t ndvmx);
-  virtual void Gsdvt2(const char* name, const char* mother, Double_t step,
-    Int_t iaxis, Double_t c0, Int_t numed, Int_t ndvmx);
+  Int_t Gsvolu(
+    const char* name, const char* shape, Int_t nmed, Double_t* upar, Int_t np) override;
+  Int_t Gsvolu(
+    const char* name, const char* shape, Int_t nmed, Float_t* upar, Int_t np) override;
+  void Gsdvn(
+    const char* name, const char* mother, Int_t ndiv, Int_t iaxis) override;
+  void Gsdvn2(const char* name, const char* mother, Int_t ndiv,
+    Int_t iaxis, Double_t c0i, Int_t numed) override;
+  void Gsdvt(const char* name, const char* mother, Double_t step,
+    Int_t iaxis, Int_t numed, Int_t ndvmx) override;
+  void Gsdvt2(const char* name, const char* mother, Double_t step,
+    Int_t iaxis, Double_t c0, Int_t numed, Int_t ndvmx) override;
 
-  virtual void Gsord(const char* name, Int_t iax);
-  virtual void Gspos(const char* name, Int_t nr, const char* mother, Double_t x,
-    Double_t y, Double_t z, Int_t irot, const char* konly);
-  virtual void Gsposp(const char* name, Int_t nr, const char* mother,
+  void Gsord(const char* name, Int_t iax) override;
+  void Gspos(const char* name, Int_t nr, const char* mother, Double_t x,
+    Double_t y, Double_t z, Int_t irot, const char* konly) override;
+  void Gsposp(const char* name, Int_t nr, const char* mother,
     Double_t x, Double_t y, Double_t z, Int_t irot, const char* konly,
-    Double_t* upar, Int_t np);
-  virtual void Gsposp(const char* name, Int_t nr, const char* mother,
+    Double_t* upar, Int_t np) override;
+  void Gsposp(const char* name, Int_t nr, const char* mother,
     Double_t x, Double_t y, Double_t z, Int_t irot, const char* konly,
-    Float_t* upar, Int_t np);
-  virtual void Gsbool(const char* onlyVolName, const char* manyVolName);
+    Float_t* upar, Int_t np) override;
+  void Gsbool(const char* onlyVolName, const char* manyVolName) override;
 
   // functions for access to geometry
-  virtual Bool_t GetTransformation(
-    const TString& volumePath, TGeoHMatrix& matrix);
-  virtual Bool_t GetShape(
-    const TString& volumePath, TString& shapeType, TArrayD& par);
-  virtual Bool_t GetMaterial(const TString& volumeName, TString& name,
+  Bool_t GetTransformation(
+    const TString& volumePath, TGeoHMatrix& matrix) override;
+  Bool_t GetShape(
+    const TString& volumePath, TString& shapeType, TArrayD& par) override;
+  Bool_t GetMaterial(const TString& volumeName, TString& name,
     Int_t& imat, Double_t& a, Double_t& z, Double_t& density, Double_t& radl,
-    Double_t& inter, TArrayD& par);
-  virtual Bool_t GetMedium(const TString& volumeName, TString& name,
+    Double_t& inter, TArrayD& par) override;
+  Bool_t GetMedium(const TString& volumeName, TString& name,
     Int_t& imed, Int_t& nmat, Int_t& isvol, Int_t& ifield, Double_t& fieldm,
     Double_t& tmaxfd, Double_t& stemax, Double_t& deemax, Double_t& epsil,
-    Double_t& stmin, TArrayD& par);
-  virtual Int_t MediumId(const Text_t* mediumName) const;
+    Double_t& stmin, TArrayD& par) override;
+  Int_t MediumId(const Text_t* mediumName) const override;
 
   //
   // Not implemented functions from the base class
   // (these functions are implemented in SDmanager)
   //
 
-  virtual Int_t VolId(const Text_t* volName) const;
-  virtual const char* VolName(Int_t id) const;
-  virtual Int_t NofVolumes() const;
-  virtual Int_t NofVolDaughters(const char* volName) const;
-  virtual const char* VolDaughterName(const char* volName, Int_t i) const;
-  virtual Int_t VolDaughterCopyNo(const char* volName, Int_t i) const;
-  virtual Int_t VolId2Mate(Int_t id) const;
+  Int_t VolId(const Text_t* volName) const override;
+  const char* VolName(Int_t id) const override;
+  Int_t NofVolumes() const override;
+  Int_t NofVolDaughters(const char* volName) const override;
+  const char* VolDaughterName(const char* volName, Int_t i) const override;
+  Int_t VolDaughterCopyNo(const char* volName, Int_t i) const override;
+  Int_t VolId2Mate(Int_t id) const override;
 
  private:
   /// Not implemented

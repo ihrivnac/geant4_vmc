@@ -40,10 +40,10 @@ class TG4TrackingActionMessenger : public G4UImessenger
 {
  public:
   TG4TrackingActionMessenger(TG4TrackingAction* trackingAction);
-  virtual ~TG4TrackingActionMessenger();
+  ~TG4TrackingActionMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

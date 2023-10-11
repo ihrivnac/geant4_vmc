@@ -53,10 +53,10 @@ class TG4ComposedPhysicsMessenger : public G4UImessenger
 {
  public:
   TG4ComposedPhysicsMessenger(TG4ComposedPhysicsList* physicsList);
-  virtual ~TG4ComposedPhysicsMessenger();
+  ~TG4ComposedPhysicsMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

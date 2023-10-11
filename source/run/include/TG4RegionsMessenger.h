@@ -50,10 +50,10 @@ class TG4RegionsMessenger : public G4UImessenger
 {
  public:
   TG4RegionsMessenger(TG4RegionsManager* runManager);
-  virtual ~TG4RegionsMessenger();
+  ~TG4RegionsMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String string);
+  void SetNewValue(G4UIcommand* command, G4String string) override;
 
  private:
   /// Not implemented

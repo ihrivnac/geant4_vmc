@@ -30,19 +30,19 @@ class TG4VPhysicsConstructor : public G4VPhysicsConstructor, public TG4Verbose
  public:
   TG4VPhysicsConstructor(const G4String& name);
   TG4VPhysicsConstructor(const G4String& name, G4int theVerboseLevel);
-  virtual ~TG4VPhysicsConstructor();
+  ~TG4VPhysicsConstructor() override;
 
   // methods
   /// Construct particles
-  virtual void ConstructParticle() = 0;
+  void ConstructParticle() override = 0;
 
   /// Construct physics processes
-  virtual void ConstructProcess() = 0;
+  void ConstructProcess() override = 0;
 
  protected:
   // overridden verbose methods
-  virtual void VerboseLevel(G4int level);
-  virtual G4int VerboseLevel() const;
+  void VerboseLevel(G4int level) override;
+  G4int VerboseLevel() const override;
 
  private:
   /// Not implemented

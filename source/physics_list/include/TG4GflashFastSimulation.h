@@ -30,10 +30,10 @@ class TG4GflashFastSimulation : public TG4VUserFastSimulation
 {
  public:
   TG4GflashFastSimulation();
-  virtual ~TG4GflashFastSimulation();
+  ~TG4GflashFastSimulation() override;
 
   // methods
-  virtual void Construct();
+  void Construct() override;
 
   // set methods
   void SetMaterialName(const G4String& materialName);

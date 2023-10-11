@@ -33,7 +33,7 @@ class TG4TrackInformation : public G4VUserTrackInformation
   TG4TrackInformation();
   TG4TrackInformation(G4int trackParticleID);
   // TG4TrackInformation(G4int trackParticleID, G4int parentParticleID);
-  virtual ~TG4TrackInformation();
+  ~TG4TrackInformation() override;
 
   // operators required by G4
 
@@ -43,7 +43,7 @@ class TG4TrackInformation : public G4VUserTrackInformation
   inline void operator delete(void* trackInformation);
 
   // methods
-  virtual void Print() const;
+  void Print() const override;
 
   // set methods
   void SetTrackParticleID(G4int trackParticleID);

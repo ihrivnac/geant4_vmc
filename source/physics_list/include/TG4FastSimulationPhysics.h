@@ -45,7 +45,7 @@ class TG4FastSimulationPhysics : public TG4VPhysicsConstructor
   TG4FastSimulationPhysics(const G4String& name = "FastSimulation");
   TG4FastSimulationPhysics(
     G4int theVerboseLevel, const G4String& name = "FastSimulation");
-  virtual ~TG4FastSimulationPhysics();
+  ~TG4FastSimulationPhysics() override;
 
   // set methods
   void SetUserFastSimulation(TG4VUserFastSimulation* userFastSimulation);
@@ -53,10 +53,10 @@ class TG4FastSimulationPhysics : public TG4VPhysicsConstructor
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
+  void ConstructParticle() override;
 
  public:
-  virtual void ConstructProcess();
+  void ConstructProcess() override;
 
  private:
   /// Not implemented

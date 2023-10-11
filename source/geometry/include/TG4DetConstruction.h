@@ -29,11 +29,11 @@ class TG4DetConstruction : public G4VUserDetectorConstruction
 {
  public:
   TG4DetConstruction();
-  virtual ~TG4DetConstruction();
+  ~TG4DetConstruction() override;
 
   // methods
-  virtual G4VPhysicalVolume* Construct();
-  virtual void ConstructSDandField();
+  G4VPhysicalVolume* Construct() override;
+  void ConstructSDandField() override;
 
   void SlaveTG4DetConstruction();
 

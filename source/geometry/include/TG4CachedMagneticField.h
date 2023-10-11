@@ -46,12 +46,10 @@ class TG4CachedMagneticField : public TG4MagneticField
 {
  public:
   TG4CachedMagneticField(TVirtualMagField* magField, G4double constDistance);
-  virtual ~TG4CachedMagneticField();
+  ~TG4CachedMagneticField() override;
 
-  virtual void GetFieldValue(const G4double point[3], G4double* bfield) const;
-
-  // virtual void Update(const TG4FieldParameters& parameters);
-  virtual void PrintStatistics() const;
+  void GetFieldValue(const G4double point[3], G4double* bfield) const override;
+  void PrintStatistics() const override;
 
   void ClearCounter();
   void SetConstDistance(G4double value);

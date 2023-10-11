@@ -32,7 +32,7 @@ class TG4GeoTrackManager : public TG4Verbose
 {
  public:
   TG4GeoTrackManager();
-  virtual ~TG4GeoTrackManager();
+  ~TG4GeoTrackManager() override;
 
   // methods
   void UpdateRootTrack(const G4Step* step);

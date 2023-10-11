@@ -48,10 +48,10 @@ class TG4VGMMessenger : public G4UImessenger
 {
  public:
   TG4VGMMessenger(const G4String& xmlFormat, const G4String& userGeometry);
-  virtual ~TG4VGMMessenger();
+  ~TG4VGMMessenger() override;
 
   // methods
-  virtual void SetNewValue(G4UIcommand* command, G4String newValues);
+  void SetNewValue(G4UIcommand* command, G4String newValues) override;
 
  private:
   /// Not implemented

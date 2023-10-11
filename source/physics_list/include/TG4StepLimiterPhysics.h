@@ -32,13 +32,13 @@ class TG4StepLimiterPhysics : public TG4VPhysicsConstructor
   TG4StepLimiterPhysics(const G4String& name = "StepLimiter");
   TG4StepLimiterPhysics(
     G4int theVerboseLevel, const G4String& name = "StepLimiter");
-  virtual ~TG4StepLimiterPhysics();
+  ~TG4StepLimiterPhysics() override;
 
  protected:
   // methods
   // construct particle and physics
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
   // data members
   G4StepLimiter* fStepLimiterProcess; ///< step limiter process

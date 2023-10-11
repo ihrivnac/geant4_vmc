@@ -32,7 +32,7 @@ class TG4HadronPhysicsList : public G4VUserPhysicsList, public TG4Verbose
 {
  public:
   TG4HadronPhysicsList(const G4String& selection);
-  virtual ~TG4HadronPhysicsList();
+  ~TG4HadronPhysicsList() override;
 
   // static methods
   static G4String AvailableHadronSelections();
@@ -40,14 +40,14 @@ class TG4HadronPhysicsList : public G4VUserPhysicsList, public TG4Verbose
   static G4bool IsAvailableSelection(const G4String& selection);
 
   // methods
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
   /// No cuts are set here
-  virtual void SetCuts() {}
+  void SetCuts() override {}
 
-  virtual G4int VerboseLevel() const;
-  virtual void VerboseLevel(G4int level);
+  G4int VerboseLevel() const override;
+  void VerboseLevel(G4int level) override;
 
   // set methods
   void SetRangeCut(G4double value);

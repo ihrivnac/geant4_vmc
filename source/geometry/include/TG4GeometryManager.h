@@ -51,7 +51,7 @@ class TG4GeometryManager : public TG4Verbose
 {
  public:
   TG4GeometryManager(const TString& userGeometry);
-  virtual ~TG4GeometryManager();
+  ~TG4GeometryManager() override;
 
   // static access method
   static TG4GeometryManager* Instance();

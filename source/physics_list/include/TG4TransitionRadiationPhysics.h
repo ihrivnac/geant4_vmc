@@ -43,15 +43,15 @@ class TG4TransitionRadiationPhysics : public TG4VPhysicsConstructor
   TG4TransitionRadiationPhysics(const G4String& name = "TransitionRadiation");
   TG4TransitionRadiationPhysics(
     G4int theVerboseLevel, const G4String& name = "TransitionRadiation");
-  virtual ~TG4TransitionRadiationPhysics();
+  ~TG4TransitionRadiationPhysics() override;
 
   // set methods
   void SetXtrModel(const G4String& name);
 
  protected:
   // methods
-  virtual void ConstructParticle();
-  virtual void ConstructProcess();
+  void ConstructParticle() override;
+  void ConstructProcess() override;
 
  private:
   // methods

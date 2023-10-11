@@ -52,7 +52,7 @@ class TG4SpecialControlsV2 : public TG4Verbose
 
  public:
   TG4SpecialControlsV2();
-  virtual ~TG4SpecialControlsV2();
+  ~TG4SpecialControlsV2() override;
 
   // methods
   void StartTrack(const G4Track* track);

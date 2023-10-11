@@ -29,9 +29,9 @@ class TG4MagneticField : public G4MagneticField
 {
  public:
   TG4MagneticField(TVirtualMagField* magField);
-  virtual ~TG4MagneticField();
+  ~TG4MagneticField() override;
 
-  virtual void GetFieldValue(const G4double point[3], G4double* bfield) const;
+  void GetFieldValue(const G4double point[3], G4double* bfield) const override;
 
   virtual void PrintStatistics() const {}
 

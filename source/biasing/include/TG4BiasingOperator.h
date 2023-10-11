@@ -31,19 +31,19 @@ class TG4BiasingOperator : public G4VBiasingOperator
   // their default values, 1.0.
  public:
   TG4BiasingOperator();
-  virtual ~TG4BiasingOperator() {}
+  ~TG4BiasingOperator() override {}
   void AddParticle(G4String particleName);
-  virtual G4VBiasingOperation* ProposeFinalStateBiasingOperation(
+  G4VBiasingOperation* ProposeFinalStateBiasingOperation(
     const G4Track* track,
     const G4BiasingProcessInterface* callingProcess) final;
   // Not used:
-  virtual G4VBiasingOperation* ProposeNonPhysicsBiasingOperation(
-    const G4Track*, const G4BiasingProcessInterface*)
+  G4VBiasingOperation* ProposeNonPhysicsBiasingOperation(
+    const G4Track*, const G4BiasingProcessInterface*) override
   {
     return 0;
   }
-  virtual G4VBiasingOperation* ProposeOccurenceBiasingOperation(
-    const G4Track*, const G4BiasingProcessInterface*)
+  G4VBiasingOperation* ProposeOccurenceBiasingOperation(
+    const G4Track*, const G4BiasingProcessInterface*) override
   {
     return 0;
   }
