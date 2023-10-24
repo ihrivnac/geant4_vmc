@@ -81,6 +81,8 @@ class TG4RegionsManager : public TG4Verbose
 
   // methods
   void DefineRegions();
+  void DefineRegions2();
+  void UpdateProductionCutsTable();
   void CheckRegions() const;
   void PrintRegions(std::ostream& output) const;
   void SaveRegions();

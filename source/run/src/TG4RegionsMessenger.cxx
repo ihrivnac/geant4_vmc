@@ -81,12 +81,12 @@ TG4RegionsMessenger::TG4RegionsMessenger(TG4RegionsManager* runManager)
     "Switch on|off check if region properties are consistent");
   fSetCheckCmd->SetGuidance("with energy cuts defined in limits");
   fSetCheckCmd->SetParameterName("IsCheck", false);
-  fSetCheckCmd->AvailableForStates(G4State_PreInit, G4State_Init);
+  fSetCheckCmd->AvailableForStates(G4State_PreInit, G4State_Init, G4State_Idle, G4State_EventProc);
 
   fSetPrintCmd = new G4UIcmdWithABool("/mcRegions/print", this);
   fSetPrintCmd->SetGuidance("Switch on|off printing of all regions properties");
   fSetPrintCmd->SetParameterName("IsPrint", false);
-  fSetPrintCmd->AvailableForStates(G4State_PreInit, G4State_Init);
+  fSetPrintCmd->AvailableForStates(G4State_PreInit, G4State_Init, G4State_Idle, G4State_EventProc);
 
   fSetSaveCmd = new G4UIcmdWithABool("/mcRegions/save", this);
   fSetSaveCmd->SetGuidance("Switch on|off saving of all regions properties in a file");
