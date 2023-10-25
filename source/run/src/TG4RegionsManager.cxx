@@ -820,36 +820,9 @@ void TG4RegionsManager::DefineRegions2()
   // Get G4 region store
   auto g4RegionStore = G4RegionStore::GetInstance();
 
-  // Get world default region
-  G4LogicalVolume* worldLV =
-    TG4GeometryServices::Instance()->GetWorld()->GetLogicalVolume();
-  G4Region* worldRegion = worldLV->GetRegion();
-
-  std::set<G4Material*> processedMaterials;
-
-  // Update world region
-  auto medium = mediumMap->GetMedium(worldLV, false);
-  if (medium == nullptr) {
-    // change to warning
-    G4cerr << worldLV->GetName() << " medium not found" << G4endl;
-  }
-  processedMaterials.insert(worldLV->GetMaterial());
-
-  // Get default range cut values from physics manager
-  G4double defaultRangeCutEle =
-    TG4PhysicsManager::Instance()->GetCutForElectron();
-  G4double defaultRangeCutGam = TG4PhysicsManager::Instance()->GetCutForGamma();
-  G4double defaultRangeCutPositron =
-    TG4PhysicsManager::Instance()->GetCutForPositron();
-  G4double defaultRangeCutProton =
-    TG4PhysicsManager::Instance()->GetCutForProton();
-
-  // Define production cuts with the default range cuts 
-  G4ProductionCuts* defaultCuts = new G4ProductionCuts();
-  defaultCuts->SetProductionCut(defaultRangeCutGam, 0);
-  defaultCuts->SetProductionCut(defaultRangeCutEle, 1);
-  defaultCuts->SetProductionCut(defaultRangeCutPositron, 2);
-  defaultCuts->SetProductionCut(defaultRangeCutProton, 2);
+  // Get world volume & material
+  auto worldLV = TG4GeometryServices::Instance()->GetWorld()->GetLogicalVolume();
+  auto worldMaterial = worldLV->GetMaterial();
 
   // Define region for each logical volume
   G4int counter = 0;
@@ -858,51 +831,61 @@ void TG4RegionsManager::DefineRegions2()
   for (std::size_t i = 0; i < lvStore->size(); ++i) {
 
     auto lv = (*lvStore)[i];
+    auto materialName = lv->GetMaterial()->GetName();
+    // print debug message
+    if (VerboseLevel() > 1) {
+      G4cout << "-- Volume = " << i << "  " << lv->GetName()
+             << " material = " << materialName << G4endl;
+    }
 
     // skip world
-    if (lv == worldLV) continue;
-
-    auto medium = mediumMap->GetMedium(lv, false);
-    if (medium == nullptr) {
+    if (lv == worldLV) {
+      if (VerboseLevel() > 1) {
+        G4cout << "   " << "skipping worldVolume" << G4endl;
+      }
       continue;
     }
 
-    auto material = lv->GetMaterial();
-    if (VerboseLevel() > 1) {
-      G4cout << "-- Volume = " << i << "  " << lv << "  " << lv->GetName()
-             << " material = " << material->GetName() << G4endl;
-    }
-
-    // Get region, if it already exists, and add the logical volume
-    auto regionName = material->GetName();
-    auto region = g4RegionStore->GetRegion(regionName, false);
-    if (region != nullptr) {
-      if (VerboseLevel() > 1) {
-        G4cout << "   "
-               << "adding volume in region = " << regionName << G4endl;
-      }
-      if (lv->GetRegion() != region) region->AddRootLogicalVolume(lv);
-      // skip creating region information if this material was already processed
-      if (processedMaterials.find(material) != processedMaterials.end()) {
+    // skip volume if it has already a region assigned
+    if (lv->GetRegion() != nullptr &&
+        lv->GetRegion()->GetName() == materialName) {
         if (VerboseLevel() > 1) {
-          G4cout << "   "
-                 << "skipping creating region information in region = " << regionName << G4endl;
+           G4cout << "   "
+                  << "has already region set, skipping" << G4endl;
         }
         continue;
-      }
     }
 
-    // After this line, region does not exist
+    // Get region fior this material, if it already exists,
+    // and add the logical volume
+    auto regionName = materialName;
+    auto region = g4RegionStore->GetRegion(regionName, false);
+    if (region != nullptr) {
+      if (lv->GetRegion() != region) {
+        // Add volume to the region per material if its region is different
+        // (by default the volume has the DefaultRegionForTheWorld)
+        if (VerboseLevel() > 1) {
+          G4cout << "   "
+                 << "adding volume in region = " << regionName << G4endl;
+        }
+        region->AddRootLogicalVolume(lv);
+      }
+      continue;
+    }
+
+    // After this line, the region does not exist
+    if (VerboseLevel() > 1) {
+      G4cout << "   "
+             << "creating new region = " << regionName << G4endl;
+    }
     region = new G4Region(regionName);
-    processedMaterials.insert(material);
     region->AddRootLogicalVolume(lv);
-    // region->SetProductionCuts(defaultCuts);
     ++counter;
   }
 
-  processedMaterials.clear();
-
-  CheckRegionsInGeometry();
+  if (fIsCheck) {
+    CheckRegionsInGeometry();
+  }
 
   if (VerboseLevel() > 0) {
     G4cout << "Number of added regions: " << counter << G4endl;
