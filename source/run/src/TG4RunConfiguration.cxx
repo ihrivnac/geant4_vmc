@@ -48,6 +48,7 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
     fMTApplication(mtApplication),
     fSpecialControls(false),
     fSpecialCuts(false),
+    fSpecialCutsOld(false),
     fAGDDMessenger(0),
     fGDMLMessenger(0),
     fParameters()
@@ -350,9 +351,17 @@ Bool_t TG4RunConfiguration::IsSpecialControls() const
 //_____________________________________________________________________________
 Bool_t TG4RunConfiguration::IsSpecialCuts() const
 {
-  /// Return true if special controls are activated
+  /// Return true if special cuts are activated
 
   return fSpecialCuts;
+}
+
+//_____________________________________________________________________________
+Bool_t TG4RunConfiguration::IsSpecialCutsOld() const
+{
+  /// Return true if special cuts old are activated
+
+  return fSpecialCutsOld;
 }
 
 //_____________________________________________________________________________
