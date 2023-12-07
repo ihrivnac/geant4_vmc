@@ -321,6 +321,19 @@ void TG4RunConfiguration::SetParameter(const TString& name, Double_t value)
 }
 
 //_____________________________________________________________________________
+void TG4RunConfiguration::SetSpecialCutsOld()
+{
+  /// Activate usage of old regions manager
+  /// that sets production thresholds by ranges
+
+  G4cout
+    << "### Special cuts old activated: production cuts will be set by ranges."
+    << G4endl;
+
+  fSpecialCutsOld = true;
+}
+
+//_____________________________________________________________________________
 TString TG4RunConfiguration::GetUserGeometry() const
 {
   /// Return the way user geometry is built

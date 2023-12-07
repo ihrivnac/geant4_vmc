@@ -101,7 +101,7 @@ class TG4RunConfiguration
   // set methods
   void SetMTApplication(Bool_t mtApplication);
   void SetParameter(const TString& name, Double_t value);
-  void SetSpecialCutsOld(Bool_t value);
+  void SetSpecialCutsOld();
 
   // get methods
   TString GetUserGeometry() const;
@@ -140,13 +140,6 @@ class TG4RunConfiguration
 };
 
 // inline functions
-
-/// Activate usage of old regions manager
-/// that sets production thresholds by ranges
-inline void TG4RunConfiguration::SetSpecialCutsOld(Bool_t value)
-{ 
-  fSpecialCutsOld = true;
-}
 
 /// Return physics list selection
 inline TString TG4RunConfiguration::GetPhysicsListSelection() const

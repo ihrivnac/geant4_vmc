@@ -13,6 +13,7 @@
 /// \author I. Hrivnacova; IPN, Orsay
 
 #include "TG4RegionsMessenger.h"
+#include "TG4Globals.h"
 #include "TG4RegionsManager.h"
 #include "TG4RegionsManager2.h"
 
@@ -95,6 +96,13 @@ void TG4RegionsMessenger::CreateCommands()
   fSetFileNameCmd->SetParameterName("FileName", false);
   fSetFileNameCmd->AvailableForStates(G4State_PreInit, G4State_Init);
 
+  fSetRangePrecisionCmd =
+    new G4UIcmdWithAnInteger("/mcRegions/setRangePrecision", this);
+  fSetRangePrecisionCmd->SetGuidance(
+    "Set the precision for calculating ranges");
+  fSetRangePrecisionCmd->SetParameterName("RangePrecision", false);
+  fSetRangePrecisionCmd->AvailableForStates(G4State_PreInit, G4State_Init);
+
   if (fRegionsManager != nullptr) {
     // commands working only with old regions manager
     fDumpRegionCmd = new G4UIcmdWithAString("/mcRegions/dumpRegion", this);
@@ -103,13 +111,6 @@ void TG4RegionsMessenger::CreateCommands()
     fDumpRegionCmd->SetDefaultValue(" ");
     fDumpRegionCmd->AvailableForStates(G4State_Idle, G4State_EventProc);
 
-    fSetRangePrecisionCmd =
-      new G4UIcmdWithAnInteger("/mcRegions/setRangePrecision", this);
-    fSetRangePrecisionCmd->SetGuidance(
-      "Set the precision for calculating ranges");
-    fSetRangePrecisionCmd->SetParameterName("RangePrecision", false);
-    fSetRangePrecisionCmd->AvailableForStates(G4State_PreInit, G4State_Init);
-  
     fSetEnergyToleranceCmd =
       new G4UIcmdWithADouble("/mcRegions/setEnergyTolerance", this);
     fSetEnergyToleranceCmd->SetGuidance(
@@ -178,6 +179,12 @@ void TG4RegionsMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
     }
     if (command == fSetFileNameCmd) {
       fRegionsManager2->SetFileName(newValue);
+      return;
+    }
+    if (command == fSetRangePrecisionCmd) {
+      TG4Globals::Warning("TG4RegionsMessenger", "SetNewValue",
+        "/mcRegions/setRangePrecision has no effect"
+        " when production cuts are set by energy.");
       return;
     }
   }
