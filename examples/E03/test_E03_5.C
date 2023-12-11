@@ -36,7 +36,7 @@ void test_E03_5(const TString& configMacro = "g4Config4.C", Bool_t oldGeometry =
   appl->GetPrimaryGenerator()->SetNofPrimaries(1);
   appl->SetControls(kTRUE);
   appl->SetPrintModulo(1);
-  appl->SetVerboseLevel(3);
+  // appl->SetVerboseLevel(3);
 
   // Set geometry defined via VMC
   appl->SetOldGeometry(oldGeometry);
