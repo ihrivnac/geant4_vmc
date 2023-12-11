@@ -27,7 +27,7 @@ void Config()
 
   // Activate usage of old regions manager
   // that sets production thresholds by ranges
-  // runConfiguration->SetSpecialCutsOld(true);   
+  // runConfiguration->SetSpecialCutsOld(true);
 
   // TGeant4
   TGeant4* geant4
