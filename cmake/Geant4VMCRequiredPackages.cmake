@@ -46,3 +46,11 @@ set(CMAKE_CXX_STANDARD ${Geant4_CXX_STANDARD})
 if (Geant4VMC_USE_VGM)
   find_package(VGM CONFIG REQUIRED)
 endif()
+
+#-- G4HepEm (optional) -------------------------------------------------------------
+if (Geant4VMC_USE_G4HepEm)
+  message(STATUS "Go to find G4HepEm")
+  find_package(G4HepEm CONFIG REQUIRED)
+  message(STATUS "Done G4HepEm_FOUND ${G4HepEm_FOUND}")
+  message(STATUS "Includes: ${G4HepEm_INCLUDE_DIR}")
+endif()

@@ -29,7 +29,6 @@
 #include "TG4VUserRegionConstruction.h"
 
 #include <G4UImessenger.hh>
-//#include <G4PhysListFactory.hh>
 
 #ifdef USE_VGM
 #include "TG4VGMMessenger.h"
@@ -56,6 +55,8 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
 {
   /// Standard constructor
 
+    G4cout << "TG4RunConfiguration::TG4RunConfiguration " << G4endl;
+
   if (userGeometry != "geomVMCtoGeant4" && userGeometry != "geomVMCtoRoot" &&
       userGeometry != "geomRoot" && userGeometry != "geomRootToGeant4" &&
       userGeometry != "geomVMC+RootToGeant4" && userGeometry != "geomGeant4") {
@@ -71,28 +72,30 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
   G4String token;
   do {
     token = TG4Globals::GetToken(itoken++, physicsList);
+    G4cout << "Token: " << token << G4endl;
 
     if (!TG4EmPhysicsList::IsAvailableSelection(token) &&
         !TG4HadronPhysicsList::IsAvailableSelection(token) &&
         !TG4ExtraPhysicsList::IsAvailableSelection(token) &&
         !(token == "local")) {
 
-      TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",
-        "Physics list selection " + physicsList + " not recognized." +
-          TG4Globals::Endl() + "Available options:" + TG4Globals::Endl() +
-          "EMonly, EMonly+Extra, Hadron_EM, Hadron_EM+Extra" +
-          TG4Globals::Endl() + "  where EMonly = " +
-          TString(TG4EmPhysicsList::AvailableSelections()) +
-          TG4Globals::Endl() + "        Hadron = " +
-          TString(TG4HadronPhysicsList::AvailableHadronSelections()) +
-          TG4Globals::Endl() + "        EM = " +
-          TString(TG4HadronPhysicsList::AvailableEMSelections()) +
-          TG4Globals::Endl() + "        Extra = " +
-          TString(TG4ExtraPhysicsList::AvailableSelections()) +
-          TG4Globals::Endl() +
-          "  The Extra selections are cumulative, while Hadron selections are "
-          "exlusive." +
-          TG4Globals::Endl());
+      G4cout << "Physics list selection " << physicsList << " not recognized."  << G4endl;
+      // TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",
+      //   "Physics list selection " + physicsList + " not recognized." +
+      //     TG4Globals::Endl() + "Available options:" + TG4Globals::Endl() +
+      //     "EMonly, EMonly+Extra, Hadron_EM, Hadron_EM+Extra" +
+      //     TG4Globals::Endl() + "  where EMonly = " +
+      //     TString(TG4EmPhysicsList::AvailableSelections()) +
+      //     TG4Globals::Endl() + "        Hadron = " +
+      //     TString(TG4HadronPhysicsList::AvailableHadronSelections()) +
+      //     TG4Globals::Endl() + "        EM = " +
+      //     TString(TG4HadronPhysicsList::AvailableEMSelections()) +
+      //     TG4Globals::Endl() + "        Extra = " +
+      //     TString(TG4ExtraPhysicsList::AvailableSelections()) +
+      //     TG4Globals::Endl() +
+      //     "  The Extra selections are cumulative, while Hadron selections are "
+      //     "exlusive." +
+      //     TG4Globals::Endl());
     }
   } while (token != "");
 

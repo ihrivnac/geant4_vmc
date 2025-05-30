@@ -66,6 +66,11 @@ if(VMC_WITH_Geant4)
     find_package(VGM REQUIRED)
   endif()
 
+  # G4HepEm
+  if (Geant4VMC_USE_G4HepEm)
+    find_package(G4HepEm REQUIRED)
+  endif()
+
   # If all required packages above were found we can update MCPackages_FOUND
   if(NOT VMC_WITH_Multi)
     set(MCPackages_FOUND TRUE)

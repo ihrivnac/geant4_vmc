@@ -132,6 +132,20 @@ void vgmlibs()
   }
 }
 
+void g4hepemlibs()
+{
+/// Function for loading VGM libraries.
+
+  // if ( isSet("USE_G4HEPEM") ) {
+    cout << "Loading G4HepEm libraries ... " << endl;
+    gSystem->Load("libg4HepEm");
+    gSystem->Load("libg4HepEmData");
+    gSystem->Load("libg4HepEmDataJsonIO");
+    gSystem->Load("libg4HepEmInit");
+    gSystem->Load("libg4HepEmRun");
+  // }
+}
+
 void g4libs()
 {
   // Load Geant4 libraries
@@ -140,6 +154,9 @@ void g4libs()
 
   // VGM librares
   vgmlibs();
+
+  // G4HepEm librares
+  g4hepemlibs();
 
   // VMC library (optional)
   if ( g4libUtilities::isLibrary("libVMCLibrary") ) {

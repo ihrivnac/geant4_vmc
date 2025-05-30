@@ -13,10 +13,9 @@
 /// \author I. Hrivnacova; IPN, Orsay
 
 #include "TG4HadronPhysicsList.h"
+#include "TG4PhysListFactory.h"
 
 #include <G4SystemOfUnits.hh>
-
-#include "G4PhysListFactory.hh"
 
 const G4double TG4HadronPhysicsList::fgkDefaultCutValue = 1.0 * mm;
 
@@ -29,13 +28,13 @@ G4String TG4HadronPhysicsList::AvailableHadronSelections()
 {
   /// Return list of all available hadron physics lists selections
 
-  G4PhysListFactory phyListFactory;
+  TG4PhysListFactory phyListFactory;
   const std::vector<G4String>& availablePhysLists =
     phyListFactory.AvailablePhysLists();
 
   G4String selections;
-  for (G4int i = 0; i < G4int(availablePhysLists.size()); ++i) {
-    selections += availablePhysLists[i];
+  for (const auto& option : phyListFactory.AvailablePhysLists()) {
+    selections += option;
     selections += " ";
   }
   // selections += "ShieldingLEND ";
@@ -48,13 +47,15 @@ G4String TG4HadronPhysicsList::AvailableEMSelections()
 {
   /// Return list of all available EM options selections
 
-  G4PhysListFactory phyListFactory;
-  const std::vector<G4String>& availablePhysListsEM =
-    phyListFactory.AvailablePhysListsEM();
+  TG4PhysListFactory phyListFactory;
 
   G4String selections;
-  for (G4int i = 0; i < G4int(availablePhysListsEM.size()); ++i) {
-    selections += availablePhysListsEM[i];
+  for (const auto& option : phyListFactory.AvailablePhysListsG4EM()) {
+    selections += option;
+    selections += " ";
+  }
+  for (const auto& option : phyListFactory.AvailablePhysListsHepEM()) {
+    selections += option;
     selections += " ";
   }
 
@@ -66,7 +67,9 @@ G4bool TG4HadronPhysicsList::IsAvailableSelection(const G4String& selection)
 {
   /// Return list of all available selections
 
-  G4PhysListFactory physListFactory;
+  G4cout << "TG4HadronPhysicsList::IsAvailableSelection" << G4endl;
+
+  TG4PhysListFactory physListFactory;
   return physListFactory.IsReferencePhysList(selection);
 }
 
@@ -106,7 +109,7 @@ void TG4HadronPhysicsList::Configure(const G4String& sel)
   /// Create the selected physics constructors
   /// and registeres them in the modular physics list.
 
-  G4PhysListFactory phyListFactory;
+  TG4PhysListFactory phyListFactory;
 
   fPhysicsList = phyListFactory.GetReferencePhysList(sel);
 }
