@@ -45,6 +45,8 @@ TG4HepEmPhysics::TG4HepEmPhysics(const G4String& name)
   param->SetMscRangeFactor(0.04);
 
   SetPhysicsType(bElectromagnetic);
+
+  G4cout << "TG4HepEmPhysics constructed" << G4endl;
 }
 
 

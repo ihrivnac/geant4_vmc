@@ -35,6 +35,7 @@
 #include <G4PrimaryParticle.hh>
 #include <G4PrimaryVertex.hh>
 #include <G4SystemOfUnits.hh>
+#include <G4Track.hh>
 #include <G4TrackVector.hh>
 #include <G4TrackingManager.hh>
 #include <G4UImanager.hh>
@@ -148,7 +149,10 @@ TG4TrackInformation* TG4TrackManager::SetTrackInformation(
     // create track information and set it to G4Track
     // if it does not yet exist
     trackInfo = new TG4TrackInformation();
-    fG4TrackingManager->SetUserTrackInformation(trackInfo);
+    // fG4TrackingManager->SetUserTrackInformation(trackInfo);
+         // fails when using non default tracking manager
+         // (eg. when using g4hepem)
+    const_cast<G4Track*>(track)->SetUserInformation(trackInfo);
     // the track information is deleted together with its
     // G4Track object
   }
@@ -472,7 +476,10 @@ TG4TrackInformation* TG4TrackManager::GetTrackInformation(
 
 #ifdef MCDEBUG
   G4VUserTrackInformation* trackInfo = track->GetUserInformation();
-  if (!trackInfo) return 0;
+  if (!trackInfo) {
+    G4cerr << "Cannot get track information" << G4endl;
+    return 0;
+  }
 
   // TG4TrackInformation* tg4TrackInfo
   //  = dynamic_cast<TG4TrackInformation*>(trackInfo);

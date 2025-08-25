@@ -34,7 +34,11 @@
 //_____________________________________________________________________________
 TG4PhysListFactory::TG4PhysListFactory(G4int verbose)
   : TG4Verbose("physListFactory", verbose)
-{}
+{
+  if (verbose > 0) {
+    fG4PhysListFactory.SetVerbose(verbose - 1);
+  }
+}
 
 
 //_____________________________________________________________________________
@@ -44,61 +48,21 @@ TG4PhysListFactory::~TG4PhysListFactory()
 //
 // private methods
 //
- 
-// //_____________________________________________________________________________
-// G4String TG4PhysListFactory::ExtractEmOption(
-//   const G4String& name, G4bool& isHepEmOption) const
-// {
-//   // last characters in the string
-//   G4String emOption = "";
-//   if (nameSize <= 4) return emOption;
- 
-//   emOption = name.substr(nameSize - 4, 4);
-//   isHepEmOption = false;
-
-//   // Check if it is  EM options defined in G4 or in fG4HepEmNames
-//   auto& g4EmOptions = fG4PhysListFactory.AvailablePhysListsEM();
-
-//   // check EM options
-//   for (const auto& value : g4EmOptions) { 
-//     if (emOption == value) {
-//       // the option is valid G4 option
-//       return emOption;
-//     }
-//   }
-
-//   // check G4HepEmOptions
-//   for (const auto& value : fG4HepEmOptions) { 
-//     if (emOption == value) {
-//       // the option is valid G4 option
-//       isHepEmOption = true;
-//       return emOption;
-//     }
-//   }
-
-//   // otherwise not valid option
-//   return "";
-// }
 
 //_____________________________________________________________________________
 G4String TG4PhysListFactory::GetHepEmOption(
   const G4String& name) const
 {
-  G4cout << "processing " << name << " " << name.size() << G4endl;
-
   // last characters in the string
   G4String emOption = "";
   if (name.size() < 4) return emOption;
  
   emOption = name.substr(name.size() - 4, 4);
-  G4cout << emOption  << G4endl;
 
   // check G4HepEmOptions
   for (const auto& value : fHepEmOptions) {
-    G4cout << value << " vs " << emOption << G4endl;
     if (emOption == value) {
       // the option is valid G4 option
-      G4cout << "Go to return " << emOption << G4endl;
       return emOption;
     }
   }
@@ -131,18 +95,14 @@ G4VModularPhysicsList* TG4PhysListFactory::GetReferencePhysList(
 {
   // Instantiate PhysList by name
 
-  G4cout << "TG4PhysListFactory::GetReferencePhysList" << G4endl;
-
 #ifndef USE_G4HEPEM
     // construct PL via G4PhysListFactory
     return fG4PhysListFactory.GetReferencePhysList(name);
 #else
   auto hepEmOption = GetHepEmOption(name);
-  G4cout << "hepEmOption: " << hepEmOption << G4endl;
 
   if (hepEmOption.empty()) {
     // construct PL via G4PhysListFactory
-    G4cout << "go to call fG4PhysListFactory " << G4endl;
     return fG4PhysListFactory.GetReferencePhysList(name);
   }
 
@@ -152,12 +112,8 @@ G4VModularPhysicsList* TG4PhysListFactory::GetReferencePhysList(
   size_t nsize = name.size();
   auto hadName = name.substr(0, nsize - 4);
 
-  G4cout << "hadName: " << hadName << G4endl;
-
   // get PL constructed by G4 factory with EM option 0
   auto physList = fG4PhysListFactory.GetReferencePhysList(hadName);
-  G4cout << "got PL: " << physList  << G4endl;
-
 
   // now replace EM option 0 with G4HepEm
   if (hepEmOption == "_HEP") {
@@ -171,6 +127,10 @@ G4VModularPhysicsList* TG4PhysListFactory::GetReferencePhysList(
     physList->RegisterPhysics(new TG4EmTrackingPhysics()); // add verbose to PL
   }
 
+  if (VerboseLevel() > 0) {
+    G4cout << "Geant4 Physics List simulation engine: " << name << G4endl << G4endl;
+  }
+
   return physList;
 #endif
 } 
@@ -182,14 +142,6 @@ G4VModularPhysicsList* TG4PhysListFactory::ReferencePhysList()
 
   auto name = GetPhysListNameFromEnv();
 
-  // auto hepEmOption = GetHepEmOption(name);
-
-  // if (hepEmOption.empty()) {
-  //   // construct PL via G4PhysListFactory
-  //   return fG4PhysListFactory.ReferencePhysList();
-  // }
-
-  // // construct PL with G4HepEmPhysics  
   return GetReferencePhysList(name);
 }
  
@@ -198,11 +150,7 @@ G4bool TG4PhysListFactory::IsReferencePhysList(const G4String& name) const
 {
   // Check if the name is in the list of PhysLists names
 
-  G4cout << "TG4PhysListFactory::IsReferencePhysList" << G4endl;
-
   auto hepEmOption = GetHepEmOption(name);
-
-  G4cout << "hepEmOption: " << hepEmOption << G4endl;
 
   if (hepEmOption.empty()) {
     return fG4PhysListFactory.IsReferencePhysList(name);

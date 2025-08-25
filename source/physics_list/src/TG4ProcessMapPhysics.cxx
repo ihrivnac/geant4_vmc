@@ -292,7 +292,7 @@ void TG4ProcessMapPhysics::ConstructProcess()
         UpdateHepEmProcessSubType((*processVector)[i]);
       }
 
-      G4cout << "processing GetCode " <<  (*processVector)[i]->GetProcessName()  << G4endl;
+      // G4cout << "processing GetCode " <<  (*processVector)[i]->GetProcessName()  << G4endl;
       auto newCodes = pMap->GetCodes((*processVector)[i]);
       if (newCodes.first == kPNoProcess) {
         G4String text = "Unknown process codes for ";
