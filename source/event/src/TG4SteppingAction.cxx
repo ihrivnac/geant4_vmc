@@ -384,7 +384,7 @@ void TG4SteppingAction::UserSteppingAction(const G4Step* step)
   }
 
   // call stepping action of derived class
-  SteppingAction(step);
+  VMCUserSteppingAction(step);
 
   // actions on the boundary
   if (step->GetPostStepPoint()->GetStepStatus() == fGeomBoundary) {

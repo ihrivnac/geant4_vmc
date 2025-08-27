@@ -336,13 +336,21 @@ void TG4PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
   fTrackManager->ResetPrimaryParticleIds();
   fTrackManager->ResetParticlesStatus();
 
+  // Special case:
+  // Generate primaries with attached G4 user generator
+  if (fUserPrimaryGenerator != nullptr) {
+    fUserPrimaryGenerator->GeneratePrimaries(event);
+    return;
+  }
+
+  // Special case:
   // Don't generate primaries if this is a complex interruptible event
-  if (!fMCManagerStack) {
-    // Generate primaries and fill the VMC stack
-    mcApplication->GeneratePrimaries();
-    TransformPrimaries(event);
-  }
-  else {
+  if (fMCManagerStack != nullptr) {
     TransformTracks(event);
+    return;
   }
+
+  // Generate primaries and fill the VMC stack
+  mcApplication->GeneratePrimaries();
+  TransformPrimaries(event);
 }

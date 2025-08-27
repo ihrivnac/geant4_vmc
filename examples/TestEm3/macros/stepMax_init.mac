@@ -1,0 +1,12 @@
+#
+# macro file for TestEm3.cc
+#
+/control/verbose 2
+/run/verbose 1
+#
+/testem/det/setNbOfLayers 2
+#
+/process/em/verbose 0
+#    
+##/run/initialize
+#

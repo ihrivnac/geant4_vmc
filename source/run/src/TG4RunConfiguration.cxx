@@ -74,7 +74,8 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
 
     if (!TG4EmPhysicsList::IsAvailableSelection(token) &&
         !TG4HadronPhysicsList::IsAvailableSelection(token) &&
-        !TG4ExtraPhysicsList::IsAvailableSelection(token)) {
+        !TG4ExtraPhysicsList::IsAvailableSelection(token) &&
+        !(token == "local")) {
 
       TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",
         "Physics list selection " + physicsList + " not recognized." +
@@ -143,7 +144,7 @@ G4VUserDetectorConstruction* TG4RunConfiguration::CreateDetectorConstruction()
 {
   /// Create and return Geant4 VMC default detector construction
 
-  if (fUserGeometry == "Root") return 0;
+  if (fUserGeometry == "Root") return nullptr;
 
   return new TG4DetConstruction();
 }
@@ -151,74 +152,15 @@ G4VUserDetectorConstruction* TG4RunConfiguration::CreateDetectorConstruction()
 //_____________________________________________________________________________
 G4VUserPhysicsList* TG4RunConfiguration::CreatePhysicsList()
 {
-  /// Create default Geant4 VMC physics list
+  /// This method can be overriden in user class to inject user physics list
 
-  TG4ComposedPhysicsList* builder = new TG4ComposedPhysicsList();
-
-  // Decompose physics list selection
-  G4int itoken = 0;
-  G4String emSelection;
-  G4String hadronSelection;
-  G4String extraSelection;
-  G4String token;
-  G4bool isValid = true;
-  while (
-    (token = TG4Globals::GetToken(itoken++, fPhysicsListSelection)) != "") {
-    // The first token must be either EM or Hadronic physics list
-    if (itoken == 1) {
-      if (TG4EmPhysicsList::IsAvailableSelection(token)) {
-        emSelection = token;
-      }
-      else if (TG4HadronPhysicsList::IsAvailableSelection(token)) {
-        hadronSelection = token;
-      }
-      else {
-        isValid = false;
-      }
-    }
-    // The next tokens are Extra physics selections
-    else {
-      if (TG4ExtraPhysicsList::IsAvailableSelection(token)) {
-        extraSelection += token;
-        extraSelection += " ";
-      }
-      else {
-        isValid = false;
-      }
-    }
+  if (fPhysicsListSelection == "local") {
+    TString text = "Physics list selection : \"local\".\n";
+    text += "CreatePhysicsList() must be overriden in a user class.";
+    TG4Globals::Warning("TG4RunConfiguration", "CreatePhysicsList", text);
   }
 
-  if (!isValid) {
-    TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",
-      "Physics list selection " + fPhysicsListSelection + " is not valid." +
-        TG4Globals::Endl() +
-        "The EMonly selections cannot be combined with Hadron selections." +
-        TG4Globals::Endl());
-  }
-
-  if (emSelection != "") {
-    G4cout << "Adding EMPhysicsList " << emSelection << G4endl;
-    builder->AddPhysicsList(new TG4EmPhysicsList(emSelection));
-  }
-
-  if (hadronSelection != "") {
-    G4cout << "Adding HadronPhysicsList " << hadronSelection << G4endl;
-    builder->AddPhysicsList(new TG4HadronPhysicsList(hadronSelection));
-  }
-
-  if (extraSelection != "") {
-    G4cout << "Adding ExtraPhysicsList " << extraSelection << G4endl;
-    builder->AddPhysicsList(
-      new TG4ExtraPhysicsList(extraSelection, fParameters));
-  }
-
-  // add option here
-  G4cout << "Adding SpecialPhysicsList " << fSpecialProcessSelection.Data()
-         << G4endl;
-  builder->AddPhysicsList(
-    new TG4SpecialPhysicsList(fSpecialProcessSelection.Data()));
-
-  return builder;
+  return nullptr;
 }
 
 //_____________________________________________________________________________
@@ -268,7 +210,7 @@ G4UserStackingAction* TG4RunConfiguration::CreateStackingAction()
 
   if (fSpecialStacking) return new TG4SpecialStackingAction();
 
-  return 0;
+  return nullptr;
 }
 
 //_____________________________________________________________________________
@@ -276,7 +218,7 @@ TG4VUserRegionConstruction* TG4RunConfiguration::CreateUserRegionConstruction()
 {
   /// No region construction is defined by default
 
-  return 0;
+  return nullptr;
 }
 
 //_____________________________________________________________________________
@@ -285,7 +227,7 @@ TG4RunConfiguration::CreateUserPostDetConstruction()
 {
   /// No user post detector construction is defined by default
 
-  return 0;
+  return nullptr;
 }
 
 //_____________________________________________________________________________
@@ -293,7 +235,88 @@ TG4VUserFastSimulation* TG4RunConfiguration::CreateUserFastSimulation()
 {
   /// No user fast simulation is defined by default
 
-  return 0;
+  return nullptr;
+}
+
+//_____________________________________________________________________________
+G4VUserPhysicsList* TG4RunConfiguration::CreateComposedPhysicsList()
+{
+  /// Create default Geant4 VMC physics list
+
+  TG4ComposedPhysicsList* builder = new TG4ComposedPhysicsList();
+
+  auto userPhysicsList = CreatePhysicsList();
+
+  // Decompose physics list selection
+  G4int itoken = 0;
+  G4String emSelection;
+  G4String hadronSelection;
+  G4String extraSelection;
+  G4String token;
+  G4bool isValid = true;
+  while (
+    (token = TG4Globals::GetToken(itoken++, fPhysicsListSelection)) != "") {
+    // The first token must be either EM or Hadronic physics list
+    if (itoken == 1) {
+      if (TG4EmPhysicsList::IsAvailableSelection(token)) {
+        emSelection = token;
+      }
+      else if (TG4HadronPhysicsList::IsAvailableSelection(token)) {
+        hadronSelection = token;
+      }
+      else if (! (token == "local" && userPhysicsList != nullptr) ) {
+        isValid = false;
+      }
+    }
+    // The next tokens are Extra physics selections
+    else {
+      if (TG4ExtraPhysicsList::IsAvailableSelection(token)) {
+        extraSelection += token;
+        extraSelection += " ";
+      }
+      else {
+        isValid = false;
+      }
+    }
+  }
+
+  if (!isValid) {
+    TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",
+      "Physics list selection " + fPhysicsListSelection + " is not valid." +
+        TG4Globals::Endl() +
+        "The EMonly selections cannot be combined with Hadron selections." +
+        TG4Globals::Endl());
+  }
+
+  if (userPhysicsList == nullptr) {
+    if (emSelection != "") {
+      G4cout << "Adding EMPhysicsList " << emSelection << G4endl;
+      builder->AddPhysicsList(new TG4EmPhysicsList(emSelection));
+    }
+
+    if (hadronSelection != "") {
+      G4cout << "Adding HadronPhysicsList " << hadronSelection << G4endl;
+      builder->AddPhysicsList(new TG4HadronPhysicsList(hadronSelection));
+    }
+
+    if (extraSelection != "") {
+      G4cout << "Adding ExtraPhysicsList " << extraSelection << G4endl;
+      builder->AddPhysicsList(
+        new TG4ExtraPhysicsList(extraSelection, fParameters));
+    }
+  }
+  else {
+    G4cout << "Adding User physics list " << G4endl;
+    builder->AddPhysicsList(userPhysicsList);
+  }
+
+  // add option here
+  G4cout << "Adding SpecialPhysicsList " << fSpecialProcessSelection.Data()
+         << G4endl;
+  builder->AddPhysicsList(
+    new TG4SpecialPhysicsList(fSpecialProcessSelection.Data()));
+
+  return builder;
 }
 
 //_____________________________________________________________________________

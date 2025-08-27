@@ -15,6 +15,7 @@
 #include "TG4ActionInitialization.h"
 #include "TG4EventAction.h"
 #include "TG4Globals.h"
+#include "TG4PrimaryGeneratorAction.h"
 #include "TG4RunAction.h"
 #include "TG4RunConfiguration.h"
 #include "TG4SpecialControlsV2.h"
@@ -174,7 +175,15 @@ void TG4ActionInitialization::Build() const
   // Create actions (without messengers) which were not yet created
   // and set them to G4RunManager
 
-  SetUserAction(fRunConfiguration->CreatePrimaryGenerator());
+  // Primary generator
+  auto primaryGenerator = fRunConfiguration->CreatePrimaryGenerator();
+  auto tg4PrimaryGenerator = dynamic_cast<TG4PrimaryGeneratorAction*>(primaryGenerator);
+  if (tg4PrimaryGenerator == nullptr) {
+    // User defines primary generator with Geant4 class
+    tg4PrimaryGenerator = new TG4PrimaryGeneratorAction();
+    tg4PrimaryGenerator->SetUserPrimaryGenerator(primaryGenerator);
+  } 
+  SetUserAction(tg4PrimaryGenerator);
 
   G4UserRunAction* runAction = fRunConfiguration->CreateRunAction();
   if (runAction) SetUserAction(runAction);

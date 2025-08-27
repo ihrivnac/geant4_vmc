@@ -23,6 +23,7 @@ class TG4UICmdWithAComplexString;
 
 class G4UIdirectory;
 class G4UIcmdWithoutParameter;
+class G4UIcmdWithAnInteger;
 class G4UIcmdWithAString;
 class G4UIcmdWithABool;
 
@@ -35,6 +36,7 @@ class G4UIcmdWithABool;
 /// - /mcControl/rootCmd [cmdString]
 /// - /mcControl/useRootRandom [true|false]
 /// - /mcControl/g3Defaults
+/// - /mcRun/beamOn nevent
 ///
 /// \author I. Hrivnacova; IPN, Orsay
 
@@ -57,13 +59,15 @@ class TG4RunMessenger : public G4UImessenger
 
   // data members
   TG4RunManager* fRunManager; ///< associated class
-  G4UIdirectory* fDirectory;  ///< command directory
+  G4UIdirectory* fControlDirectory;  ///< mcControl command directory
+  G4UIdirectory* fRunDirectory;      ///< mcRun command directory
 
   G4UIcmdWithoutParameter* fRootCmd;           ///< command: root
   G4UIcmdWithAString* fRootMacroCmd;           ///< command: rootMacro
   TG4UICmdWithAComplexString* fRootCommandCmd; ///< command: rootCmd
   G4UIcmdWithABool* fUseRootRandomCmd;         ///< command: useRootRandom
   G4UIcmdWithoutParameter* fG3DefaultsCmd;     ///< command: g3Defaults
+  G4UIcmdWithAnInteger* fBeamOnCmd;            ///< command: beamOn
 };
 
 #endif // TG4_RUN_MESSENGER_H

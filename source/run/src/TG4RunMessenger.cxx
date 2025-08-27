@@ -19,6 +19,7 @@
 
 #include <G4UIcmdWithABool.hh>
 #include <G4UIcmdWithAString.hh>
+#include <G4UIcmdWithAnInteger.hh>
 #include <G4UIcmdWithoutParameter.hh>
 #include <G4UIdirectory.hh>
 
@@ -26,17 +27,21 @@
 TG4RunMessenger::TG4RunMessenger(TG4RunManager* runManager)
   : G4UImessenger(),
     fRunManager(runManager),
-    fDirectory(0),
-    fRootCmd(0),
-    fRootMacroCmd(0),
-    fRootCommandCmd(0),
-    fUseRootRandomCmd(0),
-    fG3DefaultsCmd(0)
+    fControlDirectory(nullptr),
+    fRunDirectory(nullptr),
+    fRootCmd(nullptr),
+    fRootMacroCmd(nullptr),
+    fRootCommandCmd(nullptr),
+    fUseRootRandomCmd(nullptr),
+    fG3DefaultsCmd(nullptr)
 {
   /// Standard constructor
 
-  fDirectory = new G4UIdirectory("/mcControl/");
-  fDirectory->SetGuidance("TGeant4 control commands.");
+  fControlDirectory = new G4UIdirectory("/mcControl/");
+  fControlDirectory->SetGuidance("TGeant4 control commands.");
+
+  fRunDirectory = new G4UIdirectory("/mcRun/");
+  fRunDirectory->SetGuidance("TGeant4 run commands.");
 
   fRootCmd = new G4UIcmdWithoutParameter("/mcControl/root", this);
   fRootCmd->SetGuidance("Switch to Root interactive shell.");
@@ -67,6 +72,12 @@ TG4RunMessenger::TG4RunMessenger(TG4RunManager* runManager)
   fG3DefaultsCmd->SetGuidance("Set G3 default parameters (cut values,");
   fG3DefaultsCmd->SetGuidance("tracking media max step values, ...)");
   fG3DefaultsCmd->AvailableForStates(G4State_PreInit);
+
+  fBeamOnCmd = new G4UIcmdWithAnInteger("/mcRun/beamOn", this);
+  fBeamOnCmd->SetGuidance(
+    "Process run with the given number of events");
+  fBeamOnCmd->SetParameterName("nevent", false);
+  fBeamOnCmd->AvailableForStates(G4State_Idle);
 }
 
 //_____________________________________________________________________________
@@ -74,12 +85,14 @@ TG4RunMessenger::~TG4RunMessenger()
 {
   /// Destructor
 
-  delete fDirectory;
+  delete fControlDirectory;
+  delete fRunDirectory;
   delete fRootCmd;
   delete fRootMacroCmd;
   delete fRootCommandCmd;
   delete fUseRootRandomCmd;
   delete fG3DefaultsCmd;
+  delete fBeamOnCmd;
 }
 
 //
@@ -93,17 +106,31 @@ void TG4RunMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 
   if (command == fRootCmd) {
     fRunManager->StartRootUI();
+    return;
   }
-  else if (command == fRootMacroCmd) {
+
+  if (command == fRootMacroCmd) {
     fRunManager->ProcessRootMacro(newValue);
+    return;
   }
-  else if (command == fRootCommandCmd) {
+
+  if (command == fRootCommandCmd) {
     fRunManager->ProcessRootCommand(newValue);
+    return;
   }
-  else if (command == fUseRootRandomCmd) {
+
+  if (command == fUseRootRandomCmd) {
     fRunManager->UseRootRandom(fUseRootRandomCmd->GetNewBoolValue(newValue));
+    return;
   }
-  else if (command == fG3DefaultsCmd) {
+
+  if (command == fG3DefaultsCmd) {
     fRunManager->UseG3Defaults();
+    return;
+  }
+
+  if (command == fBeamOnCmd) {
+    fRunManager->ProcessRun(fBeamOnCmd->GetNewIntValue(newValue));
+    return;
   }
 }

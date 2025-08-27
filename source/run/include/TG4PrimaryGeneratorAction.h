@@ -50,6 +50,7 @@ class TG4PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction,
 
   // set methods
   void SetSkipUnknownParticles(G4bool value);
+  void SetUserPrimaryGenerator(G4VUserPrimaryGeneratorAction* value);
 
   // get methods
   G4bool GetSkipUnknownParticles() const;
@@ -84,6 +85,8 @@ class TG4PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction,
   G4bool fCached;
   /// Option to skip particles which do not exist in Geant4
   G4bool fSkipUnknownParticles;
+  /// User G4 primary generator
+  G4VUserPrimaryGeneratorAction* fUserPrimaryGenerator = nullptr;
 };
 
 // inline functions
@@ -92,6 +95,12 @@ class TG4PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction,
 inline void TG4PrimaryGeneratorAction::SetSkipUnknownParticles(G4bool value)
 {
   fSkipUnknownParticles = value;
+}
+
+/// Set User G4 primary generator
+inline void TG4PrimaryGeneratorAction::SetUserPrimaryGenerator(G4VUserPrimaryGeneratorAction* value)
+{
+  fUserPrimaryGenerator = value;
 }
 
 /// Return the option to skip particles which do not exist in Geant4

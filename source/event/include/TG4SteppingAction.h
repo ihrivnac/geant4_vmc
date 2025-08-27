@@ -61,7 +61,7 @@ class TG4SteppingAction : public G4UserSteppingAction
   // methods
   void ProcessTrackIfGeneralProcess(const G4Step* step);
   void LateInitialize();
-  virtual void SteppingAction(const G4Step* step);
+  virtual void VMCUserSteppingAction(const G4Step* step);
   // the following method should not
   // be overwritten in a derived class
   virtual void UserSteppingAction(const G4Step* step);
@@ -149,7 +149,7 @@ inline TG4SteppingAction* TG4SteppingAction::Instance()
   return fgInstance;
 }
 
-inline void TG4SteppingAction::SteppingAction(const G4Step* /*step*/)
+inline void TG4SteppingAction::VMCUserSteppingAction(const G4Step* /*step*/)
 {
   /// Dummy stepping action that can be overriden
   /// in a user defined class

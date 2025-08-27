@@ -98,6 +98,11 @@ class TG4RunConfiguration
   virtual TG4VUserPostDetConstruction* CreateUserPostDetConstruction();
   virtual TG4VUserFastSimulation* CreateUserFastSimulation();
 
+  // new method to distingush construction of the composed physics list
+  // including special physics constructors from a user physics list
+  // defining physics
+  G4VUserPhysicsList* CreateComposedPhysicsList();
+
   // set methods
   void SetMTApplication(Bool_t mtApplication);
   void SetParameter(const TString& name, Double_t value);

@@ -99,15 +99,17 @@ void TG4EventAction::BeginOfEventAction(const G4Event* event)
 
   // fill primary particles in VMC stack if stack is empty
   if (fMCStack->GetNtrack() == 0) {
-    if (VerboseLevel() > 0)
+    if (VerboseLevel() > 1)
       G4cout << "Filling VMC stack with primaries" << G4endl;
 
+    G4int primaryId = 1;
     for (G4int iv = 0; iv < event->GetNumberOfPrimaryVertex(); iv++) {
       G4PrimaryVertex* vertex = event->GetPrimaryVertex(iv);
 
       for (G4int ip = 0; ip < vertex->GetNumberOfParticle(); ip++) {
         G4PrimaryParticle* particle = vertex->GetPrimary(ip);
         fTrackManager->PrimaryToStack(vertex, particle);
+        fTrackManager->AddPrimaryParticleId(primaryId++);
       }
     }
   }

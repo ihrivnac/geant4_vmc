@@ -237,6 +237,7 @@ void TG4RunManager::ConfigureRunManager()
     rootNavMgr = TG4RootNavMgr::GetInstance(gGeoManager);
   }
 #endif
+  // End Root navigator
 
   // G4 run manager
 #ifdef G4MULTITHREADED
@@ -279,7 +280,7 @@ void TG4RunManager::ConfigureRunManager()
 
   // Other mandatory classes
   //
-  fRunManager->SetUserInitialization(fRunConfiguration->CreatePhysicsList());
+  fRunManager->SetUserInitialization(fRunConfiguration->CreateComposedPhysicsList());
   if (VerboseLevel() > 1) G4cout << "CreatePhysicsList done." << G4endl;
 
   // User fast simulation
