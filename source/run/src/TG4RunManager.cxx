@@ -39,11 +39,8 @@
 
 #include <G4Threading.hh>
 #include <G4Types.hh>
-#ifdef G4MULTITHREADED
-#include <G4MTRunManager.hh>
-#else
+#include <G4RunManagerFactory.hh>
 #include <G4RunManager.hh>
-#endif
 
 #include <G4ScoringManager.hh>
 #include <G4VScoringMesh.hh>
@@ -242,7 +239,7 @@ void TG4RunManager::ConfigureRunManager()
   // G4 run manager
 #ifdef G4MULTITHREADED
   if (fRunConfiguration->IsMTApplication()) {
-    fRunManager = new G4MTRunManager();
+    fRunManager = G4RunManagerFactory::CreateRunManager();
     fRunManager->SetUserInitialization(new TG4WorkerInitialization());
   }
   else {

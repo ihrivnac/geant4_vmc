@@ -78,6 +78,7 @@ TG4RunMessenger::TG4RunMessenger(TG4RunManager* runManager)
     "Process run with the given number of events");
   fBeamOnCmd->SetParameterName("nevent", false);
   fBeamOnCmd->AvailableForStates(G4State_Idle);
+  fBeamOnCmd->SetToBeBroadcasted(false);
 }
 
 //_____________________________________________________________________________

@@ -22,6 +22,7 @@ Introduction
   Gflash - extended/parameterisation/gflash
   Monopole - extended/exoticphysics/monopole
   TR  - extended/electromagnetic/TestEm10
+  TestEm3 - extended/electromagnetic/TestEm3
 
   In previous versions of Geant4 (up to 9.6), these examples
   were provided as novice (N01, N02, N03, N06) and extended
@@ -32,6 +33,9 @@ Introduction
 
   The instructions how to build and run examples are provided
   in examples/README_INSTALL.
+
+  New TestEm3 example demonstrates definition of VMC application
+  via Geant4 user classes and can be run only with Geant4.
 
 
 Geometry definition
@@ -46,16 +50,17 @@ Geometry definition
   users have a possibility to define geometry directly via TGeo,
   with more user-friendly interfaces.
 
-  All VMC examples define by default geometry via TGeo (since
+  All VMC examples (except TestEm3) define by default geometry via TGeo (since
   Geant4 VMC version 2.0).
   The equivalent geometry definition via TVirtualMC
   interface can be activated by setting the option "oldGeometry"
   to the MC application (via Ex0NMCApplication::SetOldGeometry(kTRUE)).
 
+
 Macros for running examples
 ===========================
 
-  In all examples there are provides macros:
+  In the examples there are provides macros:
 
   run_g3.C   - for running the example with Geant3
   run_g4.C   - for running the example with Geant4

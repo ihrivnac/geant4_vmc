@@ -1,0 +1,64 @@
+/*!
+
+/// \file "TestEm3/.README.txt"
+/// \brief The Example TestEm3 README page
+
+\page README_TestEm3 Example TestEm3
+
+\section testem3_s1 Description
+
+  Geant4 extended/electromagnetic/TestEm3 adapted to Virtual Monte Carlo
+  to demonstrate definition of example with Geant4 user classes.
+  This example is added for testing purposes and can be run only with
+  Geant4.
+
+  Geant4 classes:
+    - Few modifications were required in Geant4 classes;
+    they are commented with the leading comment:\n
+    <em> // Changes for VMC </em>
+
+
+  VMC Application classes:
+    - MCApplication
+    - MCStack
+
+\section testem3_s2 Macros
+
+  Only macros ror running example with G4 are provided:
+
+  <pre>
+  \link      TestEm3/load_g4.C load_g4.C      \endlink - macro to load the libraries to run the example with Geant4
+  \link       TestEm3/run_g4.C run_g4.C       \endlink - macro for running example
+  \link TestEm3/run_g4_macro.C run_g4_macro.C \endlink - macro for running example from Geant4 macros, separated in two parts
+                                                         - g4macro_int.mac - called before run initialization
+                                                         - g4macro.mac - called after run initialization
+
+  \link     TestEm3/g4Config.C g4Config.C     \endlink - configuration macro which can call the g4macro_int.mac
+                                                         if 'g4macro' name is provided as an argument
+  </pre>
+
+  All genat4 macros provided with TestEm3 adapted for running in the VMC frameworks
+  are available in the 'macros' directory.
+
+
+\section testem3_s3 To run example
+To run example 
+
+  Interactive mode:
+  <pre>
+  root[0] .x\link TestEm3/load_g4.C load_g4.C \endlink
+  root[1] .x\link  TestEm3/run_g4.C run_g4.C  \endlink
+  </pre>
+
+  Via example or test executable:
+  <pre>
+  $ g4vmc_exampleTestEm3
+  $ g4vmc_testTestEm3
+      [-g4pl, --g4-physics-list]:    Geant4 physics list selection
+      [-g4sp, --g4-special-physics]: Geant4 special physics selection
+      [-g4cm, --g4-config-macro]:    Geant4 configuration macro
+      [-g4m,  --g4-macro]:           Geant4 macro
+      [-v,    --verbose]:            verbose option (yes,no)
+  </pre>
+
+*/

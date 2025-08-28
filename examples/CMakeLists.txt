@@ -35,6 +35,7 @@ add_subdirectory(A01)
 add_subdirectory(Gflash)
 add_subdirectory(Monopole)
 add_subdirectory(TR)
+add_subdirectory(TestEm3)
 
 #----------------------------------------------------------------------------
 # Garfield example requires Garfield

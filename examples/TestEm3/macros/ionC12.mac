@@ -25,6 +25,7 @@
 /gun/ion 6 12
 /gun/energy 108 GeV
 #
+/analysis/setFileName ionC12
 /analysis/h1/set 1 200 350. 550. MeV
 #
 /run/printProgress 1000

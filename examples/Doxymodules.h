@@ -72,6 +72,15 @@
  */
 /** \} */
 
+/** \defgroup TestEm3 TestEm3
+ *  \brief The VMC example TestEm3
+ *
+ *  The Geant4 extended example electromagnetic/TestEm3 adapted to Virtual Monte Carlo.
+ *  See more on the \ref README_TestEm3 page.
+ *  \{
+ */
+/** \} */
+
 /** \defgroup Tests Tests
  *  \brief The VMC examples tests
  *
