@@ -58,6 +58,7 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
 
   if (userGeometry != "geomVMCtoGeant4" && userGeometry != "geomVMCtoRoot" &&
       userGeometry != "geomRoot" && userGeometry != "geomRootToGeant4" &&
+      userGeometry != "geomRootVecGeom" &&
       userGeometry != "geomVMC+RootToGeant4" && userGeometry != "geomGeant4") {
 
     TG4Globals::Exception("TG4RunConfiguration", "TG4RunConfiguration",

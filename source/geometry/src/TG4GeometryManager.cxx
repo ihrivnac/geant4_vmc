@@ -158,7 +158,7 @@ void TG4GeometryManager::CreateMCGeometry()
   }
 
   if (fUserGeometry == "VMCtoRoot" || fUserGeometry == "Root" ||
-      fUserGeometry == "VMC+RootToGeant4") {
+      fUserGeometry == "RootVecGeom" || fUserGeometry == "VMC+RootToGeant4") {
     if (!gGeoManager) new TGeoManager("TGeo", "Root geometry manager");
     fMCGeometry = new TGeoMCGeometry();
   }
@@ -557,6 +557,7 @@ void TG4GeometryManager::FillMediumMap()
   if (fUserGeometry == "VMCtoGeant4") FillMediumMapFromG3();
 
   if (fUserGeometry == "VMCtoRoot" || fUserGeometry == "Root" ||
+      fUserGeometry == "RootVecGeom" ||
       fUserGeometry == "RootToGeant4" || fUserGeometry == "VMC+RootToGeant4") {
     FillMediumMapFromRoot();
   }
@@ -722,7 +723,8 @@ void TG4GeometryManager::ConstructLocalFields()
   /// Construct Geant4 local magnetic field from Root geometry.
 
   // Supported only for geomRoot and geomRootToGeant4.
-  if ((fUserGeometry != "Root") && (fUserGeometry != "RootToGeant4")) return;
+  if ((fUserGeometry != "Root") && (fUserGeometry != "RootVecGeom") &&
+      (fUserGeometry != "RootToGeant4")) return;
 
   if (VerboseLevel() > 1)
     G4cout << "TG4GeometryManager::ConstructLocalFields()" << G4endl;

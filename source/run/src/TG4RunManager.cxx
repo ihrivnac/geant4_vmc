@@ -57,6 +57,10 @@
 
 #ifdef USE_G4ROOT
 #include <TG4RootNavMgr.h>
+#include "TVirtualGeoConverter.h"
+#include "TGeoCompositeShape.h"
+#include "TGeoPara.h"
+#include "TGeoScaledShape.h"
 #endif
 
 #include <TGeoManager.h>
@@ -202,7 +206,8 @@ void TG4RunManager::ConfigureRunManager()
   // Root navigator
 #ifdef USE_G4ROOT
   TG4RootNavMgr* rootNavMgr = 0;
-  if (userGeometry == "VMCtoRoot" || userGeometry == "Root") {
+  if (userGeometry == "VMCtoRoot" || userGeometry == "Root" ||
+      userGeometry == "RootVecGeom") {
     if (!TMCManager::Instance()) {
 
 #if ROOT_VERSION_CODE >= ROOT_VERSION(6, 22, 8)
@@ -226,6 +231,19 @@ void TG4RunManager::ConfigureRunManager()
         TGeoVolume* top = (TGeoVolume*)gGeoManager->GetListOfVolumes()->First();
         gGeoManager->SetTopVolume(top);
         gGeoManager->CloseGeometry();
+      }
+
+      // VecGeom
+      if (userGeometry == "RootVecGeom") {
+         auto converter = TVirtualGeoConverter::Instance(gGeoManager);
+         if (!converter) {
+            std::cerr << "VecGeom conversion has failed." << std::endl;;
+         } else {
+            converter->ExcludeShapeType(TGeoPara::Class());
+            converter->ExcludeShapeType(TGeoCompositeShape::Class());
+            converter->ExcludeShapeType(TGeoScaledShape::Class());
+            converter->ConvertGeometry();
+         }
       }
 
       // Now that we have the ideal geometry, call application misalignment code
@@ -254,7 +272,7 @@ void TG4RunManager::ConfigureRunManager()
     G4cout << "G4RunManager has been created." << G4endl;
   }
 
-  if (userGeometry != "VMCtoRoot" && userGeometry != "Root") {
+  if (userGeometry != "VMCtoRoot" && userGeometry != "Root" && userGeometry != "RootVecGeom") {
     fRunManager->SetUserInitialization(
       fRunConfiguration->CreateDetectorConstruction());
     if (VerboseLevel() > 1)
@@ -323,7 +341,7 @@ void TG4RunManager::CloneRootNavigatorForWorker()
   //
 #ifdef USE_G4ROOT
   TString userGeometry = fRunConfiguration->GetUserGeometry();
-  if (userGeometry != "VMCtoRoot" && userGeometry != "Root") return;
+  if (userGeometry != "VMCtoRoot" && userGeometry != "Root"  && userGeometry != "RootVecGeom") return;
 
   if (VerboseLevel() > 1)
     G4cout << "TG4RunManager::CloneRootNavigatorForWorker " << this << G4endl;
