@@ -20,9 +20,18 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and selected G4Root navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+    physicsList += "+optical";
+  }
+  else {
+    physicsList = "FTFP_BERT_EMV+optical";
+  }
+
   // Default Geant4 VMC run configuration
   TG4RunConfiguration* runConfiguration
-    = new TG4RunConfiguration("geomRoot","FTFP_BERT_EMV+optical", "stackPopper");
+    = new TG4RunConfiguration("geomRoot", physicsList, "stackPopper");
 
   // TGeant4
   TGeant4* geant4

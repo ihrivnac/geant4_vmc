@@ -20,15 +20,22 @@ void Config()
 /// For geometry defined with Geant4 in a user run configuration.
 
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Get local magnetic field option
   A01MCApplication* appl
     = (A01MCApplication*)TVirtualMCApplication::Instance();
   Bool_t useLocalMagField = appl->GetUseLocalMagField();
 
-
   // Run configuration with user geometry construction via Geant4
   A01RunConfiguration* runConfiguration
-    = new A01RunConfiguration("FTFP_BERT");
+    = new A01RunConfiguration(physicsList);
   runConfiguration->SetUseLocalMagField(useLocalMagField);
 
   // Run configuration with user geometry construction via Geant4

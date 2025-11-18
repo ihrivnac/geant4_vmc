@@ -21,13 +21,17 @@ void Config()
 /// For geometry defined with Root and selected Geant4 native navigation
 /// calling g4config2.in with activated local magnetic field
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration
   TG4RunConfiguration* runConfiguration
-      = new TG4RunConfiguration("geomRootToGeant4", "FTFP_BERT");
-
-  // Run configuration with special cuts activated
-  // TG4RunConfiguration* runConfiguration
-  //   = new TG4RunConfiguration("geomRootToGeant4",  "FTFP_BERT", "specialCuts");
+      = new TG4RunConfiguration("geomRootToGeant4", physicsList);
 
   // TGeant4
   TGeant4* geant4

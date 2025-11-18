@@ -21,8 +21,16 @@ void Config(const TString& macroName)
 
   cout << "processing Config() starts" << endl;
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "local";
+  }
+
   // Run configuration
-  RunConfiguration* runConfiguration = new RunConfiguration("local");
+  RunConfiguration* runConfiguration = new RunConfiguration(physicsList);
 
   // Run configuration with Geant4 physics list and special cuts activated
   // RunConfiguration* runConfiguration

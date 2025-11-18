@@ -19,9 +19,17 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and selected G4Root navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration
   TG4RunConfiguration* runConfiguration
-    = new TG4RunConfiguration("geomRoot", "FTFP_BERT", "gflash", false, false);
+    = new TG4RunConfiguration("geomRoot", physicsList, "gflash", false, false);
 
   // Run configuration with special cuts activated
   // TG4RunConfiguration* runConfiguration

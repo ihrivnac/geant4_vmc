@@ -27,10 +27,6 @@ void Config()
   TG4RunConfiguration* runConfiguration
       = new TG4RunConfiguration("geomRootToGeant4", physicsList);
 
-  // Run configuration with special cuts activated
-  // TG4RunConfiguration* runConfiguration
-  //   = new TG4RunConfiguration("geomRootToGeant4", "FTFP_BERT", "specialCuts");
-
   // TGeant4
   TGeant4* geant4
     = new TGeant4("TGeant4", "The Geant4 Monte Carlo", runConfiguration);

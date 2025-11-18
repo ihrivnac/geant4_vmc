@@ -19,14 +19,17 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Geant4 in a user run configuration.
 
-  // Run configuration with user geometry construction via Geant4
-  Ex03RunConfiguration1* runConfiguration
-    = new Ex03RunConfiguration1("FTFP_BERT");
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
 
   // Run configuration with user geometry construction via Geant4
-  // + special cuts activated
-  // Ex03RunConfiguration1* runConfiguration
-  //   = new Ex03RunConfiguration1("FTFP_BERT", "specialCuts");
+  Ex03RunConfiguration1* runConfiguration
+    = new Ex03RunConfiguration1(physicsList);
 
   // TGeant4
   TGeant4* geant4

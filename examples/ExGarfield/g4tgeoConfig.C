@@ -19,9 +19,17 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and selected G4Root navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration
   VMC::ExGarfield::RunConfiguration* runConfiguration
-    = new VMC::ExGarfield::RunConfiguration("geomRoot", "FTFP_BERT");
+    = new VMC::ExGarfield::RunConfiguration("geomRoot", physicsList);
 
   // Run configuration with special cuts activated
   // VMC::ExGarfield::RunConfiguration* runConfiguration

@@ -20,14 +20,17 @@ void Config()
 /// called during MC application initialization.
 /// For geometry with a user defined magnetic field equation of motion and integrator.
 
-  // Run configuration with user geometry construction via Geant4
-  Ex03RunConfiguration4* runConfiguration
-    = new Ex03RunConfiguration4("geomRootToGeant4", "FTFP_BERT");
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
 
   // Run configuration with user geometry construction via Geant4
-  // + special cuts activated
-  // Ex03RunConfiguration4* runConfiguration
-  //   = new Ex03RunConfiguration4("geomRootToGeant4", "FTFP_BERT", "specialCuts");
+  Ex03RunConfiguration4* runConfiguration
+    = new Ex03RunConfiguration4("geomRootToGeant4", physicsList);
 
   // TGeant4
   TGeant4* geant4

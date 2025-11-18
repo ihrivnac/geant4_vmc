@@ -19,9 +19,17 @@ void Config()
 /// called during MC application initialization.
 /// It demonstrates activation of user defined regions.
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration with user defined regions
   Ex03RunConfiguration3* runConfiguration
-    = new Ex03RunConfiguration3("geomRootToGeant4", "FTFP_BERT");
+    = new Ex03RunConfiguration3("geomRootToGeant4", physicsList);
 
   // TGeant4
   TGeant4* geant4

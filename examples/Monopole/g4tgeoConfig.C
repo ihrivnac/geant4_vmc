@@ -19,11 +19,20 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and selected G4Root navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+    physicsList += "+monopole";
+  }
+  else {
+    physicsList = "FTFP_BERT+monopole";
+  }
+
   // RunConfiguration for Geant4
   Bool_t specialStacking = false;
   Bool_t mtApplication = false;
   TG4RunConfiguration* runConfiguration
-    = new TG4RunConfiguration("geomRoot", "FTFP_BERT+monopole", "stepLimiter",
+    = new TG4RunConfiguration("geomRoot", physicsList, "stepLimiter",
                               specialStacking, mtApplication);
 
   // ALICE physics configuration

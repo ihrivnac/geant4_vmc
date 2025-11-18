@@ -19,13 +19,17 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and selected Geant4 native navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "emStandard";
+  }
+
   // Run configuration
   TG4RunConfiguration* runConfiguration
-      = new TG4RunConfiguration("geomRootToGeant4", "emStandard", "", false, false);
-
-  // Run configuration with special cuts activated
-  // TG4RunConfiguration* runConfiguration
-  //   = new TG4RunConfiguration("geomRootToGeant4", "emStandard", "specialCuts");
+      = new TG4RunConfiguration("geomRootToGeant4", physicsList, "", false, false);
 
   // TGeant4
   TGeant4* geant4

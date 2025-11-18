@@ -20,14 +20,18 @@ void Config()
 /// For geometry defined with Root and selected G4Root navigation
 /// and forced Geant4 sequential mode.
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration with special cuts and special controls activated
   TG4RunConfiguration* runConfiguration
-     = new TG4RunConfiguration("geomRoot", "FTFP_BERT",
+     = new TG4RunConfiguration("geomRoot", physicsList,
                                "specialCuts+specialControls", false, false);
-
-  // Activate usage of old regions manager
-  // that sets production thresholds by ranges
-  // runConfiguration->SetSpecialCutsOld(true);
 
   // TGeant4
   TGeant4* geant4

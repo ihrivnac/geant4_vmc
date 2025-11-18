@@ -24,9 +24,17 @@ void Config()
   // Load library with a user run configuration
   gSystem->Load("libgeant4e03");
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration with user defined regions
   Ex03RunConfiguration3* runConfiguration
-    = new Ex03RunConfiguration3("geomRoot");
+    = new Ex03RunConfiguration3("geomRoot", physicsList);
 
   // TGeant4
   TGeant4* geant4

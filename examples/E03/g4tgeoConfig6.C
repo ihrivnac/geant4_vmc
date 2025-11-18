@@ -20,9 +20,19 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with Root and G4Root navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+    // add biasing
+    physicsList += "+biasing";
+  }
+  else {
+    physicsList = "FTFP_BERT_EMV+biasing";
+  }
+
   // Run configuration with added biasing physics
   TG4RunConfiguration* runConfiguration
-     = new TG4RunConfiguration("geomRoot", "FTFP_BERT+biasing");
+     = new TG4RunConfiguration("geomRoot", physicsList);
 
   // TGeant4
   TGeant4* geant4

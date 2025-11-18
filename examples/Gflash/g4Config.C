@@ -18,9 +18,17 @@ void Config()
 /// The configuration function for Geant4 VMC for Gflash example
 /// called during MC application initialization.
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration
   TG4RunConfiguration* runConfiguration
-      = new TG4RunConfiguration("geomRootToGeant4", "FTFP_BERT", "gflash", false, false);
+      = new TG4RunConfiguration("geomRootToGeant4", physicsList, "gflash", false, false);
 
   // Run configuration with special cuts activated
   // Gflash::RunConfiguration* runConfiguration

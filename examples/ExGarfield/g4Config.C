@@ -21,9 +21,17 @@ void Config()
 
   // cout << "Constructing ExGarfield::RunConfiguration " << endl;
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+  }
+  else {
+    physicsList = "FTFP_BERT";
+  }
+
   // Run configuration
   VMC::ExGarfield::RunConfiguration* runConfiguration
-      = new VMC::ExGarfield::RunConfiguration("geomRootToGeant4", "FTFP_BERT");
+      = new VMC::ExGarfield::RunConfiguration("geomRootToGeant4", physicsList);
 
   cout << "Constructing TG4RunConfiguration " << endl;
 

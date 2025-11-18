@@ -18,9 +18,18 @@ void Config()
 /// called during MC application initialization.
 /// For geometry defined with VMC and selected Geant4 native navigation
 
+  TString physicsList = gSystem->Getenv("G4PHYSICS_LIST");
+  if (physicsList.Length() > 0) {
+    cout << "Physics list from environment: " << physicsList.Data() << endl;
+    physicsList += "+optical";
+  }
+  else {
+    physicsList = "emStandard+optical";
+  }
+
   // Default Geant4 VMC run configuration
   TG4RunConfiguration* runConfiguration
-    = new TG4RunConfiguration("geomVMCtoRoot", "emStandard+optical");
+    = new TG4RunConfiguration("geomVMCtoRoot", physicsList);
 
   // TGeant4
   TGeant4* geant4
