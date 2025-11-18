@@ -74,6 +74,12 @@ if(VMC_WITH_Geant4)
     set(MCPackages_LIBRARIES ${MCPackages_LIBRARIES} ${VGM_LIBRARIES})
   endif(VGM_FOUND)
 
+  if(G4HepEm_FOUND)
+    message(STATUS "Adding definitions for G4HepEm")
+    include_directories(${G4HepEm_INCLUDE_DIR})
+    add_definitions(-DUSE_G4HEPEM)
+  endif(VGM_FOUND)
+
   set(MCPackages_LIBRARIES ${MCPackages_LIBRARIES} ${Geant4_LIBRARIES})
   set(MC_PREFIX "g4")
 endif(VMC_WITH_Geant4)
