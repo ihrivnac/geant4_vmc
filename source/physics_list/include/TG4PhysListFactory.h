@@ -59,9 +59,8 @@ class TG4PhysListFactory : public TG4Verbose
 
     G4PhysListFactory fG4PhysListFactory;
 #ifdef USE_G4HEPEM
-    std::vector<G4String> fHepEmOptions { "_HEP", "_HET", "_EMT" };
-       // _HEP for G4HepEm
-       // _HET for G4HepEmTracking
+    std::vector<G4String> fHepEmOptions { "_HEP", "_EMT" };
+       // _HEP for G4HepEmTracking
        // _EMT for G4EmTracking
 #else
      std::vector<G4String> fHepEmOptions;

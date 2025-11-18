@@ -14,7 +14,6 @@
 
 #include "TG4PhysListFactory.h"
 #ifdef USE_G4HEPEM
-#include "TG4HepEmPhysics.h"
 #include "TG4HepEmTrackingPhysics.h"
 #include "TG4EmTrackingPhysics.h"
 #endif
@@ -117,14 +116,16 @@ G4VModularPhysicsList* TG4PhysListFactory::GetReferencePhysList(
 
   // now replace EM option 0 with G4HepEm
   if (hepEmOption == "_HEP") {
-    physList->ReplacePhysics(new TG4HepEmPhysics()); // add verbose to PL
-  }
-  if (hepEmOption == "_HET") {
-    physList->ReplacePhysics(new TG4HepEmTrackingPhysics()); // add verbose to PL
+    G4cout << "Going to replace physics with TG4HepEmTrackingPhysics" << G4endl;
+    auto hepEmTrackingPhysics = new TG4HepEmTrackingPhysics();
+    hepEmTrackingPhysics->SetVerboseLevel(1);
+    physList->ReplacePhysics(hepEmTrackingPhysics);
   }
   else if (hepEmOption == "_EMT") {
-    // only add 
-    physList->RegisterPhysics(new TG4EmTrackingPhysics()); // add verbose to PL
+    auto emTrackingPhysics = new TG4HepEmTrackingPhysics();
+    emTrackingPhysics->SetVerboseLevel(1);
+    G4cout << "Going to add TG4EmTrackingPhysics" << G4endl;
+    physList->RegisterPhysics(emTrackingPhysics);
   }
 
   if (VerboseLevel() > 0) {

@@ -32,16 +32,6 @@ enum TG4HadronicProcessType
 };
 
 /// \ingroup physics_list
-/// \brief Extension of G4HepEm process type
-///
-/// \author I. Hrivnacova; IJCLab, Orsay
-
-enum TG4HepEmProcessType
-{
-  fHepEm = 171
-};
-
-/// \ingroup physics_list
 /// \brief Definition of Geant4 biasing process type
 ///
 /// \author I. Hrivnacova; IJCLab, Orsay
@@ -75,7 +65,6 @@ class TG4ProcessMapPhysics : public TG4VPhysicsConstructor
  private:
   void FillMap();
   void UpdateHadronicProcessSubType(G4VProcess* process);
-  void UpdateHepEmProcessSubType(G4VProcess* process);
   G4bool UpdateOrSkipBiasingProcess(G4VProcess* process);
 };
 

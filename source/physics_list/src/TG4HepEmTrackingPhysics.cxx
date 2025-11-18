@@ -12,6 +12,8 @@
 ///
 /// \author I. Hrivnacova; IPN, Orsay
 
+#ifdef USE_G4HEPEM
+
 #include "TG4HepEmTrackingPhysics.h"
 
 #include "G4HepEmTrackingManager.hh"
@@ -58,6 +60,7 @@ void TG4HepEmTrackingPhysics::ConstructProcess()
 
   // G4HepEm
   // Register custom tracking manager for e-/e+ and gammas.
+  G4cout << "Constructing G4HepEmTrackingManager with verbose level " << verboseLevel << G4endl;
   auto* trackingManager = new G4HepEmTrackingManager(verboseLevel);
   // Configuration of G4HepEm
   // Several paramaters can be configured per detector region. These are:
@@ -120,3 +123,5 @@ void TG4HepEmTrackingPhysics::ConstructProcess()
 
   G4cout << "### G4HepEmTrackingPhysics constructed." << G4endl;
 }
+
+#endif

@@ -1,5 +1,6 @@
 #ifndef TG4_HEP_EM_TRACKING_PHYSICS_H
 #define TG4_HEP_EM_TRACKING_PHYSICS_H 1
+#ifdef USE_G4HEPEM
 
 //------------------------------------------------
 // The Geant4 Virtual Monte Carlo package
@@ -38,4 +39,5 @@ class TG4HepEmTrackingPhysics : public G4VPhysicsConstructor
     void ConstructProcess() override;
 };
 
+#endif
 #endif // TG4_HEP_EM_TRACKING_PHYSICS_H

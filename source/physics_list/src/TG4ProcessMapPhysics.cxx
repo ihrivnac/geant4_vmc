@@ -123,9 +123,6 @@ void TG4ProcessMapPhysics::FillMap()
   pMap->Add(fDarkBremsstrahlung, kPNull, kNoG3Controls);           // G4 value: 40
   pMap->Add(fMuonPairProdByCharged, kPNull, kNoG3Controls);        // G4 value: 49
 
-  // TG4HepEmProcessType: 60
-  pMap->Add(fHepEm, kPNull, kNoG3Controls);                        // G4 value: 60
-
   // G4HadronicProcessType: 111 - 161; 210; 310
   pMap->Add(fHadronElastic, kPHElastic, kHADR);                    // G4 value: 111
   pMap->Add(fNeutronGeneral, kPNull, kNoG3Controls);               // G4 value: 116
@@ -213,19 +210,6 @@ void TG4ProcessMapPhysics::UpdateHadronicProcessSubType(G4VProcess* process)
 }
 
 //_____________________________________________________________________________
-void TG4ProcessMapPhysics::UpdateHepEmProcessSubType(G4VProcess* process)
-{
-  /// Update process sub type code for HepEm process
-  /// which is not set in G4HepEm
-
-  auto processName = process->GetProcessName();
-
-  if ( processName != "hepEm" ) return;
-
-  process->SetProcessSubType(fHepEm);
-}
-
-//_____________________________________________________________________________
 G4bool TG4ProcessMapPhysics::UpdateOrSkipBiasingProcess(G4VProcess* process)
 {
   /// Skip a biasing wrapper process, if it has not defined sub type
@@ -286,10 +270,6 @@ void TG4ProcessMapPhysics::ConstructProcess()
 
       if ((*processVector)[i]->GetProcessSubType() == fHadronInelastic) {
         UpdateHadronicProcessSubType((*processVector)[i]);
-      }
-
-      if ( (*processVector)[i]->GetProcessName() == "hepEm" ) {
-        UpdateHepEmProcessSubType((*processVector)[i]);
       }
 
       // G4cout << "processing GetCode " <<  (*processVector)[i]->GetProcessName()  << G4endl;

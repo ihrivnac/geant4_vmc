@@ -174,6 +174,8 @@ add_library(${library_name} ${sources} ${root_dict} ${headers})
 target_link_libraries(${library_name} ${G4Root_LIBRARIES}
   ${G4HepEm_LIBRARIES}
   ${VGM_LIBRARIES} ${VMC_LIBRARIES} ${Geant4_LIBRARIES} ${ROOT_DEPS})
+# Mac OS
+set_property(TARGET ${library_name} APPEND PROPERTY INSTALL_RPATH "@loader_path")
 target_include_directories(${library_name} INTERFACE $<INSTALL_INTERFACE:include/${library_name}>)
 
 #----Installation---------------------------------------------------------------

@@ -12,6 +12,8 @@
 ///
 /// \author I. Hrivnacova; IPN, Orsay
 
+#ifdef USE_G4HEPEM
+
 #include "TG4EmTrackingPhysics.h"
 
 #include "G4EmTrackingManager.hh"
@@ -46,3 +48,5 @@ void TG4EmTrackingPhysics::ConstructProcess()
   G4Positron::Definition()->SetTrackingManager(trackingManager);
   G4Gamma::Definition()->SetTrackingManager(trackingManager);
 }
+
+#endif
