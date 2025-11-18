@@ -51,19 +51,10 @@ Ex03RunConfiguration2::~Ex03RunConfiguration2()
 G4VUserPhysicsList* Ex03RunConfiguration2::CreatePhysicsList()
 {
   /// Override the default physics list with user defined physics list;
-  /// LHEP_BERT physics list should be replaced with user own physics list
-
-  TG4ComposedPhysicsList* builder = new TG4ComposedPhysicsList();
+  /// QGSP_BERT physics list can be replaced with user own physics list
 
   // User physics list
-  G4cout << "Adding user physics list " << G4endl;
-  builder->AddPhysicsList(new QGSP_BERT());
-
-  G4cout << "Adding SpecialPhysicsList " << G4endl;
-  builder->AddPhysicsList(
-    new TG4SpecialPhysicsList(fSpecialProcessSelection.Data()));
-
-  return builder;
+  return new QGSP_BERT();
 }
 
 /*

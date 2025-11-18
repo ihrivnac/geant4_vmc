@@ -17,6 +17,7 @@ void test_E03_5(const TString& configMacro = "g4Config4.C", Bool_t oldGeometry =
 {
 /// Macro function for testing example E03
 /// \param configMacro  configuration macro loaded in initialization
+///                     (g4Config4.C or g4tgeoConfig4.C)
 /// \param oldGeometry  if true - geometry is defined via VMC, otherwise
 ///                     via TGeo
 ///
