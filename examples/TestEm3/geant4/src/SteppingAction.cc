@@ -76,12 +76,14 @@ void SteppingAction::VMCUserSteppingAction(const G4Step* aStep)
 
   // collect energy deposit taking into account track weight
   G4double edep = aStep->GetTotalEnergyDeposit() * aStep->GetTrack()->GetWeight();
+  run->AddEDepInLayer(edep, layerNum);
 
   // collect step length of charged particles
   G4double stepl = 0.;
   if (particle->GetPDGCharge() != 0.) {
     stepl = aStep->GetStepLength();
     run->AddChargedStep();
+    run->AddCHStepInLayer(stepl, layerNum);
   }
   else {
     run->AddNeutralStep();

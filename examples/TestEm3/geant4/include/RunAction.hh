@@ -69,7 +69,10 @@ class RunAction : public G4UserRunAction
     void SetEdepAndRMS(G4int, G4double, G4double, G4double);
     void SetApplyLimit(G4bool val);
 
+    void SetPerformanceFlag(G4bool val) { fIsPerformance = val; }
+
   private:
+    G4bool fIsPerformance;
     DetectorConstruction* fDetector = nullptr;
     PrimaryGeneratorAction* fPrimary = nullptr;
     Run* fRun = nullptr;

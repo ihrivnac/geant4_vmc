@@ -44,12 +44,15 @@ class RunConfiguration : public TG4RunConfiguration
   virtual TG4TrackingAction* CreateTrackingAction();
   virtual TG4SteppingAction* CreateSteppingAction();
 
+  void SetPerformanceFlag(Bool_t val) { fIsPerformance = val; }
+
  private:
    G4VUserDetectorConstruction* fDetector = nullptr;
    G4VUserPrimaryGeneratorAction* fGenerator = nullptr;
    G4UserEventAction* fEventAction = nullptr;
    G4UserRunAction* fRunAction = nullptr;
    Bool_t fIsLocalPhysicsList = false;
+   Bool_t fIsPerformance = false;
 };
 
 #endif // RUN_CONFIGURATION1_H

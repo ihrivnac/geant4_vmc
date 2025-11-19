@@ -103,6 +103,14 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* Det) : fDetector(Det)
   //
   fAbsorCmd->AvailableForStates(G4State_PreInit);
   fAbsorCmd->SetToBeBroadcasted(false);
+
+  fWDTRegionCutCmd = new G4UIcmdWithADoubleAndUnit("/testem/det/setWDCKRegionCut",this);
+  fWDTRegionCutCmd->SetGuidance("Set the cut value used in the Woodcock tracking region (which is the calorimeter)");
+  fWDTRegionCutCmd->SetParameterName("Size",false);
+  fWDTRegionCutCmd->SetRange("Size>0.");
+  fWDTRegionCutCmd->SetUnitCategory("Length");
+  fWDTRegionCutCmd->AvailableForStates(G4State_PreInit);
+  fWDTRegionCutCmd->SetToBeBroadcasted(false);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -115,6 +123,7 @@ DetectorMessenger::~DetectorMessenger()
   delete fAbsorCmd;
   delete fDetDir;
   delete fTestemDir;
+  delete fWDTRegionCutCmd;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -143,6 +152,10 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
     tick *= G4UIcommand::ValueOf(unt);
     fDetector->SetAbsorMaterial(num, material);
     fDetector->SetAbsorThickness(num, tick);
+  }
+
+  if( command == fWDTRegionCutCmd ) {
+    fDetector->SetWDTRegionCutValue(fWDTRegionCutCmd->GetNewDoubleValue(newValue));
   }
 }
 

@@ -63,6 +63,7 @@ class DetectorMessenger : public G4UImessenger
     G4UIcmdWithAnInteger* fNbLayersCmd = nullptr;
     G4UIcmdWithAnInteger* fNbAbsorCmd = nullptr;
     G4UIcommand* fAbsorCmd = nullptr;
+    G4UIcmdWithADoubleAndUnit* fWDTRegionCutCmd = nullptr;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -44,6 +44,7 @@ StepMax::StepMax(const G4String& processName) : G4VDiscreteProcess(processName)
   // Added setting the Process Sub Type
   SetProcessSubType(static_cast<int>(STEP_LIMITER));
 
+  for (G4int k=0; k<kMaxAbsor; k++) fStepMax[k] = DBL_MAX;
   fMess = new StepMaxMessenger(this);
 }
 
@@ -70,32 +71,6 @@ void StepMax::SetMaxStep(G4double step)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4double StepMax::PostStepGetPhysicalInteractionLength(const G4Track& track, G4double,
-                                                       G4ForceCondition* condition)
-{
-  // condition is set to "Not Forced"
-  *condition = NotForced;
-
-  if (track.GetVolume()->GetName() == "World")
-    return DBL_MAX;
-  else
-    return fMaxChargedStep;
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4VParticleChange* StepMax::PostStepDoIt(const G4Track& aTrack, const G4Step&)
-{
-  // do nothing
-  aParticleChange.Initialize(aTrack);
-  return &aParticleChange;
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4double StepMax::GetMeanFreePath(const G4Track&, G4double, G4ForceCondition*)
-{
-  return fMaxChargedStep;
-}
+void StepMax::SetMaxStep(G4int k, G4double step) {fStepMax[k] = step;}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

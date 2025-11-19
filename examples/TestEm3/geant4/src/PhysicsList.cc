@@ -33,6 +33,10 @@
 #include "PhysicsList.hh"
 
 #include "PhysListEmStandard.hh"
+#ifdef USE_G4HEPEM
+#include "PhysListG4EmTracking.hh"
+#include "PhysListHepEmTracking.hh"
+#endif
 #include "PhysicsListMessenger.hh"
 #include "StepMax.hh"
 
@@ -135,6 +139,7 @@ void PhysicsList::ConstructProcess()
   if (fHadPhysicsList) {
     fHadPhysicsList->ConstructProcess();
   }
+  //Not applied in G4HepEm test
   AddStepMax();
 }
 
@@ -247,6 +252,18 @@ void PhysicsList::AddPhysicsList(const G4String& name)
     delete fEmPhysicsList;
     fEmPhysicsList = new G4EmDNAPhysics_option6();
   }
+#ifdef USE_G4HEPEM
+  else if (name == "G4EmTracking") {
+    fEmName = name;
+    delete fEmPhysicsList;
+    fEmPhysicsList = new PhysListG4EmTracking();;
+  }
+  else if (name == "HepEmTracking") {
+    fEmName = name;
+    delete fEmPhysicsList;
+    fEmPhysicsList = new PhysListHepEmTracking();;
+  }
+#endif
   else if (name == "had_elastic" && !fHadPhysicsList) {
     fHadPhysicsList = new G4HadronElasticPhysics();
   }

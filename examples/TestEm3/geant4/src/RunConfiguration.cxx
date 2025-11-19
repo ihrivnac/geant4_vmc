@@ -82,7 +82,9 @@ G4VUserPrimaryGeneratorAction* RunConfiguration::CreatePrimaryGenerator()
 //_____________________________________________________________________________
 G4UserRunAction*  RunConfiguration::CreateRunAction()
 {
-  fRunAction = new RunAction(fDetector, fGenerator);
+  auto runAction = new RunAction(fDetector, fGenerator);
+  runAction->SetPerformanceFlag(fIsPerformance);
+  fRunAction = runAction;
   return fRunAction;
 }
 

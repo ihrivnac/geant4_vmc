@@ -64,6 +64,8 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void SetCalorSizeYZ(G4double);
     void SetNbOfLayers(G4int);
 
+    void SetWDTRegionCutValue(G4double cut) { fWDTRegionCutValue = cut; }
+
     G4VPhysicalVolume* Construct() override;
     void ConstructSDandField() override;
 
@@ -99,6 +101,9 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4double fCalorSizeYZ = 0.;
     G4double fCalorThickness = 0.;
+
+    // cut value for the Woodcock tracking region (i.e. for the calorimeter)
+    G4double fWDTRegionCutValue = 0.;
 
     G4Material* fWorldMaterial = nullptr;
     G4double fWorldSizeYZ = 0.;

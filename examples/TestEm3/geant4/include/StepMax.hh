@@ -33,6 +33,8 @@
 #ifndef StepMax_h
 #define StepMax_h 1
 
+#include "DetectorConstruction.hh"
+
 #include "G4ParticleDefinition.hh"
 #include "G4Step.hh"
 #include "G4VDiscreteProcess.hh"
@@ -50,22 +52,58 @@ class StepMax : public G4VDiscreteProcess
 
     G4bool IsApplicable(const G4ParticleDefinition&) override;
 
-    void SetMaxStep(G4double);
+    void SetMaxStep(G4double);         // global max step
+    void SetMaxStep(G4int, G4double);  // max step per layer
 
     G4double GetMaxStep() { return fMaxChargedStep; };
+    G4double GetStepMax(G4int k) { return fStepMax[k];};
 
     G4double PostStepGetPhysicalInteractionLength(const G4Track& track, G4double previousStepSize,
                                                   G4ForceCondition* condition) override;
 
     G4VParticleChange* PostStepDoIt(const G4Track&, const G4Step&) override;
 
-    G4double GetMeanFreePath(const G4Track&, G4double, G4ForceCondition*) override;
+    G4double GetMeanFreePath(const G4Track&, G4double, G4ForceCondition*) override
+     {return DBL_MAX;};
 
   private:
     G4double fMaxChargedStep = DBL_MAX;
+    G4double fStepMax[kMaxAbsor];
 
     StepMaxMessenger* fMess = nullptr;
 };
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+inline
+G4double StepMax::PostStepGetPhysicalInteractionLength( const G4Track& track,
+                                    G4double, G4ForceCondition* condition)
+{
+  // condition is set to "Not Forced"
+  *condition = NotForced;
+
+  // step max in layer
+  G4int n = track.GetVolume()->GetCopyNo();
+  if (n < kMaxAbsor) {
+    return fStepMax[n];
+  }
+
+  // global value
+  if (track.GetVolume()->GetName() == "World")
+    return DBL_MAX;
+  else
+    return fMaxChargedStep;
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+inline
+G4VParticleChange* StepMax::PostStepDoIt(const G4Track& track, const G4Step&)
+{
+   // do nothing
+   aParticleChange.Initialize(track);
+   return &aParticleChange;
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

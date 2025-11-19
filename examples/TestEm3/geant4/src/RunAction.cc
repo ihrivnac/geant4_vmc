@@ -64,14 +64,27 @@ RunAction::~RunAction()
 
 G4Run* RunAction::GenerateRun()
 {
-  fRun = new Run(fDetector);
-  return fRun;
+  if (!fIsPerformance) {
+    fRun = new Run(fDetector);
+    return fRun;
+  }
+  return nullptr;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::BeginOfRunAction(const G4Run*)
 {
+  if (isMaster) {
+    //    G4Random::showEngineStatus();
+    fTimer = new G4Timer();
+    fTimer->Start();
+  }
+
+  if (fIsPerformance) {
+    return;
+  }
+
   // keep run condition
   if (fPrimary) {
     G4ParticleDefinition* particle = fPrimary->GetParticleGun()->GetParticleDefinition();
@@ -86,11 +99,6 @@ void RunAction::BeginOfRunAction(const G4Run*)
 
   // save Rndm status and open the timer
 
-  if (isMaster) {
-    //    G4Random::showEngineStatus();
-    fTimer = new G4Timer();
-    fTimer->Start();
-  }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

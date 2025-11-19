@@ -35,16 +35,37 @@
 #include "StepMax.hh"
 
 #include "G4UIcmdWithADoubleAndUnit.hh"
+#include "G4UIcommand.hh"
+#include "G4UIdirectory.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 StepMaxMessenger::StepMaxMessenger(StepMax* stepM) : fStepMax(stepM)
 {
+  fStepMaxDir = new G4UIdirectory("/testem/stepMax/");
+  fStepMaxDir->SetGuidance("stepmax control");
+
   fStepMaxCmd = new G4UIcmdWithADoubleAndUnit("/testem/stepMax", this);
   fStepMaxCmd->SetGuidance("Set max allowed step length");
   fStepMaxCmd->SetParameterName("mxStep", false);
   fStepMaxCmd->SetRange("mxStep>0.");
   fStepMaxCmd->SetUnitCategory("Length");
+
+  fStepMaxAbsorberCmd = new G4UIcommand("/testem/stepMax/absorber",this);
+  fStepMaxAbsorberCmd->SetGuidance("Set max allowed step length in absorber k");
+  //
+  G4UIparameter* k = new G4UIparameter("k",'i',false);
+  k->SetGuidance("absorber number : from 1 to MaxHisto-1");
+  k->SetParameterRange("k>0");
+  fStepMaxAbsorberCmd->SetParameter(k);
+  //
+  G4UIparameter* sMax = new G4UIparameter("sMax",'d',false);
+  sMax->SetGuidance("stepMax, expressed in choosen unit");
+  sMax->SetParameterRange("sMax>0.");
+  fStepMaxAbsorberCmd->SetParameter(sMax);
+  //
+  G4UIparameter* unit = new G4UIparameter("unit",'s',false);
+  fStepMaxAbsorberCmd->SetParameter(unit);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -52,6 +73,8 @@ StepMaxMessenger::StepMaxMessenger(StepMax* stepM) : fStepMax(stepM)
 StepMaxMessenger::~StepMaxMessenger()
 {
   delete fStepMaxCmd;
+  delete fStepMaxAbsorberCmd;
+  delete fStepMaxDir;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -61,6 +84,17 @@ void StepMaxMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
   if (command == fStepMaxCmd) {
     fStepMax->SetMaxStep(fStepMaxCmd->GetNewDoubleValue(newValue));
   }
+
+  if (command == fStepMaxAbsorberCmd) {
+     G4int k;
+     G4double sMax;
+     G4String unts;
+     std::istringstream is(newValue);
+     is >> k >> sMax >> unts;
+     G4String unit = unts;
+     G4double vUnit = G4UIcommand::ValueOf(unit);
+     fStepMax->SetMaxStep(k, sMax*vUnit);
+   }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

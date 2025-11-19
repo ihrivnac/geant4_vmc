@@ -51,7 +51,9 @@ class StepMaxMessenger : public G4UImessenger
 
   private:
     StepMax* fStepMax = nullptr;
+    G4UIdirectory* fStepMaxDir = nullptr;
     G4UIcmdWithADoubleAndUnit* fStepMaxCmd = nullptr;
+    G4UIcommand*   fStepMaxAbsorberCmd = nullptr;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
