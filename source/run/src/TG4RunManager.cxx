@@ -58,9 +58,6 @@
 #ifdef USE_G4ROOT
 #include <TG4RootNavMgr.h>
 #include "TVirtualGeoConverter.h"
-#include "TGeoCompositeShape.h"
-#include "TGeoPara.h"
-#include "TGeoScaledShape.h"
 #endif
 
 #include <TGeoManager.h>
@@ -239,9 +236,8 @@ void TG4RunManager::ConfigureRunManager()
          if (!converter) {
             std::cerr << "VecGeom conversion has failed." << std::endl;;
          } else {
-            converter->ExcludeShapeType(TGeoPara::Class());
-            converter->ExcludeShapeType(TGeoCompositeShape::Class());
-            converter->ExcludeShapeType(TGeoScaledShape::Class());
+            converter->ExcludeShapeType(TGeoShape::kGeoPara);
+            converter->ExcludeShapeType(TGeoShape::kGeoComb);
             converter->ConvertGeometry();
          }
       }
