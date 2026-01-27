@@ -27,6 +27,7 @@ class TG4SpecialPhysicsList;
 class TG4VUserRegionConstruction;
 class TG4VUserPostDetConstruction;
 class TG4VUserFastSimulation;
+class TG4VScoreWeightCalculator;
 
 class G4VUserDetectorConstruction;
 class G4VUserPrimaryGeneratorAction;
@@ -102,11 +103,12 @@ class TG4RunConfiguration
   void SetMTApplication(Bool_t mtApplication);
   void SetParameter(const TString& name, Double_t value);
   void SetSpecialCutsOld();
-  void SetUseOfG4Scoring();
+  void SetUseOfG4Scoring(TG4VScoreWeightCalculator* calculator = nullptr);
 
   // get methods
   TString GetUserGeometry() const;
   TString GetPhysicsListSelection() const;
+  TG4VScoreWeightCalculator* GetScoreWeightCalculator() const;
   Bool_t IsSpecialStacking() const;
   Bool_t IsSpecialControls() const;
   Bool_t IsSpecialCuts() const;
@@ -125,6 +127,7 @@ class TG4RunConfiguration
   Bool_t fSpecialCuts;              ///< option for special cuts
   Bool_t fSpecialCutsOld;           ///< option for special cuts old
   Bool_t fUseOfG4Scoring;           ///< option to activate G4 commmand-line scoring
+  TG4VScoreWeightCalculator* fScoreWeightCalculator; ///< user score weight calculator
   G4UImessenger* fAGDDMessenger;    //!< XML messenger
   G4UImessenger* fGDMLMessenger;    //!< XML messenger
 
@@ -145,15 +148,23 @@ class TG4RunConfiguration
 // inline functions
 
 /// Activate G4 commmand-line scoring
-inline void TG4RunConfiguration::SetUseOfG4Scoring()
+inline void TG4RunConfiguration::SetUseOfG4Scoring(
+  TG4VScoreWeightCalculator* calculator)
 {
   fUseOfG4Scoring = true;
+  fScoreWeightCalculator = calculator;
 }
 
 /// Return physics list selection
 inline TString TG4RunConfiguration::GetPhysicsListSelection() const
 { 
   return fPhysicsListSelection;
+}
+
+/// Return score weight calculator
+inline TG4VScoreWeightCalculator* TG4RunConfiguration::GetScoreWeightCalculator() const
+{
+  return fScoreWeightCalculator;
 }
 
 inline Bool_t TG4RunConfiguration::IsUseOfG4Scoring() const

@@ -477,6 +477,11 @@ void TG4RunManager::LateInitialize()
   TG4PhysicsManager::Instance()->SetProcessActivation();
   TG4PhysicsManager::Instance()->RetrieveOpBoundaryProcess();
 
+  // late initialize SD manager
+  TG4SDManager::Instance()->SetScoreWeightCalculator(
+    fRunConfiguration->GetScoreWeightCalculator());
+  TG4SDManager::Instance()->LateInitialize();
+
   // late initialize step manager
   TG4StepManager::Instance()->LateInitialize();
 

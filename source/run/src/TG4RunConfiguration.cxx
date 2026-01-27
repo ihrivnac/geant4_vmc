@@ -50,6 +50,7 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
     fSpecialCuts(false),
     fSpecialCutsOld(false),
     fUseOfG4Scoring(false),
+    fScoreWeightCalculator(nullptr),
     fAGDDMessenger(0),
     fGDMLMessenger(0),
     fParameters()

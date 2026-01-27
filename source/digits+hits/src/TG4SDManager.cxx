@@ -19,14 +19,23 @@
 #include "TG4MediumMap.h"
 #include "TG4SDConstruction.h"
 #include "TG4SDServices.h"
+#include "TG4VScoreWeightCalculator.h"
 
 #include <TVirtualMC.h>
 
-TG4SDManager* TG4SDManager::fgInstance = 0;
+#include "G4MultiFunctionalDetector.hh"
+#include "G4ScoringManager.hh"
+#include "G4VPrimitiveScorer.hh"
+#include "G4VScoringMesh.hh"
+
+TG4SDManager* TG4SDManager::fgInstance = nullptr;
 
 //_____________________________________________________________________________
-TG4SDManager::TG4SDManager() : fSDConstruction(0), fSDServices(0), fNameBuffer()
-
+TG4SDManager::TG4SDManager()
+  : fSDConstruction(nullptr),
+    fSDServices(nullptr),
+    fScoreWeightCalculator(nullptr),
+    fNameBuffer()
 {
   /// Default constructor
 
@@ -65,6 +74,51 @@ void TG4SDManager::Initialize()
   // G4cout << "TG4SDManager::Initialize" << G4endl;
   fSDConstruction->Construct();
   // G4cout << "TG4SDManager::Initialize done" << G4endl;
+}
+
+//_____________________________________________________________________________
+void TG4SDManager::LateInitialize()
+{
+   /// Apply score weight if use of Geant4 scoring is activated
+
+  if (fScoreWeightCalculator == nullptr) return;
+
+  // Define test weighting function
+  G4ScoreWeightCalculator scoreWeightCalculator =
+    [&calculator = fScoreWeightCalculator](const G4Step* step) -> G4double {
+    return calculator->GetWeight(step);
+  };
+
+  // Get G4ScoringManager
+  auto g4ScoringManager = G4ScoringManager::GetScoringManagerIfExist();
+  if (g4ScoringManager == nullptr ) {
+    TG4Globals::Warning("TG4SDManager", "LateInitialize(",
+        "G4ScoringManager manager must be activated to use G4ScoreWeightCalculator.");
+    return;
+  }
+
+  // Apply score weight calculator to all defined weighted scorers
+  auto nofMesh = g4ScoringManager->GetNumberOfMesh();
+  if (nofMesh < 1) {
+    TG4Globals::Warning("TG4SDManager", "LateInitialize(",
+        "A mesh must be defined to use G4ScoreWeightCalculator..");
+    return;
+  }
+
+  G4int counter = 0;
+  for (std::size_t i = 0; i < nofMesh; ++i) {
+    auto mesh = g4ScoringManager->GetMesh((G4int)i);
+    const auto mfd = mesh->GetMFD();
+    G4int nps = mfd->GetNumberOfPrimitives();
+    for(G4int i = 0; i < nps; ++i) {
+      auto scorer = mfd->GetPrimitive(i);
+      scorer->SetScoreWeightCalculator(scoreWeightCalculator);
+      ++counter;
+    }
+  }
+
+  // Add verbose level if needed
+  G4cout << "### ScoreWeightCalculator added to " << counter << " scorers" << G4endl;
 }
 
 //_____________________________________________________________________________

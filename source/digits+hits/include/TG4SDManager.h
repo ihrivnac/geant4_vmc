@@ -21,6 +21,7 @@
 
 class TG4SDServices;
 class TG4SDConstruction;
+class TG4VScoreWeightCalculator;
 
 class TVirtualMCSensitiveDetector;
 
@@ -41,6 +42,7 @@ class TG4SDManager
 
   // methods
   void Initialize();
+  void LateInitialize();
 
   // TVirtualMC methods
   Int_t VolId(const Text_t* volName) const;
@@ -56,6 +58,8 @@ class TG4SDManager
   TVirtualMCSensitiveDetector* GetSensitiveDetector(
     const TString& volName) const;
   void SetExclusiveSDScoring(Bool_t exclusiveSDScoring);
+  void SetScoreWeightCalculator(
+    TG4VScoreWeightCalculator* calculator);
 
   // get methods
   TG4SDConstruction* GetSDConstruction() const;
@@ -78,6 +82,9 @@ class TG4SDManager
   /// services related with sensitive detectors
   TG4SDServices* fSDServices;
 
+  /// Fluence weight calculator
+  TG4VScoreWeightCalculator* fScoreWeightCalculator;
+
   /// buffer for volume name
   mutable G4String fNameBuffer;
 };
@@ -94,6 +101,13 @@ inline TG4SDConstruction* TG4SDManager::GetSDConstruction() const
 {
   /// Return sensitive detctor construction
   return fSDConstruction;
+}
+
+inline void TG4SDManager::SetScoreWeightCalculator(
+    TG4VScoreWeightCalculator* calculator)
+{
+  /// Set score weight calculator
+  fScoreWeightCalculator = calculator;
 }
 
 #endif // TG4_SD_MANAGER_H
