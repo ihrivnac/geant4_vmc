@@ -68,6 +68,8 @@ TG4RunConfiguration::TG4RunConfiguration(const TString& userGeometry,
         "geomVMC+RootToGeant4 geomGeant4");
   }
 
+  G4cout << "### Geometry option: " << userGeometry << G4endl;
+
   G4int itoken = 0;
   G4String token;
   do {

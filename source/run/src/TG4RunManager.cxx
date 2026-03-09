@@ -236,8 +236,11 @@ void TG4RunManager::ConfigureRunManager()
          if (!converter) {
             std::cerr << "VecGeom conversion has failed." << std::endl;;
          } else {
+            G4cout << "Going to convert TGeo solids in VecGeom" << G4endl;
+            // Select/exclude shape types
+            // converter->SelectShapeType(TGeoShape::kGeoTubeSeg);
+            // converter->ExcludeShapeType(TGeoShape::kGeoTubeSeg);
             converter->ExcludeShapeType(TGeoShape::kGeoPara);
-            converter->ExcludeShapeType(TGeoShape::kGeoComb);
             converter->ConvertGeometry();
          }
       }
@@ -594,7 +597,13 @@ Bool_t TG4RunManager::ProcessRun(G4int nofEvents)
     FinishRun();
   }
   fInProcessRun = true;
+
+  TStopwatch timer;
+  timer.Start();
   fRunManager->BeamOn(nofEvents);
+  timer.Stop();
+  timer.Print();
+
   fInProcessRun = false;
   fNEventsProcessed = nofEvents;
   return FinishRun();
