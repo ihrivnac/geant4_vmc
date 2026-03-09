@@ -580,7 +580,13 @@ Bool_t TG4RunManager::ProcessRun(G4int nofEvents)
     FinishRun();
   }
   fInProcessRun = true;
+
+  TStopwatch timer;
+  timer.Start();
   fRunManager->BeamOn(nofEvents);
+  timer.Stop();
+  timer.Print();
+
   fInProcessRun = false;
   fNEventsProcessed = nofEvents;
   return FinishRun();

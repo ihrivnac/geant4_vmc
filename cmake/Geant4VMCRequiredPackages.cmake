@@ -21,8 +21,14 @@ if(ROOT_vmc_FOUND)
   message(FATAL_ERROR
           "Cannot use VMC standalone with ROOT built with vmc.")
 endif()
+
+# VecGeom
+find_package(VecGeom CONFIG REQUIRED)
+message(STATUS "Found VecGeom: ${VecGeom_FOUND}")
+message(STATUS "VecGeom_INCLUDE_DIRS: ${VecGeom_INCLUDE_DIRS}")
+
 set(ROOT_DEPS ROOT::Core ROOT::RIO ROOT::Tree ROOT::Rint ROOT::Physics
-    ROOT::MathCore ROOT::Thread ROOT::Geom ROOT::EG)
+    ROOT::MathCore ROOT::Thread ROOT::Geom ROOT::EG VecGeom::vecgeom)
 include(${ROOT_USE_FILE})
 
 #-- VMC (required) ------------------------------------------------------------

@@ -29,7 +29,7 @@
 // #include "G4SystemOfUnits.hh"
 #include "G4VisExtent.hh"
 
-#include "TGeoBBox.h"
+#include "TGeoBaseBox.h"
 #include "TGeoShape.h"
 #include "TMath.h"
 
@@ -243,11 +243,11 @@ std::ostream& TG4RootSolid::StreamInfo(std::ostream& os) const
      << "    ===================================================\n"
      << " Solid type: ROOT solid / " << fShape->ClassName() << "\n"
      << " Bounding box: \n"
-     << "    half length X: " << ((TGeoBBox*)fShape)->GetDX() * cm / mm
+     << "    half length X: " << fShape->GetBoundingBox()->GetDX() * cm / mm
      << " mm \n"
-     << "    half length Y: " << ((TGeoBBox*)fShape)->GetDY() * cm / mm
+     << "    half length Y: " << fShape->GetBoundingBox()->GetDY() * cm / mm
      << " mm \n"
-     << "    half length Z: " << ((TGeoBBox*)fShape)->GetDZ() * cm / mm
+     << "    half length Z: " << fShape->GetBoundingBox()->GetDZ() * cm / mm
      << " mm \n"
      << "-----------------------------------------------------------\n";
 
@@ -268,10 +268,10 @@ void TG4RootSolid::DescribeYourselfTo(G4VGraphicsScene& scene) const
 G4VisExtent TG4RootSolid::GetExtent() const
 {
   /// Provide extent (bounding box) as possible hint to the graphics view.
-  G4double dx = ((TGeoBBox*)fShape)->GetDX() * cm;
-  G4double dy = ((TGeoBBox*)fShape)->GetDY() * cm;
-  G4double dz = ((TGeoBBox*)fShape)->GetDZ() * cm;
-  const Double_t* origin = ((TGeoBBox*)fShape)->GetOrigin();
+  G4double dx = fShape->GetBoundingBox()->GetDX() * cm;
+  G4double dy = fShape->GetBoundingBox()->GetDY() * cm;
+  G4double dz = fShape->GetBoundingBox()->GetDZ() * cm;
+  const Double_t* origin = fShape->GetBoundingBox()->GetOrigin();
   G4double ox = origin[0] * cm;
   G4double oy = origin[1] * cm;
   G4double oz = origin[2] * cm;
@@ -282,9 +282,9 @@ G4VisExtent TG4RootSolid::GetExtent() const
 G4Polyhedron* TG4RootSolid::CreatePolyhedron() const
 {
   /// Create polyhedron for the bounding box
-  G4double dx = ((TGeoBBox*)fShape)->GetDX() * cm;
-  G4double dy = ((TGeoBBox*)fShape)->GetDY() * cm;
-  G4double dz = ((TGeoBBox*)fShape)->GetDZ() * cm;
+  G4double dx = fShape->GetBoundingBox()->GetDX() * cm;
+  G4double dy = fShape->GetBoundingBox()->GetDY() * cm;
+  G4double dz = fShape->GetBoundingBox()->GetDZ() * cm;
   return new G4PolyhedronBox(dx, dy, dz);
 }
 

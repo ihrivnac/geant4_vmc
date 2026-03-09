@@ -34,6 +34,9 @@ set(CMAKE_MODULE_PATH
     ${CMAKE_SOURCE_DIR}/cmake
     ${CMAKE_MODULE_PATH})
 
+# TODO: Make this better in future
+add_definitions(-DROOT_USE_VECGEOM_SOLIDS)
+
 #--- Project definitions -------------------------------------------------------
 project(Geant4VMCPackages)
 include(Geant4VMCPackagesVersion)
