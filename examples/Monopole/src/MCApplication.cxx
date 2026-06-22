@@ -324,9 +324,10 @@ TVirtualMCApplication* MCApplication::CloneForWorker() const
 void MCApplication::InitOnWorker()
 {
   // Create Root manager
-  fRootManager
-    = new TMCRootManager(GetName(), TMCRootManager::kWrite);
-  //fRootManager->SetDebug(true);
+  Int_t threadRank = 1;
+        // The real thread rank will be set in MCRootManager
+  fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite, threadRank);
+  // fRootManager->SetDebug(true);
 
   gMC->SetStack(fStack);
   gMC->SetMagField(fMagField);

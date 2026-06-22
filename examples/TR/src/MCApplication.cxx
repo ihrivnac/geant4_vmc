@@ -276,7 +276,9 @@ ClassImp(VMC::TR::MCApplication)
     // cout << "MCApplication::InitForWorker " << this << endl;
 
     // Create Root manager
-    fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite);
+    Int_t threadRank = 1;
+        // The real thread rank will be set in MCRootManager
+    fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite, threadRank);
     // fRootManager->SetDebug(true);
 
     // Set data to MC

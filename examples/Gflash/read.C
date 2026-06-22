@@ -10,21 +10,15 @@
 /// \file Gflash/read.C
 /// \brief Macro for reading the Gflash simulated data from Root file
 
-#include "../macro/basiclibs.C"
-
 void read()
 {
 /// Macro for reading the Gflash simulated data from Root file
-
-  // Load basic libraries
-  basiclibs();
-
-  // Load this example library
-  gSystem->Load("libexampleGflash");
+/// Note that since Root 6 the libraries have to be loaded first
+/// via load_g4.C.
 
   // MC application
   VMC::Gflash::MCApplication* appl
-    =  new VMC::Gflash::MCApplication("ExampleGflash", "The exampleGflash MC application", kRead);
+    =  new VMC::Gflash::MCApplication("ExampleGflash", "The exampleGflash MC application");
 
   for (Int_t i=0; i<5; i++) {
     cout << "   Event no " << i+1 << ":" << endl;

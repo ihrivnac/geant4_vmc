@@ -11,21 +11,15 @@
 /// \file E03/read.C
 /// \brief Macro for reading the E03 simulated data from Root file
 
-#include "../macro/basiclibs.C"
-
 void read()
 {
 /// Macro for reading the E03 simulated data from Root file
-
-  // Load basic libraries
-  basiclibs();
-
-  // Load this example library
-  gSystem->Load("libexample03");
+/// Note that since Root 6 the libraries have to be loaded first
+/// via load_g4a[b,c].C.
 
   // MC application
   Ex03MCApplication* appl
-    =  new Ex03MCApplication("Example03", "The example03 MC application", kRead);
+    =  new Ex03MCApplication("Example03", "The example03 MC application");
 
   for (Int_t i=0; i<5; i++) {
     cout << "   Event no " << i+1 << ":" << endl;

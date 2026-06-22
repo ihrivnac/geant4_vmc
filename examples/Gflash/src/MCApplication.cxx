@@ -306,7 +306,9 @@ ClassImp(VMC::Gflash::MCApplication)
     // cout << "MCApplication::InitForWorker " << this << endl;
 
     // Create Root manager
-    fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite);
+    Int_t threadRank = 1;
+        // The real thread rank will be set in MCRootManager
+    fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite, threadRank);
     // fRootManager->SetDebug(true);
 
     // Set data to MC
@@ -330,6 +332,10 @@ ClassImp(VMC::Gflash::MCApplication)
   {
     /// Read \em i -th event and prints hits.
     /// \param i The number of event to be read
+
+    if ( ! fRootManager ) {
+      fRootManager = new TMCRootManager(GetName(), TMCRootManager::kRead);
+    }
 
     fSensitiveDetector->Register();
     RegisterStack();

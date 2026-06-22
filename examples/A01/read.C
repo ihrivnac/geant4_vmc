@@ -10,21 +10,15 @@
 /// \file A01/read.C
 /// \brief Macro for reading the A01 simulated data from Root file
 
-#include "../macro/basiclibs.C"
-
 void read()
 {
 /// Macro for reading the E03 simulated data from Root file
-
-  // Load basic libraries
-  basiclibs();
-
-  // Load this example library
-  gSystem->Load("libexampleA01");
+/// Note that since Root 6 the libraries have to be loaded first
+/// via load_g4.C.
 
   // MC application
   A01MCApplication* appl
-    =  new A01MCApplication("Example A01", "The Example A01 MC application", kRead);
+    =  new A01MCApplication("Example A01", "The Example A01 MC application",);
 
   for (Int_t i=0; i<5; i++) {
     cout << "   Event no " << i+1 << ":" << endl;

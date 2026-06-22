@@ -283,7 +283,9 @@ void A01MCApplication::InitOnWorker()
   // cout << "A01MCApplication::InitForWorker " << this << endl;
 
   // Create Root manager
-  fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite);
+  Int_t threadRank = 1;
+        // The real thread rank will be set in MCRootManager
+  fRootManager = new TMCRootManager(GetName(), TMCRootManager::kWrite, threadRank);
   // fRootManager->SetDebug(true);
 
   // Set data to MC
@@ -308,6 +310,10 @@ void A01MCApplication::ReadEvent(Int_t i)
 {
   /// Read \em i -th event and print hits.
   /// \param i The number of event to be read
+
+  if ( ! fRootManager ) {
+    fRootManager = new TMCRootManager(GetName(), TMCRootManager::kRead);
+  }
 
   fDriftChamberSD1->Register();
   fDriftChamberSD2->Register();
